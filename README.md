@@ -135,7 +135,7 @@ Full Moon     |   1
 
 So play with the resistor in base at where you wanna put the sensor, and adjust the value in the ReadVBAT() function accordly to have a valid full scale value, look:
 
-```javascript
+```c_cpp
 unsigned int ReadVBAT (){
   raw = analogRead(A0);
   volt=raw/1023.0;
