@@ -80,4 +80,5 @@ IPAddress ip,gateway,subnet,dns1,dns2;
 #endif
 ```
 
-Self explanatory, this settings are needed if you want a static ip for the station
+Self explanatory, this settings are needed if you want a static ip for the station.
+More detail about this funny project will follow ASAP.
