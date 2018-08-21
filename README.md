@@ -125,12 +125,14 @@ Resistor Value | Resolution | Full-scale (lux)
 1 Kohm         |    5       |   50000
 500 ohm        |    10      |   100000
 
-Reference values
-Sun at midday |   100000 lux
-Surgery table |   10000 lux
-Office        |   from 500 to 2000 lux
-Art Gallery   |   from 100 to 500 lux
-Full Moon     |   1 lux
+
+Reference     |   values (lux)
+--------------|----------------
+Sun at midday |   100000
+Surgery table |   10000 
+Office        |   from 500 to 2000
+Art Gallery   |   from 100 to 500
+Full Moon     |   1
 
 So play with the resistor in base at where you wanna put the sensor, and adjust the value in the ReadVBAT() function accordly to have a valid full scale value, look:
 
