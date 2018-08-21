@@ -98,6 +98,8 @@ Everything seems to be ok with the more advanced port, V2.0 as you can see, if y
 NOTE: you can set here the serial speed for upload your firmware to ESP8266, i had no problem at all with maximum speed, but if encounter some issue you can lower the value, as someone reported in some forum.
 Remember: this isn't the serial speed that you will use later for console serial communications, and the ESP8266 doesn't have problem to manage maximum speed (usually).
 
+HINT: the system save in flash memory the last succesful connection parameters, and because we are in a multitasking environment, it try to connect before you send the connect() command, this may resolve in some trouble if your wifi is gone or if you try the system at home and then you change place...you can resolve this problem using the "Sketch+WiFi settings" flashing set (Erasing Flash voice, just under Upload Speed).
+
 # NodeMCU V0.9 schematics
 
 This schematics is useful for reference in hardware connections if you own an ESP-12,
