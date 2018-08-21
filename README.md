@@ -88,9 +88,18 @@ IPAddress ip,gateway,subnet,dns1,dns2;
 
 Self explanatory, this settings are needed if you want a static ip for the station.
 
+# lwIP
+
 If you are using ArduinoIDE for development, then you can choose between some linkage options, one of the most important is the "lwIP" one:
 
 ![lwIP_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/lwIP.jpg)
+
+lwIP is the "lightweigth TCP/IP stack" (https://savannah.nongnu.org/projects/lwip/) ported to the ESP8266 embedded platform, and is the library that permit the ease of use of the whole internet related system.
+Everything seems to be ok with the more advanced port, V2.0 as you can see, if you are experiencing strange behaviour you could try to change in favour of the old V1.4.
+NOTE: you can set here the serial speed for upload your firmware to ESP8266, i had no problem at all with maximum speed, but if encounter some issue you can lower the value, as someone reported in some forum.
+Remember: this isn't the serial speed that you will use later for console serial communications, and the ESP8266 doesn't have problem at all to manage maximum speed (usually).
+
+# NodeMCU V0.9 schematics
 
 This schematics is useful for reference in hardware connections if you own an ESP-12,
 also know as NodeMCU V0.9, refer to this for pinouts.
