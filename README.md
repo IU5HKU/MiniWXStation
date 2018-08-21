@@ -1,5 +1,5 @@
 # MiniWX Station
-ESP8266 IoT and BME280 sensor for a minimalist weather station to put in your terrace :-)
+ESP8266 IoT and BME280 sensor for a minimalist weather station
 
 This work started as a fork from F4GOH code, so you can visit his blog (https://hamprojects.wordpress.com/) for infos about
 how to compile and configure this firmware trough his menu. This instead is his github repository: https://github.com/f4goh/Weather. I've added some features that, at moment, you can set at compile time using #defines.
