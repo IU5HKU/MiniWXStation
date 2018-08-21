@@ -97,7 +97,7 @@ If you are using ArduinoIDE for development, then you can choose between some li
 lwIP is the "lightweigth TCP/IP stack" (https://savannah.nongnu.org/projects/lwip/) ported to the ESP8266 embedded platform, and is the library that permit the ease of use of the whole internet related system.
 Everything seems to be ok with the more advanced port, V2.0 as you can see, if you are experiencing strange behaviour you could try to change in favour of the old V1.4.
 NOTE: you can set here the serial speed for upload your firmware to ESP8266, i had no problem at all with maximum speed, but if encounter some issue you can lower the value, as someone reported in some forum.
-Remember: this isn't the serial speed that you will use later for console serial communications, and the ESP8266 doesn't have problem at all to manage maximum speed (usually).
+Remember: this isn't the serial speed that you will use later for console serial communications, and the ESP8266 doesn't have problem to manage maximum speed (usually).
 
 # NodeMCU V0.9 schematics
 
@@ -109,6 +109,37 @@ When you are using deepsleep() D0 must be connectd to 'RST', in this way the RTC
 
 ![Schematics_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/NODEMCU_DEVKIT_SCH.png)
 
+# Adding a phototransistor
 
+A cheap way to expand the capability of our poor-man weather station is adding a phototransistor, and for who have tha possibility, to characterize it to obtain a more or less precise value of the lux. I've remembered that wandering around my lab there is an old FPT100, so i decided to connect this analog device to the ESP8266 10bit ADC (Pin A0). This is the simple scheme:
 
-More detail about this funny project will follow ASAP.
+![phototransistor_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/phototransistor.png)
+
+and following the rules explained here, https://forum.arduino.cc/index.php?topic=445538.0 you can read a voltage value proportional to the light who hit the phototransistor.
+The resistor determine the sensitivity of the device, who is claimed to be linear in his response, but for a more precise work you MUST use a luxmeter as reference. The following table is from this site: https://www.theremino.com/hardware/inputs/light-sensors where fpt100 is compared against bpw34, if you use 10Kohm the old FPT100 is still the more sensitive, with is 0.5lux of resolution, but i guess that nowaday there are other (and cheaper!) devices who perform surely better. I know, there are an i2c version dedicated for IoT, but hey, i wanna reuse my precious fpt100, i think that it's more or less 25 years old :-)
+
+Resistor Value | Resolution | Full-scale (lux)
+---------------|------------|-----------------
+50 Kohm        |    0.1     |   1000 
+10 Kohm        |    0.5     |   5000
+1 Kohm         |    5       |   50000
+500 ohm        |    10      |   100000
+
+Reference values
+Sun at midday |   100000 lux
+Surgery table |   10000 lux
+Office        |   from 500 to 2000 lux
+Art Gallery   |   from 100 to 500 lux
+Full Moon     |   1 lux
+
+So play with the resistor in base at where you wanna put the sensor, and adjust the value in the ReadVBAT() function accordly to have a valid full scale value, look:
+
+```javascript
+unsigned int ReadVBAT (){
+  raw = analogRead(A0);
+  volt=raw/1023.0;
+  //volt=volt*4.2f; //100Kohm resistor
+  volt=volt*3.3f;   //10kohm resistor
+  return ((unsigned int)(volt*100)); // two decimals after the comma
+}
+```
