@@ -144,3 +144,5 @@ unsigned int ReadVBAT (){
   return ((unsigned int)(volt*100)); // two decimals after the comma
 }
 ```
+
+NOTE: if you are using 10Kohm you can connect the Vcc to 3.3V to obtain a 0.003V resolution from the internal ESP8266 ADC
