@@ -11,14 +11,14 @@ Obviously you nedd the BME280 Library too: https://github.com/sparkfun/SparkFun_
 //**** How the station is named in your NET
 const char* WiFi_hostname = "IU5HKU-13";
 ```
-Change with the name you wish more appropriate
+Change with the name you wish.
 
 ```javascript
 //**** APRS PASSWORD (use -1 if you are using a CWOP callsign)
 const char* AprsPassw = "YourAprsNumericalPASS";
 ```
 For a CWOP callsign you need to register, it's free and easy, refer to
-instruction at http://wxqa.com/ to obtain one
+instruction at http://wxqa.com/ to obtain one.
 
 ```javascript
 //**** comment this for hardcoded 3.7V value in telemetry
@@ -36,7 +36,7 @@ char ID [] = "YourWunderID";
 char PASSWORD [] = "YourWunderPASSW";
 ```
 
-Major upgrade, sends data to Weahter Underground
+Major upgrade, sends data to Weahter Underground.
 
 ```javascript
 //**** show BME280 registers in printbme();
@@ -50,21 +50,21 @@ Uncomment for printout of registers values in serial console.
 #define BLINK_RED_LED
 ```
 
-WILL BE ELIMINATED IN BATTERY POWERED VERSION, this is a "i'm still alive" signal
+WILL BE ELIMINATED IN BATTERY POWERED VERSION, this is a "i'm still alive" indication.
 
 ```javascript
 //**** blinking led to show that ESP8266 is transmitting  (0.5" blink)
 #define BLINK_BLUE_LED
 ```
 
-WILL BE ELIMINATED IN BATTERY POWERED VERSION, this is a "i'm sending data to servers" signal
+WILL BE ELIMINATED IN BATTERY POWERED VERSION, this is a "i'm sending data to servers" indication.
 
 ```javascript
 //**** show (annoying) animated clock in the serial output 
 //#define SHOW_TICKS
 ```
 
-Left commented to eliminate the clock in serial console
+Left commented to eliminate the clock in serial console.
 
 ```javascript
 //**** use static ip instead of dns one
