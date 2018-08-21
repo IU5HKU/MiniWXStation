@@ -7,6 +7,12 @@ Many thanks to Antonio EA1CDV for his support, beta testing and encouragement, y
 In a next version i'll change the source code to use native ESP8266 ntp calls instead of using NTPTimeESP, but for the moment the source code needs this library, so you have to add it to your environment, https://github.com/SensorsIot/NTPtimeESP
 Obviously you nedd the BME280 Library too: https://github.com/sparkfun/SparkFun_BME280_Arduino_Library
 
+For the moment this project is running without problem over three flavours of ESP8266:
+-NodeMCU V0.9
+-NodeMCU V1.0
+-Wemos D1 mini
+
+
 ```javascript
 //**** How the station is named in your NET
 const char* WiFi_hostname = "IU5HKU-13";
