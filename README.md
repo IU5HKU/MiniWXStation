@@ -118,13 +118,20 @@ A cheap way to expand the capability of our poor-man weather station is adding a
 and following the rules explained here, https://forum.arduino.cc/index.php?topic=445538.0 you can read a voltage value proportional to the light who hit the phototransistor.
 The resistor determine the sensitivity of the device, who is claimed to be linear in his response, but for a more precise work you MUST use a luxmeter as reference. The following table is from this site: https://www.theremino.com/hardware/inputs/light-sensors where fpt100 is compared against bpw34, if you use 10Kohm the old FPT100 is still the more sensitive, with is 0.5lux of resolution, but i guess that nowaday there are other (and cheaper!) devices who perform surely better. I know, there are an i2c version dedicated for IoT, but hey, i wanna reuse my precious fpt100, i think that it's more or less 25 years old :-)
 
-Resistor Value | Resolution | Full-scale (lux)                      Reference     |   values (lux)
----------------|------------|-----------------                      --------------|----------------
-50 Kohm        |    0.1     |   1000                                Sun at midday |   100000
-10 Kohm        |    0.5     |   5000                                Surgery table |   10000 
-1 Kohm         |    5       |   50000                               Office        |   from 500 to 2000
-500 ohm        |    10      |   100000                              Art Gallery   |   from 100 to 500
-                                                                    Full Moon     |   1
+Resistor Value | Resolution | Full-scale (lux)                      
+---------------|------------|-----------------                     
+50 Kohm        |    0.1     |   1000                                
+10 Kohm        |    0.5     |   5000                                
+1 Kohm         |    5       |   50000                               
+500 ohm        |    10      |   100000                              
+
+Reference     |   values (lux)
+--------------|----------------
+Sun at midday |   100000
+Surgery table |   10000 
+Office        |   from 500 to 2000
+Art Gallery   |   from 100 to 500
+Full Moon     |   1
 
 So play with the resistor in base at where you wanna put the sensor, and adjust the value in the ReadVBAT() function accordly to have a valid full scale value, look:
 
