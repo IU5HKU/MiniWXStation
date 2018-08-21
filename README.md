@@ -1,5 +1,5 @@
 # MiniWX Station
-ESP8266 IoT and BME280 sensor for a minimalistic weather station to put in your terrace :-)
+ESP8266 IoT and BME280 sensor for a minimalist weather station to put in your terrace :-)
 
 This work started as a fork from F4GOH code, so you can visit his blog (https://hamprojects.wordpress.com/) for infos about
 how to compile and configure this firmware trough his menu. This instead is his github repository: https://github.com/f4goh/Weather. I've added some features that, at moment, you can set at compile time using #defines.
@@ -7,7 +7,7 @@ Many thanks to Antonio EA1CDV for his support, beta testing and encouragement, y
 In a next version i'll change the source code to use native ESP8266 ntp calls instead of using NTPTimeESP, but for the moment the source code needs this library, so you have to add it to your environment, https://github.com/SensorsIot/NTPtimeESP
 Obviously you need the BME280 Library too: https://github.com/sparkfun/SparkFun_BME280_Arduino_Library
 
-For the moment this project is running without problems over three flavours of ESP8266:
+For the moment this project is running without problems over three flavors of ESP8266:
 - NodeMCU V0.9  (ESP-12)
 - NodeMCU V1.0  (ESP-12E)
 - Wemos D1 mini (ESP-12F)
@@ -94,11 +94,11 @@ If you are using ArduinoIDE for development, then you can choose between some li
 ![lwIP_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/lwIP.jpg)
 
 lwIP is the "lightweigth TCP/IP stack" (https://savannah.nongnu.org/projects/lwip/) ported to the ESP8266 embedded platform, and is the library that permit the ease of use of the whole internet related system.
-Everything seems to be ok with the more advanced port, V2.0 as you can see, if you are experiencing strange behaviour you could try to change in favour of the old V1.4.
+Everything seems to be ok with the more advanced port, V2.0 as you can see, if you are experiencing strange behavior you could try to change in favor of the old V1.4.
 NOTE: you can set here the serial speed for upload your firmware to ESP8266, i had no problem at all with maximum speed, but if encounter some issue you can lower the value, as someone reported in some forum.
 Remember: this isn't the serial speed that you will use later for console serial communications, and the ESP8266 doesn't have problem to manage maximum speed (usually).
 
-HINT: the system save in flash memory the last succesful connection parameters, and because we are in a multitasking environment, it try to connect before you send the connect() command, this may resolve in some trouble if your wifi is gone or if you try the system at home and then you change place...you can resolve this problem using the "Sketch+WiFi settings" flashing set (Erasing Flash voice, just under Upload Speed).
+HINT: the system save in flash memory the last successful connection parameters, and because we are in a multitasking environment, it try to connect before you send the connect() command, this may resolve in some trouble if your wifi is gone or if you try the system at home and then you change place...you can resolve this problem using the "Sketch+WiFi settings" flashing set (Erasing Flash voice, just under Upload Speed).
 
 # NodeMCU V0.9 schematics
 
@@ -106,7 +106,7 @@ This schematics is useful for reference in hardware connections if you own an ES
 also know as NodeMCU V0.9, refer to this for pinouts.
 ESP8266 GPIO's names and NodeMCU pin naming are different, as example GPIO16, who is used
 for wakeup the SoC from deepsleep() mode, in ESP-12 is called 'D0'. This pin is connected to the onboard red led too.
-When you are using deepsleep() D0 must be connectd to 'RST', in this way the RTC who keep tickin' in deepsleep (is the only thing active when you are in this mode) can wakeup the chip when time is expired. Useful, ins't it?:-)
+When you are using deepsleep() D0 must be connected to 'RST', in this way the RTC who keep tickin' in deepsleep (is the only thing active when you are in this mode) can wakeup the chip when time is expired. Useful, ins't it?:-)
 
 ![Schematics_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/NODEMCU_DEVKIT_SCH.png)
 
@@ -117,7 +117,7 @@ A cheap way to expand the capability of our poor-man weather station is adding a
 ![phototransistor_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/phototransistor.png)
 
 and following the rules explained here, https://forum.arduino.cc/index.php?topic=445538.0 you can read a voltage value proportional to the light who hit the phototransistor.
-The resistor determine the sensitivity of the device, who is claimed to be linear in his response, but for a more precise work you MUST use a luxmeter as reference. The following table is from this site: https://www.theremino.com/hardware/inputs/light-sensors where fpt100 is compared against bpw34, if you use 10Kohm the old FPT100 is still the more sensitive, with is 0.5lux of resolution, but i guess that nowaday there are other (and cheaper!) devices who perform surely better. I know, there are an i2c version dedicated for IoT, but hey, i wanna reuse my precious fpt100, i think that it's more or less 25 years old :-)
+The resistor determine the sensitivity of the device, who is claimed to be linear in his response, but for a more precise work you MUST use a luxmeter as reference. The following table is from this site: https://www.theremino.com/hardware/inputs/light-sensors where fpt100 is compared against bpw34, if you use 10Kohm the old FPT100 is still the more sensitive, with is 0.5lux of resolution, but i guess that nowadays there are other (and cheaper!) devices who perform surely better. I know, there are an i2c version dedicated for IoT, but hey, i wanna reuse my precious fpt100, i think that it's more or less 25 years old :-)
 
 Resistor Value | Resolution | Full-scale (lux)                      
 ---------------|------------|-----------------                     
