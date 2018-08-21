@@ -92,7 +92,11 @@ If you are using ArduinoIDE for development, then you can choose between some li
 
 ![lwIP_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/lwIP.jpg)
 
-This schematics is useful for reference in hardware connections:
+This schematics is useful for reference in hardware connections if you own an ESP-12,
+also know as NodeMCU V0.9, refer to this for pinouts.
+ESP8266 GPIO's names and NodeMCU pin naming are different, as example GPIO16, who is used
+for wakeup the SoC from deepsleep() mode, in ESP-12 is called 'D0'. This pin is connected to the onboard red led too.
+When you are using deepsleep() D0 must be connectd to 'RST', in this way the RTC who keep tickin' in deepsleep (is the only thing active when you are in this mode) can wakeup the chip when time is expired. Useful, ins't it?:-)
 
 ![Schematics_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/NODEMCU_DEVKIT_SCH.png)
 
