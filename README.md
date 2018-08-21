@@ -8,9 +8,9 @@ In a next version i'll change the source code to use native ESP8266 ntp calls in
 Obviously you nedd the BME280 Library too: https://github.com/sparkfun/SparkFun_BME280_Arduino_Library
 
 For the moment this project is running without problem over three flavours of ESP8266:
--NodeMCU V0.9
--NodeMCU V1.0
--Wemos D1 mini
+- NodeMCU V0.9
+- NodeMCU V1.0
+- Wemos D1 mini
 
 
 ```javascript
