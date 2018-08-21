@@ -12,6 +12,13 @@ For the moment this project is running without problems over three flavors of ES
 - NodeMCU V1.0  (ESP-12E)
 - Wemos D1 mini (ESP-12F)
 
+This is a simple schematics to help connect items to the board, the pinout name is still valid for NodeMCU V0.9 and Wemod D1 mini, the "phototransistor" part can be completely omitted, continue reading if you wanna connect something of analogic to the A0 pin ADC.
+
+![fritzing_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Schematics.jpg)
+
+These instead are the #defines that you can find in the beginning of the sourcecode, with a brief explanation of what
+happens if you choose to use them, it's a bit rude as method, but there is place for a config webpage hosted completely by the ESP8266....it's in my todo list, not in near future, i need to better test some other features.
+
 ```javascript
 //**** How the station is named in your NET
 const char* WiFi_hostname = "IU5HKU-13";
