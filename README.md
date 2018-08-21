@@ -90,11 +90,11 @@ Self explanatory, this settings are needed if you want a static ip for the stati
 
 If you are using ArduinoIDE for development, then you can choose between some linkage options, one of the most important is the "lwIP" one:
 
-![lwIP_Image](https://github.com/IU5HKU/MiniWXStation/lwIP.jpg)
+![lwIP_Image](https://github.com/IU5HKU/MiniWXStation/images/lwIP.jpg)
 
 This schematics is useful for reference in hardware connections:
 
-![Schematics_Image](https://github.com/IU5HKU/MiniWXStation/NODEMCU_DEVKIT_SCH.png)
+![Schematics_Image](https://github.com/IU5HKU/MiniWXStation/images/NODEMCU_DEVKIT_SCH.png)
 
 
 
