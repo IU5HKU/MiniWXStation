@@ -133,7 +133,7 @@ Office        |   from 500 to 2000
 Art Gallery   |   from 100 to 500
 Full Moon     |   1
 
-So play with the resistor in base at where you wanna put the sensor, and adjust the value in the ReadVBAT() function accordly to have a valid full scale value, look:
+So play with the resistor based on where you wanna put the sensor, and adjust the value in the ReadVBAT() function accordly to have a valid full scale value, look:
 
 ```c_cpp
 unsigned int ReadVBAT (){
