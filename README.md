@@ -3,14 +3,14 @@ ESP8266 IoT and BME280 sensor for a minimalistic weather station to put in your 
 
 This work started as a fork from F4GOH code, so you can visit his blog (https://hamprojects.wordpress.com/) for infos about
 how to compile and configure this firmware trough his menu. This instead is his github repository: https://github.com/f4goh/Weather. I've added some features that, at moment, you can set at compile time using #defines.
-Many thanks to Antonio EA1CDV for his support, beta testing and encouragement, you can read a detailed article in spanish language about this project in his blog: http://ea1cdv.blogspot.com/.
+Many thanks to Antonio EA1CDV for his support, beta testing and encouragement, you can read a detailed article in spanish language about this project in his blog: http://ea1cdv.blogspot.com/2018/08/estacion-meteorologica-aprs-via-wifi.html
 In a next version i'll change the source code to use native ESP8266 ntp calls instead of using NTPTimeESP, but for the moment the source code needs this library, so you have to add it to your environment, https://github.com/SensorsIot/NTPtimeESP
 Obviously you nedd the BME280 Library too: https://github.com/sparkfun/SparkFun_BME280_Arduino_Library
 
-For the moment this project is running without problem over three flavours of ESP8266:
-- NodeMCU V0.9
-- NodeMCU V1.0
-- Wemos D1 mini
+For the moment this project is running without problems over three flavours of ESP8266:
+- NodeMCU V0.9  (ESP-12)
+- NodeMCU V1.0  (ESP-12E)
+- Wemos D1 mini (ESP-12F)
 
 
 ```javascript
@@ -87,4 +87,9 @@ IPAddress ip,gateway,subnet,dns1,dns2;
 ```
 
 Self explanatory, this settings are needed if you want a static ip for the station.
+
+If you are using ArduinoIDE for development, then you can choose between some linkage options, one of the most important is the "lwIP" one:
+
+
+
 More detail about this funny project will follow ASAP.
