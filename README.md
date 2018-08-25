@@ -97,7 +97,7 @@ IPAddress ip,gateway,subnet,dns1,dns2;
 
 Self explanatory, this settings are needed if you want a static ip for the station.
 
-V0.7e NOTE: In this new version i've slightly modified the NTP sync routine that crash the ESP in case of poor signals.
+**V0.7e NOTE:** In this new version i've slightly modified the NTP sync routine that crash the ESP in case of poor signals.
 I've tested mine till -90db and seems to be quite stable (seems....), let me know if you encounter some issue.
 Now the hardcoded 3.7V value in telemetry has left space to ESP.getVcc() routine, in this way you read the cpu voltage, not so useful, i know, just to fill the telemetry packet if you haven't connected A0 to some sensor.
 
