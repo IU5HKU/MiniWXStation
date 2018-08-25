@@ -33,7 +33,9 @@ For a CWOP callsign you need to register, it's free and easy, refer to
 instruction at http://wxqa.com/ to obtain one.
 
 ```javascript
-//**** comment this for hardcoded 3.7V value in telemetry
+//**** Comment this for ESP.getVcc() value in telemetry
+//**** getVcc function (system_get_vdd33) is only available when A0 pin17 is suspended (floating), 
+//**** this function measure the power voltage of VDD3P3 pin 3 and 4 (in the ESP8266 chip)
 #define HAVE_BATTERY
 ```
 
@@ -59,6 +61,7 @@ Uncomment for printout of registers values in serial console.
 
 ```javascript
 //**** blinking led to show that into the 10 minutes the system is still alive (1" blink)
+//**** NOTE: WEMOS D1 Mini doens't have this led, NodeMCU V0.9 & V1.0 have it.
 #define BLINK_RED_LED
 ```
 
@@ -93,6 +96,10 @@ IPAddress ip,gateway,subnet,dns1,dns2;
 ```
 
 Self explanatory, this settings are needed if you want a static ip for the station.
+
+V0.7e NOTE: In this new version i've slightly modified the NTP sync routine that crash the ESP in case of poor signals.
+I've tested mine till -90db and seems to be quite stable (seems....), let me know if you encounter some issue.
+Now the hardcoded 3.7V value in telemetry has left space to ESP.getVcc() routine, in this way you read the cpu voltage, not so useful, i know, just to fill the telemetry packet if you haven't connected A0 to some sensor.
 
 # lwIP
 
