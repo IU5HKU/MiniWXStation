@@ -105,10 +105,10 @@ Now the hardcoded 3.7V value in telemetry has left space to ESP.getVcc() routine
 
 **ABOUT BME280 sensor:**
 
-Someone ask about the possibility to calibrate this sensor, but honestly i don't think that it needs some sort of compensation, it's factory calibrated and really affordable and precise, and causes of inaccurate readings could be found in bad placement (direct sun, next a wall, etc.etc.) or, as Mr Kandrsmirh says "...manufacturers of cheap integrated modules not having followed the Bosch Sensortec soldering profile properly and contaminated or damaged the device. The reconditioning procedure might resolve that....".
+Someone ask about the possibility to calibrate this sensor, but honestly i don't think that it needs some sort of compensation, it's factory calibrated and really affordable and precise, and causes of inaccurate readings could be found in bad placement (direct sun, next a wall, etc.etc.) or, as Mr Kandrsmith says "...manufacturers of cheap integrated modules not having followed the Bosch Sensortec soldering profile properly and contaminated or damaged the device. The reconditioning procedure might resolve that....".
 You can read his amazing article about BME280, related to temperature calibration, at this link:
 https://www.kandrsmith.org/RJS/Misc/Hygrometers/absolutetemperature.html
-I've added the datasheet from Bosch to this repository, a really interesting lecture, the accuracy of BME280 is at high levels, really, great buy for the money.
+I've added the datasheet from Bosch to this repository, a really interesting lecture, the accuracy of BME280 is at high levels of precision, great buy for the money.
 Anyway in the datasheet is well explained the possibility to read and write the calibration registers used by the sensor to return a correct measure, and the SparkfunBME280Library offer methods to operate with them:
 
 ```javascript
@@ -123,7 +123,7 @@ Anyway in the datasheet is well explained the possibility to read and write the 
 	//Writes a byte;
 void writeRegister(uint8_t, uint8_t);
 ```
-my advice is to keep unchanged those values, really, but  maybe in the near future, if people really need this, i'll add a "calibration menu", let me know.
+my advice is to keep unchanged those values, really, the SparkfunBME280 Library already use the calibration registers values to output temperature, relative humidity and pressure with high precision, greater than what is needed for this kind of applications, the functions are the specular copy of what Bosch reccomended in his datasheet.
 
 # lwIP
 
