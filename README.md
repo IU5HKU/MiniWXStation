@@ -140,6 +140,13 @@ HINT: the system save in flash memory the last successful connection parameters,
 
 ![WiFi_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/SketchWifiSets.jpg)
 
+Someone experienced difficulties in connection to home WiFi, in some cases, if you aren't use the same ssid, the above hint can resolve. Someone have commented this call into source code:
+
+```javascript
+WiFi.persistent(false); // WiFi config isn't saved in flash
+```
+but i don't think that can be related in some way to the effective risolution, anyway give it a try, who knows...
+
 # NodeMCU V0.9 schematics
 
 This schematics is useful for reference in hardware connections if you own an ESP-12,
