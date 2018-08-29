@@ -97,9 +97,33 @@ IPAddress ip,gateway,subnet,dns1,dns2;
 
 Self explanatory, this settings are needed if you want a static ip for the station.
 
-**V0.7e NOTE:** In this new version i've slightly modified the NTP sync routine that crash the ESP in case of poor signals.
+**V0.7e NOTE:**
+
+In this new version i've slightly modified the NTP sync routine that crash the ESP in case of poor signals.
 I've tested mine till -90db and seems to be quite stable (seems....), let me know if you encounter some issue.
 Now the hardcoded 3.7V value in telemetry has left space to ESP.getVcc() routine, in this way you read the cpu voltage, not so useful, i know, just to fill the telemetry packet if you haven't connected A0 to some sensor.
+
+**ABOUT BME280 sensor:**
+
+Someone ask about the possibility to calibrate this sensor, but honestly i don't think that it needs some sort of compensation, it's factory calibrated and really affordable and precise, and causes of inaccurate readings could be found in bad placement (direct sun, next a wall, etc.etc.) or, as Mr Kandrsmirh says "...manufacturers of cheap integrated modules not having followed the Bosch Sensortec soldering profile properly and contaminated or damaged the device. The reconditioning procedure might resolve that....".
+You can read his amazing article about BME280, related to temperature calibration, at this link:
+https://www.kandrsmith.org/RJS/Misc/Hygrometers/absolutetemperature.html
+I've added the datasheet from Bosch to this repository, a really interesting lecture, the accuracy of BME280 is at high levels, really, great buy for the money.
+Anyway in the datasheet is well explained the possibility to read and write the calibration registers used by the sensor to return a correct measure, and the SparkfunBME280Library offer methods to operate with them:
+
+```javascript
+//ReadRegisterRegion takes a uint8 array address as input and reads
+	//a chunk of memory into that array.
+    void readRegisterRegion(uint8_t*, uint8_t, uint8_t );
+	//readRegister reads one register
+    uint8_t readRegister(uint8_t);
+    //Reads two regs, LSByte then MSByte order, and concatenates them
+	//Used for two-byte reads
+	int16_t readRegisterInt16( uint8_t offset );
+	//Writes a byte;
+void writeRegister(uint8_t, uint8_t);
+```
+my advice is to keep unchanged those values, really, but  maybe in the near future, if people really need this, i'll add a "calibration menu", let me know.
 
 # lwIP
 
@@ -113,6 +137,8 @@ NOTE: you can set here the serial speed for upload your firmware to ESP8266, i h
 Remember: this isn't the serial speed that you will use later for console serial communications, and the ESP8266 doesn't have problem to manage maximum speed (usually).
 
 HINT: the system save in flash memory the last successful connection parameters, and because we are in a multitasking environment, it try to connect before you send the connect() command, this may resolve in some trouble if your wifi is gone or if you try the system at home and then you change place...you can resolve this problem using the "Sketch+WiFi settings" flashing set (Erasing Flash voice, just under Upload Speed).
+
+![WiFi_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/SketchWifiSets.jpg)
 
 # NodeMCU V0.9 schematics
 
