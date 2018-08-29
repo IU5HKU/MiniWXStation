@@ -145,7 +145,7 @@ Someone experienced difficulties in connection to home WiFi, in some cases, if y
 ```javascript
 WiFi.persistent(false); // WiFi config isn't saved in flash
 ```
-but i don't think that can be related in some way to the effective risolution, anyway give it a try, who knows...
+but i don't think that can be related in some way to the effective resolution, anyway give it a try, who knows...
 
 # NodeMCU V0.9 schematics
 
