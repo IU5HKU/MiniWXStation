@@ -14,7 +14,7 @@ For the moment this project is running without problems over three flavors of ES
 
 This is a simple schematics to help connect items to the board, the pinout name is still valid for NodeMCU V0.9 and Wemos D1 mini, the "phototransistor" part can be completely omitted, continue reading if you wanna connect something of analogic to the A0 pin ADC.
 
-![fritzing_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Schematics.jpg)
+![fritzing_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/Schematics.jpg)
 
 These instead are the #defines that you can find in the beginning of the sourcecode, with a brief explanation of what
 happens if you choose to use them, it's a bit rude as method, but there is place for a config webpage hosted completely by the ESP8266....it's in my todo list, not in near future, i need to better test some other features.
@@ -129,7 +129,7 @@ my advice is to keep unchanged those values, really, but  maybe in the near futu
 
 If you are using ArduinoIDE for development, then you can choose between some linkage options, one of the most important is the "lwIP" one:
 
-![lwIP_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/lwIP.jpg)
+![lwIP_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/lwIP.jpg)
 
 lwIP is the "lightweigth TCP/IP stack" (https://savannah.nongnu.org/projects/lwip/) ported to the ESP8266 embedded platform, and is the library that permit the ease of use of the whole internet related system.
 Everything seems to be ok with the more advanced port, V2.0 as you can see, if you are experiencing strange behavior you could try to change in favor of the old V1.4.
@@ -138,7 +138,7 @@ Remember: this isn't the serial speed that you will use later for console serial
 
 HINT: the system save in flash memory the last successful connection parameters, and because we are in a multitasking environment, it try to connect before you send the connect() command, this may resolve in some trouble if your wifi is gone or if you try the system at home and then you change place...you can resolve this problem using the "Sketch+WiFi settings" flashing set (Erasing Flash voice, just under Upload Speed).
 
-![WiFi_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/SketchWifiSets.jpg)
+![WiFi_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/SketchWifiSets.jpg)
 
 Someone experienced difficulties in connection to home WiFi, in some cases, if you aren't use the same ssid, the above hint can resolve. Someone have commented this call into source code:
 
@@ -155,13 +155,13 @@ ESP8266 GPIO's names and NodeMCU pin naming are different, as example GPIO16, wh
 for wakeup the SoC from deepsleep() mode, in ESP-12 is called 'D0'. This pin is connected to the onboard red led too.
 When you are using deepsleep() D0 must be connected to 'RST', in this way the RTC who keep tickin' in deepsleep (is the only thing active when you are in this mode) can wakeup the chip when time is expired. Useful, ins't it?:-)
 
-![Schematics_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/NODEMCU_DEVKIT_SCH.png)
+![Schematics_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/NODEMCU_DEVKIT_SCH.png)
 
 # Adding a phototransistor
 
 A cheap way to expand the capability of our poor-man weather station is adding a phototransistor, and for who have tha possibility, to characterize it to obtain a more or less precise value of the lux. I've remembered that wandering around my lab there is an old FPT100, so i decided to connect this analog device to the ESP8266 10bit ADC (Pin A0). This is the simple scheme:
 
-![phototransistor_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/phototransistor.png)
+![phototransistor_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/phototransistor.png)
 
 and following the rules explained here, https://forum.arduino.cc/index.php?topic=445538.0 you can read a voltage value proportional to the light who hit the phototransistor.
 The resistor determine the sensitivity of the device, who is claimed to be linear in his response, but for a more precise work you MUST use a luxmeter as reference. The following table is from this site: https://www.theremino.com/hardware/inputs/light-sensors where fpt100 is compared against bpw34, if you use 10Kohm the old FPT100 is still the more sensitive, with is 0.5lux of resolution, but i guess that nowadays there are other (and cheaper!) devices who perform surely better. I know, there are an i2c version dedicated for IoT, but hey, i wanna reuse my precious fpt100, i think that it's more or less 25 years old :-)
