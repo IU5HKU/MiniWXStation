@@ -27,7 +27,11 @@ Change with the name you wish.
 
 ```javascript
 //**** APRS PASSWORD (use -1 if you are using a CWOP callsign)
+//**** APRS COMMENT, you can set this string as you want (max 43 chars)
+//**** APRS_PRJ, Telemetry Project Title (max 23 chars)
 const char* AprsPassw = "YourAprsNumericalPASS";
+const char* APRS_CMNT = "ESP8266+BME280 MiniWX Station";
+const char* APRS_PRJ = "MiniWX Station"
 ```
 For a CWOP callsign you need to register, it's free and easy, refer to
 instruction at http://wxqa.com/ to obtain one.
@@ -96,6 +100,12 @@ IPAddress ip,gateway,subnet,dns1,dns2;
 ```
 
 Self explanatory, this settings are needed if you want a static ip for the station.
+
+**V0.7f NOTE:**
+
+Thanks to a talk with Antonio EA1CDV we have this minor upgrade to the project, the possibility to have a 43 chars wide comments. As reported at pag.20 in APRS101.pdf draft, every packet can have his comment simply adding it at the tail of the packet, but this rule isn't valid for wx reports packets, so i've used a dirty workaround, i send a position report packet with the same coords of the wx station (this kind of packets can have a 43 chars comment) and just after that i send the "real" weather info packet. As result you have a WX station with the possibility to insert a decent comment.
+APRS101.pdf report the possibility to insert the altitude in feet too, but unluckly after sending the wx packet the server delete this parameter, i don't know why, but a WX station can't display its altitude, and this is in the standard, so don't blame me, isn't my fault. To change the comment refer as usual at the beginning of my source code, looking for APRS_CMNT string.
+There is also an APRS_PRJ one, this is a separate comment that goes in the telemetry page.
 
 **V0.7e NOTE:**
 
