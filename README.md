@@ -101,6 +101,16 @@ IPAddress ip,gateway,subnet,dns1,dns2;
 
 Self explanatory, this settings are needed if you want a static ip for the station.
 
+**ArduinoIDE SerialMonitor config **
+
+WARNING: some users are experiencing issues in filling the required fields in the provided menù. Due to a lack in the sanity check in the user input routine, is MANDATORY to use only 'newline' as method, doens't use twho chars as EOL marker!
+
+![SerialMonitor_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/Newline.jpg)
+
+This is the correct setting if you are using ArduinoIDE's SerialMonitor.
+In a future revision the user input will be checked against errors or different serial settings, but for the moment...
+
+
 **V0.7f NOTE:**
 
 Thanks to a talk with Antonio EA1CDV we have this minor upgrade to the project, the possibility to have a 43 chars wide comments. As reported at pag.20 in APRS101.pdf draft, every packet can have his comment simply adding it at the tail of the packet, but this rule isn't valid for wx reports packets, so i've used a dirty workaround, i send a position report packet with the same coords of the wx station (this kind of packets can have a 43 chars comment) and just after that i send the "real" weather info packet. As result you have a WX station with the possibility to insert a decent comment.
