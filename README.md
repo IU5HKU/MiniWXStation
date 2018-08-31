@@ -101,7 +101,7 @@ IPAddress ip,gateway,subnet,dns1,dns2;
 
 Self explanatory, this settings are needed if you want a static ip for the station.
 
-**ArduinoIDE SerialMonitor config **
+**ArduinoIDE SerialMonitor config**
 
 WARNING: some users are experiencing issues in filling the required fields in the provided menù. Due to a lack in the sanity check in the user input routine, is MANDATORY to use only 'newline' as method, doens't use twho chars as EOL marker!
 
