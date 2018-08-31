@@ -69,14 +69,14 @@ Uncomment for printout of registers values in serial console.
 #define BLINK_RED_LED
 ```
 
-WILL BE ELIMINATED IN BATTERY POWERED VERSION, this is a "i'm still alive" indication.
+WILL BE ELIMINATED IN BATTERY POWERED VERSION, this is a "i'm still alive" signal.
 
 ```javascript
 //**** blinking led to show that ESP8266 is transmitting  (0.5" blink)
 #define BLINK_BLUE_LED
 ```
 
-WILL BE ELIMINATED IN BATTERY POWERED VERSION, this is a "i'm sending data to servers" indication.
+WILL BE ELIMINATED IN BATTERY POWERED VERSION, this is a "i'm sending data to servers" signal.
 
 ```javascript
 //**** show (annoying) animated clock in the serial output 
