@@ -57,11 +57,18 @@ char PASSWORD [] = "YourWunderPASSW";
 Major upgrade, sends data to Weahter Underground.
 
 ```javascript
-//**** show BME280 registers in printbme();
+//**** show BME280 registers in Serial Output;
 //#define DISPLAY_BME_REGS
 ```
 
 Uncomment for printout of registers values in serial console.
+
+```javascript
+//**** show BME280 values in Serial Output;
+//#define DISPLAY_BME_VAL
+```
+
+uncomment for printout of temp/press/hum values in serial console.
 
 ```javascript
 //**** blinking led to show that into the 10 minutes the system is still alive (1" blink)
@@ -84,6 +91,13 @@ WILL BE ELIMINATED IN BATTERY POWERED VERSION, this is a "i'm sending data to se
 ```
 
 Left commented to eliminate the clock in serial console.
+
+```javascript
+// Sync the soft clock every 12 hours
+#define NTPSYNC_DELAY  12*60*60
+```
+
+This #define sets how many times will pass between each NTP sync request, 12 hours is enough but i think you can have longer delay too, the internal softclock is quite precise.
 
 ```javascript
 //**** use static ip instead of dns one
@@ -110,6 +124,9 @@ WARNING: some users are experiencing issues in filling the required fields in th
 This is the correct setting if you are using ArduinoIDE's SerialMonitor.
 In a future revision the user input will be checked against errors or different serial settings, but for the moment...
 
+**V0.8c NOTE:**
+
+This release is a deep revision, now you can set the delay between each NTP Sync, and now there is a SoftClock who ticks quite precise....enough for our purposes. I've set the ntp sync delay every 12 hours, but i think that you can set it without problem to 24 ore more, i don't think this can be a problem at all. Now the MiniWX station delivers his aprs packets with the "realtime" marker, as a tracker do, so there's no need to put a timestamp and all that we need is a timer who count the delay between packets, no more than this. Everything is more robust and nice in this way. I've added also a nicer webpage....nicer...the best that i've can do, if you are an html expert any comment/advice will be greatly appreciate. Only a webpage with some infos and a small control panel who need to be finished, the subpages have a button to come back to the main page, a more sophisticated "site" will came in the near future. The way the webpages are served is completely changed, now there isn't any sprintf() to deal with, everything is stored in flash and retrieved at moment. The pages are also rendered dynamically through a "placeholder" system, very easy to understand and to change to suit your needs. I've revised some internal functions too, now the code is more readable. Many thanks to Antonio EA1CDV who keep to point me in the right direction with advices and hints. This is a more stable release than the previuos ones, in poor wifi signal still works without issues, with my friends Stefano IZ5MMH we test the MiniWX Station at signal variable from -90 to -96dbm, without loss of packets, hope you enjoy it. Next step will be a circular buffer to hold the last 20-30 values and make a chart with those values, i know, there is aprs and wu already doing this, but hey...is just for fun :-)
 
 **V0.7f NOTE:**
 
