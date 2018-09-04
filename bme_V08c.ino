@@ -200,7 +200,7 @@ void Send2Wunder(){
     client.print("&humidity=");
     client.print(wx.humidite);
     client.print("&baromin=");
-    client.print(wx.pression*0.02953f); // 1 mbar = 0.02953 inHg
+    client.print((wx.pression/100)*0.02953f); // Pa to mbar to inHg (1 mbar = 0.02953 inHg)
     //more compliant WU output by EA1CDV Antonio
     client.print("&softwaretype=ESP8266%20BME280%20");
     client.print(SOFT_VER);
