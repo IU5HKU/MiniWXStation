@@ -138,7 +138,8 @@ In a future revision the user input will be checked against errors or different 
 
 **V0.9 NOTE:**
 
-Big improvements for this version who deserves a '0.9', the most important is the capability to update the firmware OTA, yes, you can left your MiniWX Station&#8482; where you have choose to place it, and update the new firmware remotely through TCP/IP instead that by Serial COM as you have done 'till now. 
+Big improvements for this version who deserves a '0.9', that i consider the most stable at moment. 
+The most important mod is the capability to update the firmware OTA, yes, you can left your MiniWX Station&#8482; where you have choose to place it, and update the new firmware remotely through TCP/IP instead that by Serial COM as you have done 'till now. 
 Refer to this site: https://tttapa.github.io/ESP8266/Chap13%20-%20OTA.html where i've found the necessary code, it's very well explained indeed. The whole procedure is symple, flash your station with new firmware, at least V0.9, first remember to change the default password for security reasons, after done quit and relaunch ArduinoIDE and go in the "port" voice of the "Tools" menu, you will find something similar to this:
 
 ![FirmwareOTA_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/FirmwareOTA.jpg)
