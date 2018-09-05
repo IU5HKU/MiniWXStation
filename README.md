@@ -102,7 +102,7 @@ This #define sets how many times will pass between each NTP sync request, 12 hou
 ```javascript
 //**** Set credential for OTA firmware upgrade <<--->>
 //*uncomment the #define if you wanna use this handy feature
-#define USE_OTA_UPGRADE
+//#define USE_OTA_UPGRADE
 #ifdef USE_OTA_UPGRADE
 const char* OTA_hostname = "MINIWX";
 //PLEASE CHANGE THIS PASSWORD WITH YOUR OWN FOR SECURITY REASON
