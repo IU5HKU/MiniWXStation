@@ -100,6 +100,18 @@ Left commented to eliminate the clock in serial console.
 This #define sets how many times will pass between each NTP sync request, 12 hours is enough but i think you can have longer delay too, the internal softclock is quite precise.
 
 ```javascript
+//**** Set credential for OTA firmware upgrade <<--->>
+//*uncomment the #define if you wanna use this handy feature
+#define USE_OTA_UPGRADE
+#ifdef USE_OTA_UPGRADE
+const char* OTA_hostname = "MINIWX";
+//PLEASE CHANGE THIS PASSWORD WITH YOUR OWN FOR SECURITY REASON
+const char* OTA_passw = "esp8266";  
+#endif
+```
+If you wanna use this handy feature then uncomment the #define and change the passw with your own, after that, following a simple procedure you can flash your MiniWX Station&#8482; remotely
+
+```javascript
 //**** use static ip instead of dns one
 //#define USE_STATIC_IP
 //* change to reflect your net configuration
@@ -123,6 +135,17 @@ WARNING: some users are experiencing issues in filling the required fields in th
 
 This is the correct setting if you are using ArduinoIDE's SerialMonitor.
 In a future revision the user input will be checked against errors or different serial settings, but for the moment...
+
+**V0.9 NOTE:**
+
+Big improvements for this version who deserves a '0.9', the most important is the capability to update the firmware OTA, yes, you can left your MiniWX Station&#8482; where you have choose to place it, and update the new firmware remotely through TCP/IP instead that by Serial COM as you have done 'till now. Refer to this site: https://tttapa.github.io/ESP8266/Chap13%20-%20OTA.html where i've found the necessary code, it's very well explained indeed. The whole procedure is symple, flash your station with new firmware, at least V0.9, first remember to change the default password for security reasons, after done quit and relaunch ArduinoIDE and go in the "port" voice of the "Tools" menu, you will find something similar to this:
+
+![FirmwareOTA_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/FirmwareOTA.jpg)
+
+from now on, if you select this "network serial port, you will flash the esp8266 by means of his ip address.
+For security reasons this procedure can't work if your PC isn't in the same subnet of the MiniWX, and i think it's well done.
+At moment of flashing you will be prompted for password, insert your previously hardcoded password and wait, first esp8266 downloads the firmware, after that it "auto flash itself" and after that it reboot, easy, simple and clean...and very handy, no more ladders, screws, trip to the garden....maximum relax :-)
+Other mods are related to the webpage: a more pleasant and formatted one (hope more readable than the previous one) and a new button in the control panel "WiFi Scan" who do exactly what you expected, but in a more verbose way than the previous routine in serial menu (modified in this way too). I've added channel number and mac address to the infos, so you can control what's happen in the sorrunding of you station and search a proper, most free, channel if necessary.
 
 **V0.8c NOTE:**
 
