@@ -449,8 +449,7 @@ const char PAGE_infos[] PROGMEM = "<html>\
       </div>\
     </fieldset>\
     </form>\
-    <p>MiniWX Station{{TM}} ({{SOFT_VER}})</p>\
-    <p>Click <a href='https://github.com/IU5HKU/MiniWXStation'>here</a> and check for latest version</p>\
+    <p>MiniWX Station{{TM}} ({{SOFT_VER}}) - click <a href='https://github.com/IU5HKU/MiniWXStation'>here</a> and check for latest version</p>\
     </h6>\
   </body>\
 </html>";
