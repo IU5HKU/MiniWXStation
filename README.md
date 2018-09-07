@@ -144,7 +144,10 @@ Refer to this site: https://tttapa.github.io/ESP8266/Chap13%20-%20OTA.html where
 
 ![FirmwareOTA_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/FirmwareOTA.jpg)
 
-from now on, if you select this network port, (this is a tcp/ip port actually) you will flash the esp8266 by means of his ip address.For security reasons this procedure can't work if your PC isn't in the same subnet of the MiniWX, and i think it's well done.
+from now on, if you select this network port, (this is a tcp/ip port actually) you will flash the esp8266 by means of his ip address.For security reasons this procedure can't work if your PC isn't in the same subnet of the MiniWX, and i think it's well done. WARNING: if you are using Linux and you don't find the "Network ports" voice in menù, a possible cause should be the lack of the AVAHI service, that must be up and running in your system, ArduinoOTA uses mDNS to present himself on the net, and avahi is the Linux alterego of Windows's Bonjour service, you need it. Setup is just a matter of write this command in the shell:
+```javascript
+sudo apt-get install avahi-daemon avahi-discover avahi-utils libnss-mdns mdns-scan
+```
 At moment of flashing you will be prompted for password, insert your previously hardcoded password and wait, first esp8266 downloads the firmware, after that it "auto flash itself" and after that it reboot, easy, simple and clean...and very handy, no more ladders, screws, trip to the garden....maximum relax :-)
 Other mods are related to the webpage: a more pleasant and formatted one (hope more readable than the previous one) and a new button in the control panel "WiFi Scan" who do exactly what you expected, but in a more verbose way than the previous routine in serial menu (modified in this way too). I've added channel number and mac address to the infos, so you can control what's happen in the sorrunding of you station and search a proper, most free, channel if necessary.
 
