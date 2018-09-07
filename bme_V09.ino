@@ -434,7 +434,7 @@ const char PAGE_infos[] PROGMEM = "<html>\
       <p>Next TX at: {{nexttx}}</p>\
       <p>SSID: {{SSID}}</p>\
       <p>RSSI: {{RSSI}} dbm</p>\
-      <p>Position: {{lat}} {{long}}</p>\
+      <p>Position: Lat: {{lat}} Long: {{long}} Alt: {{alt}}m asl</p>\
     </fieldset>\
     </br>\
     <form action='http://{{myip}}/submit' method='POST'>\
@@ -486,6 +486,7 @@ void handleRoot() {
   page.replace("{{callsign2}}", station.callsign);
   page.replace("{{lat}}", station.latitude);
   page.replace("{{long}}", station.longitude);
+  page.replace("{{alt}}", String(station.altitude));
   
   SystemUpTime();
   page.replace("{{days}}", String(sysUpTimeDy));
@@ -1151,9 +1152,13 @@ void getBmeValues(){
 
     wx.temperatureC = mySensor.readTempC();
     
-    //*** calc pression at sea level (standardized)
-    pres= pres * ( pow(1.0 -(0.0065 * (float) station.altitude * -1 /(273.15+wx.temperatureC)), 5.255));
-    wx.pression = pres;
+    //*** calc standardized barometric pressure
+    if (pres > 0.1f){
+      pres= pres * ( pow(1.0 -(0.0065 * (float) station.altitude * -1 /(273.15+wx.temperatureC)), 5.255));
+      wx.pression = pres;
+    }
+    else
+      wx.pression = 0.0f;
         
     wx.temperatureF = mySensor.readTempF();
     wx.humidity =  mySensor.readFloatHumidity();
