@@ -1,11 +1,11 @@
 # MiniWX Station
 ESP8266 IoT and BME280 sensor for a minimalist weather station
 
-This work started as a fork from F4GOH code, so you can visit his blog (https://hamprojects.wordpress.com/) for infos about
-how to compile and configure this firmware through his menu. This instead is his github repository: https://github.com/f4goh/Weather. I've added some features that, at moment, you can set at compile time using #defines.
-Many thanks to Antonio EA1CDV for his support, beta testing and encouragement, you can read a detailed article in spanish language about this project in his blog: http://ea1cdv.blogspot.com/2018/08/estacion-meteorologica-aprs-via-wifi.html
-In a next version i'll change the source code to use native ESP8266 ntp calls instead of using NTPTimeESP, but for the moment the source code needs this library, so you have to add it to your environment, https://github.com/SensorsIot/NTPtimeESP
-Obviously you need the BME280 Library too: https://github.com/sparkfun/SparkFun_BME280_Arduino_Library
+This work started as a fork from F4GOH code, so you can visit his [blog](https://hamprojects.wordpress.com/) for infos about
+how to compile and configure this firmware through his menu. This instead is his github repository: [F4GOH GitHub](https://github.com/f4goh/Weather). I've added some features that, at moment, you can set at compile time using #defines.
+Many thanks to Antonio EA1CDV for his support, beta testing and encouragement, you can read a detailed article in spanish language about this project in his [blog](http://ea1cdv.blogspot.com/2018/08/estacion-meteorologica-aprs-via-wifi.html)
+In a future version maybe i'll change the source code to use native ESP8266 ntp calls instead of using NTPTimeESP, but for the moment the source code needs this library, so you have to add it to your environment, [NTPtimeESP](https://github.com/SensorsIot/NTPtimeESP)
+Obviously you need the [BME280 Library](https://github.com/sparkfun/SparkFun_BME280_Arduino_Library) too: 
 
 For the moment this project is running without problems over three flavors of ESP8266:
 - NodeMCU V0.9  (ESP-12)
@@ -44,7 +44,7 @@ instruction at http://wxqa.com/ to obtain one.
 ```
 
 This is for reading analog values connected to A0, for the proper value of the resistor to put in series
-refer to this thread: https://forum.arduino.cc/index.php?topic=445538.0
+refer to this [thread](https://forum.arduino.cc/index.php?topic=445538.0)
 
 ```javascript
 //**** uncomment this for weatherunderground upload,remember to set ID and PASSWORD of your account
@@ -140,7 +140,7 @@ In a future revision the user input will be checked against errors or different 
 
 Big improvements for this version who deserves a '0.9', that i consider the most stable at moment. 
 The most important mod is the capability to update the firmware OTA, yes, you can left your MiniWX Station&#8482; where you have choose to place it, and update the new firmware remotely through TCP/IP instead that by Serial COM as you have done 'till now. 
-Refer to this site: https://tttapa.github.io/ESP8266/Chap13%20-%20OTA.html where i've found the necessary code, it's very well explained indeed. The whole procedure is symple, flash your station with new firmware, at least V0.9, first remember to change the default password for security reasons, after done quit and relaunch ArduinoIDE and go in the "port" voice of the "Tools" menu, you will find something similar to this:
+Refer to this site: [ArduinoOTA](https://tttapa.github.io/ESP8266/Chap13%20-%20OTA.html) where i've found the necessary code, it's very well explained indeed. The whole procedure is symple, flash your station with new firmware, at least V0.9, first remember to change the default password for security reasons, after done quit and relaunch ArduinoIDE and go in the "port" voice of the "Tools" menu, you will find something similar to this:
 
 ![FirmwareOTA_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/FirmwareOTA.jpg)
 
@@ -172,8 +172,7 @@ Now the hardcoded 3.7V value in telemetry has left space to ESP.getVcc() routine
 **ABOUT BME280 sensor:**
 
 Someone ask about the possibility to calibrate this sensor, but honestly i don't think that it needs some sort of compensation, it's factory calibrated and really affordable and precise, and causes of inaccurate readings could be found in bad placement (direct sun, next a wall, etc.etc.) or, as Mr Kandrsmith says "...manufacturers of cheap integrated modules not having followed the Bosch Sensortec soldering profile properly and contaminated or damaged the device. The reconditioning procedure might resolve that....".
-You can read his amazing article about BME280, related to temperature calibration, at this link:
-https://www.kandrsmith.org/RJS/Misc/Hygrometers/absolutetemperature.html
+You can read his [amazing article](https://www.kandrsmith.org/RJS/Misc/Hygrometers/absolutetemperature.html) about BME280, related to temperature calibration.
 I've added the datasheet from Bosch to this repository, a really interesting lecture, the accuracy of BME280 is at high levels of precision, great buy for the money.
 Anyway in the datasheet is well explained the possibility to read and write the calibration registers used by the sensor to return a correct measure, and the SparkfunBME280Library offer methods to operate with them:
 
@@ -197,7 +196,7 @@ If you are using ArduinoIDE for development, then you can choose between some li
 
 ![lwIP_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/lwIP.jpg)
 
-lwIP is the "lightweigth TCP/IP stack" (https://savannah.nongnu.org/projects/lwip/) ported to the ESP8266 embedded platform, and is the library that permit the ease of use of the whole internet related system.
+lwIP is the ["lightweigth TCP/IP stack"](https://savannah.nongnu.org/projects/lwip/) ported to the ESP8266 embedded platform, and is the library that permit the ease of use of the whole internet related system.
 Everything seems to be ok with the more advanced port, V2.0 as you can see, if you are experiencing strange behavior you could try to change in favor of the old V1.4.
 NOTE: you can set here the serial speed for upload your firmware to ESP8266, i had no problem at all with maximum speed, but if encounter some issue you can lower the value, as someone reported in some forum.
 Remember: this isn't the serial speed that you will use later for console serial communications, and the ESP8266 doesn't have problem to manage maximum speed (usually).
@@ -229,8 +228,8 @@ A cheap way to expand the capability of our poor-man weather station is adding a
 
 ![phototransistor_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/phototransistor.png)
 
-and following the rules explained here, https://forum.arduino.cc/index.php?topic=445538.0 you can read a voltage value proportional to the light who hit the phototransistor.
-The resistor determine the sensitivity of the device, who is claimed to be linear in his response, but for a more precise work you MUST use a luxmeter as reference. The following table is from this site: https://www.theremino.com/hardware/inputs/light-sensors where fpt100 is compared against bpw34, if you use 10Kohm the old FPT100 is still the more sensitive, with is 0.5lux of resolution, but i guess that nowadays there are other (and cheaper!) devices who perform surely better. I know, there are an i2c version dedicated for IoT, but hey, i wanna reuse my precious fpt100, i think that it's more or less 25 years old :-)
+and following the rules explained [here](https://forum.arduino.cc/index.php?topic=445538.0), you can read a voltage value proportional to the light who hit the phototransistor.
+The resistor determine the sensitivity of the device, who is claimed to be linear in his response, but for a more precise work you MUST use a luxmeter as reference. The following table is from [this site](https://www.theremino.com/hardware/inputs/light-sensors), where fpt100 is compared against bpw34, if you use 10Kohm the old FPT100 is still the more sensitive, with is 0.5lux of resolution, but i guess that nowadays there are other (and cheaper!) devices who perform surely better. I know, there are an i2c version dedicated for IoT, but hey, i wanna reuse my precious fpt100, i think that it's more or less 25 years old :-)
 
 Resistor Value | Resolution | Full-scale (lux)                      
 ---------------|------------|-----------------                     
