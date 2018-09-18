@@ -220,10 +220,12 @@ void Send2Wunder(){
 }
 #endif
 
-//**************************************
+//************************************************************************
 //* TICKERS INTERRUPT ROUTINES
 //* keep as short as posssible!
-//**************************************
+//* WARNING: the ESP can only use 32 bits to measure time, as times are calculated in uS this gives a total of 71 mins.
+//* 32 bits = 4,294,967,295 / 1,000,000 = 4,294 Seconds / 60 = 71 Minutes.
+//************************************************************************
 void SetSendFlag(void){
   bSendFlag=true;
 }
@@ -241,9 +243,12 @@ void SetSecsFlag(void){
     }
 }
 
+char ntpdelaycnt=0x00;
 void SetNtpSyncFlag(void){
-  bNtpSyncFlag=true;
-}
+  if(ntpdelaycnt++ == NTPSYNC_DELAY){
+    bNtpSyncFlag=true;
+    ntpdelaycnt = 0x00;
+  }
 
 #ifdef BLINK_BLUE_LED
 void BlinkBlueLed(){
@@ -326,9 +331,9 @@ void setup(void)
   bSendFlag=false;
   TkAlarm.attach( station.transmitDelay*60, SetSendFlag);
 
-  //set bNtpSyncFlag for NTPsync() every 'NTPSYNC_DELAY' seconds
+  //set bNtpSyncFlag for NTPsync() every 3600 seconds
   bNtpSyncFlag=false;
-  TkNtpSync.attach( NTPSYNC_DELAY, SetNtpSyncFlag);
+  TkNtpSync.attach( 3600, SetNtpSyncFlag);
 }
 
 int sysUpTimeMn;
