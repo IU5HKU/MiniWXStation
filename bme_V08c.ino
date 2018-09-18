@@ -85,7 +85,7 @@ char PASSWORD [] = "YourWunderPASSW";
 //#define SHOW_TICKS
 
 // Sync the soft clock every 12 hours
-#define NTPSYNC_DELAY  12*60*60
+#define NTPSYNC_DELAY  12
 
 //**** use static ip instead of dns one
 //#define USE_STATIC_IP
@@ -249,6 +249,7 @@ void SetNtpSyncFlag(void){
     bNtpSyncFlag=true;
     ntpdelaycnt = 0x00;
   }
+}
 
 #ifdef BLINK_BLUE_LED
 void BlinkBlueLed(){
