@@ -90,7 +90,7 @@ char PASSWORD [] = "YourWunderPASSW";
 //#define SHOW_TICKS
 
 //**** Sync the soft clock every 12 hours
-#define NTPSYNC_DELAY  12*60*60
+#define NTPSYNC_DELAY  12
 
 //**** Set credential for OTA firmware upgrade <<--->>
 //*uncomment the #define if you wanna use this handy feature
@@ -269,10 +269,12 @@ void SetOTA(){
   Serial.println("OTA ready");
 }
 #endif
-//**************************************
+//************************************************************************
 //* TICKERS INTERRUPT ROUTINES
 //* keep as short as posssible!
-//**************************************
+//* WARNING: the ESP can only use 32 bits to measure time, as times are calculated in uS this gives a total of 71 mins.
+//* 32 bits = 4,294,967,295 / 1,000,000 = 4,294 Seconds / 60 = 71 Minutes.
+//************************************************************************
 void SetSendFlag(void){
   bSendFlag=true;
 }
@@ -290,8 +292,12 @@ void SetSecsFlag(void){
     }
 }
 
+char ntpdelaycnt=0x00;
 void SetNtpSyncFlag(void){
-  bNtpSyncFlag=true;
+  if(ntpdelaycnt++ == NTPSYNC_DELAY){
+    bNtpSyncFlag=true;
+    ntpdelaycnt = 0x00;
+  }
 }
 
 #ifdef BLINK_BLUE_LED
