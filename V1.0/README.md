@@ -26,7 +26,7 @@ Compiled with:
 - **In "Config wifi access point menu" added new entry for reset DNS over StaticIP**
 - **More verbosity at first time use**
 
-**WARNING:**
+**WARNING!**
 
 The new ArduinoIDE Serial Monitor speed now is **74880bps**, not why i love weird numbers, but because this is the serial speed who permits to correctly see the core and systems messages of the sdk, the "weird" chars that you can read at startup or after a reset or a crash becomes in clear now, and this help me in understanding what happens under the hood when someone told me that his station doesn't works :-)
 
