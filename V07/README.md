@@ -1,5 +1,5 @@
 
-# MiniWX Station
+# MiniWX Station V07
 ESP8266 IoT and BME280 sensor for a minimalist weather station
 
-First public releases of this project ('V07')
+First public releases of this project
