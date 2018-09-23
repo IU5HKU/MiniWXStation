@@ -66,7 +66,7 @@ const char SOFT_VER[] = "v1.0";
 //#define LANG_ITALIAN
 
 //**** How the station is named in your NET
-const char* WiFi_hostname = "IU5HKU-3";
+const char* WiFi_hostname = "MiniWX";
 
 //**** APRS PASSWORD (use -1 if you are using a CWOP callsign)
 const char* AprsPassw = "YourAprsNumericalPASS";
