@@ -138,10 +138,10 @@ In a future revision the user input will be checked against errors or different 
 
 **V1.0 NOTE:**
 
-At least v1.0 comes to life, this version still have the basic "core" of v0.9, with some bug corrected and some slightly changes in code, aimed to the robusteness of the station, refer to the README.md inside the V1.0 folder for a more detailed description.
-The more important, for me, is using ArduinoOTA for flashing new firmware, this means no more needs to dismount the weather station, bring with me cables, laptops etc. you can flash siitng in front of your develpment pc. Only caveats is that the pc must be in the same subnet where the station is, this for security reasons.
+At least v1.0 comes to life, this version still have the basic "core" of v0.9, with some bug corrected and some slightly changes in code, aimed to the robusteness of the station, refer to the [README](/V1.0/README.md) inside the V1.0 folder for a more detailed description.
+The more important, for me, is using ArduinoOTA for flashing new firmware, this means no more needs to dismount the weather station, bring with me cables, laptops etc. you can flash sitting in front of your develpment pc. Only caveats is that the pc must be in the same subnet where the station is, this for security reasons.
 Other improvments is the use of a webpage for config the main parameters of you station, and a more pleasant main page where you can see the read values in realtime, with some other infos too, through the web settings page you can set most of the parameters you need for have your station on map without digging in the serial menu, that is still present, who knows, maybe can result handy in some situation.
-As added bonus you can do a wifi scan for surroundings networks and send single packets to aprs.fi and to weather underground, in enabled.
+As added bonus you can do a wifi scan for surroundings networks and send single packets to aprs.fi and to weather underground, if enabled (otherwise the button will be shown grayed).
 Now there is the possibility to use a localization switch:
 
 ```javascript
@@ -152,7 +152,6 @@ Now there is the possibility to use a localization switch:
 
 ```
 thanks to Antonio EA1CDV and Stefano IZ5MMH, uncomment only the desired language left the others commented, in a near future the language will be choosen from the settings webpage.
-The sketch now recognizes correctly Bosch BME280 and BMP280 sensors (this last one lacks the relative humidity measure) and shows the corrispondents values accordly to the sensor (no more "nan" and unwanted output). Also the aprs packet is changed accordly. In "Config wifi access point menu" now there is a new entry for reset DNS over StaticIP, just in case you make mistakes and don't wanna reflash the entire sketch to correct an error in typing IP or gateway and so on.
 You can read the [V1.0 README](/V1.0/README.md) for fourther detailed infos and to have a look at the new webpages.
 
 **V0.9 NOTE:**
