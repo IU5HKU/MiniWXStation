@@ -46,3 +46,11 @@ i think that this page is self explanatory, you can change most of the station s
 A little bug when you change values: the refresh of the main page doesn't work, my javascript fails....need to be checked and fixed in the new version, yes, there will be a new version, with graphs and simple forecasts (like an analog barometer or can do) and with aprs bullettin if my forecasts algo will work quite well...
 Others buttons are self explanatory, you can't see the output at moment, the related info page will close and come back automagically, but in the near future i think to implement something called "SSE" (Server Side Event) to update the page contents with some useful infos....work in progress for the moment.
 
+**KNOW BUGS:**
+
+They are not properly bugs, but a "still to implement" status. The webpages looks nicely in the pc browsers, but not so nicely in the tablets and mobiles browsers, this because i set the container of the forms to be the 50% of the entire page, and this become a properly formatted page in big screens, but when using mobiles 50% isn't enough and the layout results completely mangled (or close to completely). In future release MiniWX will recognize correctly the browser and adapt the contents accordly, for the moment, if your prevalent use is by mobile, then you must manually change the form percentage in the "Locale.h" pages, search for the <fieldset> tag:
+  
+  <fieldset style='width:49%'>
+
+and change the percentage to 98%, this will work correctly in mobiles but in pc browser the frame will occupy the whole page.
+To justify me i wanna say that i'm not an html/javascript expert at all and that i'm learning while i'm writing this code, so be sympathetic with me and close an eyes....waiting for a new better working version :-)
