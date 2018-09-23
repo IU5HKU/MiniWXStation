@@ -1,3 +1,6 @@
+# MiniWX Station V09
+ESP8266 IoT and BME280 sensor for a minimalist weather station
+
 - upload to weather underground
 - added aprs telemetry packets
 - using Ticker() for counting transmit delay
