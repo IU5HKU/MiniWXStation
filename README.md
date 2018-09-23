@@ -94,7 +94,7 @@ Left commented to eliminate the clock in serial console.
 
 ```javascript
 // Sync the soft clock every 12 hours
-#define NTPSYNC_DELAY  12*60*60
+#define NTPSYNC_DELAY  12
 ```
 
 This #define sets how many times will pass between each NTP sync request, 12 hours is enough but i think you can have longer delay too, the internal softclock is quite precise.
@@ -135,6 +135,28 @@ WARNING: some users are experiencing issues in filling the required fields in th
 
 This is the correct setting if you are using ArduinoIDE's SerialMonitor.
 In a future revision the user input will be checked against errors or different serial settings, but for the moment...
+
+**V1.0 NOTE:**
+At least v1.0 comes to life, this version still have the basic "core" of v0.9, with some bug corrected and some slightly changes in code, aimed to the robusteness of the station, refer to the README.md inside the V1.0 folder for a more detailed description.
+The more important, for me, is using ArduinoOTA for flashing new firmware, this means no more needs to dismount the weather station, bring with me cables, laptops etc. you can flash siitng in front of your develpment pc. Only caveats is that the pc must be in the same subnet where the station is, this for security reasons.
+Other improvments is the use of a webpage for config the main parameters of you station, and a more pleasant main page where you can see the read values in realtime, with some other infos too:
+
+![WebMainPage_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/WebMainPage.png)
+
+![WebSettings_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/WebSettings.png)
+
+through the web settings page you can set most of the parameters you need for have you station on map without digging in the serial menu, that is still present, who knows, maybe can result handy in some situation.
+As added bonus you can do a wifi scan for surroundings networks and send single packets to aprs.fi and to weather underground, in enabled.
+Now there is the possibility to use alocalization switch:
+
+```javascript
+//**** CHOOSE WEBPAGES LANGUAGE
+#define LANG_ENGLISH
+//#define LANG_SPANISH
+//#define LANG_ITALIAN
+
+```
+thanks to Antonio EA1CDV and Stefano IZ5MMH, uncomment only the desired language left the others commented, in a near future the language will be choosen from the settings webpage, but now i've to write other, more importants, pieces of code.
 
 **V0.9 NOTE:**
 
