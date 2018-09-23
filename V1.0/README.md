@@ -54,7 +54,7 @@ In the bottom section of the page you can find a control panel, to mimic some of
 
 i think that this page is self explanatory, you can change most of the station settings, and save them through the "save" button, or simply check your current configuration and then "exit" to main page without saving.
 A little bug when you change values: the refresh of the main page doesn't work, my javascript fails....need to be checked and fixed in the new version, yes, there will be a new version, with graphs and simple forecasts (like an analog barometer or can do) and with aprs bullettin if my forecasts algo will work quite well...
-Others buttons are self explanatory, you can't see the output at moment, the related info page will close and come back automagically, but in the near future i think to implement something called "SSE" (Server Side Event) to update the page contents with some useful infos....work in progress for the moment.
+Others buttons are self explanatory, you can't see the output at moment, the related info page will close and come back automagically, but in the near future i think to implement something called "SSE" (Server Sent Events) to update the page contents with some useful infos....work in progress for the moment.
 
 **KNOW BUGS:**
 
