@@ -9,5 +9,5 @@ ESP8266 IoT and BME280 sensor for a minimalist weather station
 - more robust NTP sync
 - Implemented 'SoftClock' and less aggressive ntpsync (user defined delay)
 - Extended comment in APRS packet
-- realtime APRS packets instead of 'timestamp-ed' ones
-- Dynamics webpages for infos and config parameters
+- **realtime APRS packets instead of 'timestamp-ed' ones**
+- **Dynamics webpages for infos and config parameters**
