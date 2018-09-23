@@ -11,5 +11,5 @@ ESP8266 IoT and BME280 sensor for a minimalist weather station
 - Extended comment in APRS packet
 - realtime APRS packets instead of 'timestamp-ed' ones
 - Dynamics webpages for infos and config parameters
-- Added OTA firmware flashing
-- Added more verbose WiFi Scan routine
+- **Added OTA firmware flashing**
+- **Added more verbose WiFi Scan routine**
