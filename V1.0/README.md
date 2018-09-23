@@ -2,6 +2,11 @@
 # MiniWX Station V1.0
 ESP8266 IoT and BME280 sensor for a minimalist weather station
 
+Compiled with:
+
+-***ArduinoIDE 1.8.6***-
+-***SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1-13-g163bb82)/BearSSL:6d1cefc***-
+
 - upload to weather underground
 - added aprs telemetry packets
 - using Ticker() for counting transmit delay
