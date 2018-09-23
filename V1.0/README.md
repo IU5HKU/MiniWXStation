@@ -40,7 +40,7 @@ There is localization now, choose as usual with #defines, from this three langua
     //#define LANG_SPANISH
     //#define LANG_ITALIAN
 ```
-
+The sketch now recognizes correctly Bosch BME280 and BMP280 sensors (this last one lacks the relative humidity measure) and shows the corrispondents values accordly to the sensor (no more "nan" and unwanted output). Also the aprs packet is changed accordly. In "Config wifi access point menu" now there is a new entry for reset DNS over StaticIP, just in case you make mistakes and don't wanna reflash the entire sketch to correct an error in typing IP or gateway and so on.
 The new station can be configured through webpage now, and there is a more useful and pleasant main page to check bme280 values and some other infos:
 
 ![WebMainPage_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/WebMainPage.png)
