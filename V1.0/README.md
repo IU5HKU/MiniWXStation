@@ -4,8 +4,8 @@ ESP8266 IoT and BME280 sensor for a minimalist weather station
 
 Compiled with:
 
--***ArduinoIDE 1.8.6***-
--***SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1-13-g163bb82)/BearSSL:6d1cefc***-
+**ArduinoIDE 1.8.6**
+**SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1-13-g163bb82)/BearSSL:6d1cefc**
 
 - upload to weather underground
 - added aprs telemetry packets
@@ -48,9 +48,13 @@ Others buttons are self explanatory, you can't see the output at moment, the rel
 
 **KNOW BUGS:**
 
-They are not properly bugs, but a "still to implement" status. The webpages looks nicely in the pc browsers, but not so nicely in the tablets and mobiles browsers, this because i set the container of the forms to be the 50% of the entire page, and this become a properly formatted page in big screens, but when using mobiles 50% isn't enough and the layout results completely mangled (or close to completely). In future release MiniWX will recognize correctly the browser and adapt the contents accordly, for the moment, if your prevalent use is by mobile, then you must manually change the form percentage in the "Locale.h" pages, search for the <fieldset> tag:
-  
-  <fieldset style='width:49%'>
+They are not properly bugs, but a "still to implement" status. The webpages looks nicely in the pc browsers, but not so nicely in the tablets and mobiles browsers, this because i set the container of the forms to be the 50% of the entire page, and this become a properly formatted page in big screens, but when using mobiles 50% isn't enough and the layout results completely mangled (or close to completely). In future release MiniWX will recognize correctly the browser and adapt the contents accordly, for the moment, if your prevalent use is by mobile, then you must manually change the form percentage in the "XX_Locale.h" file of your interest, search for the <fieldset> tags:
 
-and change the percentage to 98%, this will work correctly in mobiles but in pc browser the frame will occupy the whole page.
-To justify me i wanna say that i'm not an html/javascript expert at all and that i'm learning while i'm writing this code, so be sympathetic with me and close an eyes....waiting for a new better working version :-)
+```javascript
+  <fieldset style='width:49%'>
+```
+
+and change the percentage to 98%, (there are more than one in the file) this will made the webpages work correctly in mobiles but in pc browser the frame will occupy the whole page. To justify me, i wanna say that i'm not an html/javascript expert at all and that i'm learning while i'm writing this code, so be sympathetic with me....waiting for a new better working version :-)
+
+There is a little problem at startup, the first time you flash this firmware may be the settings you typed in the various strings in the source code doesn't work well, the most common error is the USE_WUNDER flag that doesn't work properly and the static ip is not saved well, but the second time you run the sketch, after a power cycle, everything is fixed.
+This thing makes me crazy for a while, i've decided to release the version despite this problems, it's not so severe and the station can be used without problems, anyway will be fixed in the future (i hope).
