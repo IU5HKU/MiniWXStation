@@ -59,8 +59,8 @@ Others buttons are self explanatory, you can't see the output at moment, the rel
 
 Now MiniWX check the client's browser for Android type, serving a more readable main webpage in case of mobiles, just in case the new sizes doesn't match your needs you can change the percentage directly in code, at row 603, inside the AdjustFieldsets() function you find this two strings:
 ```javascript
-        const char* mobile_fieldsizes[] = {"97%","44%","32%","18%","98%","18%","78%","98%","*"}; @
-        const char* pc_fieldsizes[] = {"49%","50%","22%","18%","50%","28%","68%","50%","*"}; @
+        const char* mobile_fieldsizes[] = {"97%","44%","32%","18%","98%","18%","78%","98%","*"};
+        const char* pc_fieldsizes[] = {"49%","50%","22%","18%","50%","28%","68%","50%","*"}; 
 ```
 the sizes are expressed in sequential way, from top to bottom, feel free to change values as you want.
 
