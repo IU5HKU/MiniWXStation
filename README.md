@@ -12,7 +12,7 @@ For the moment this project is running without problems over three flavors of ES
 - NodeMCU V1.0  (ESP-12E)
 - Wemos D1 mini (ESP-12F)
 
-This is a simple schematics to help connect items to the board, the pinout name is still valid for NodeMCU V0.9 and Wemos D1 mini, the "phototransistor" part can be completely omitted, continue reading if you wanna connect something of analogic to the A0 pin ADC.
+This is a simple schematics to help connect items to the board, the pinout name is still valid for NodeMCU V0.9 and Wemos D1 mini, the "phototransistor" part can be completely omitted, continue reading if you wanna connect something of analogic to the ADC (A0 pin).
 
 ![fritzing_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/Schematics.jpg)
 
