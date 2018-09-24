@@ -491,6 +491,12 @@ void setup(void)
   server.on("/jquery", handleJQuery);
   server.onNotFound(handleNotFound);
 
+  //here the list of headers to be recorded
+  const char * headerkeys[] = {"User-Agent","X-Forwarded-For"};
+  size_t headerkeyssize = sizeof(headerkeys) / sizeof(char*);
+  //ask server to track these headers
+  server.collectHeaders(headerkeys, headerkeyssize);
+
   server.begin();
   Serial.println("Server started.");
 
@@ -588,6 +594,37 @@ float CalcHeatIndex( float temperature, float humidity)
 }
 
 //***********************************************************
+//* CHECK BROWSER TYPE & ADJUST FIELDSETS SIZE
+//***********************************************************     
+void AdjustFieldsets( String* page){
+  // Checking if the client is mobile or not, quite naive, but functional
+  if (server.hasHeader("User-Agent")){
+      //here you can adjust the <fieldset style='width: '> to match your needs
+      const char* mobile_fieldsizes[] = {"97%","44%","32%","18%","98%","18%","78%","98%","*"};
+      const char* pc_fieldsizes[] = {"49%","50%","22%","18%","50%","28%","68%","50%","*"};
+      String repl("{{fieldsize");
+      int i=0;
+      
+      if (server.header("User-Agent").indexOf("Android") > 0){
+        //ANDROID
+        while (mobile_fieldsizes[i] != "*"){
+          repl += String(i) + "}}";
+          page->replace(repl, mobile_fieldsizes[i++]);
+          repl = "{{fieldsize";
+        }
+      }
+    else{
+        //ALL THE OTHERS (PC for the great majority)
+        while (mobile_fieldsizes[i] != "*"){
+          repl += String(i) + "}}";
+          page->replace(repl, pc_fieldsizes[i++]);
+          repl = "{{fieldsize";
+      }
+    }
+  }
+}
+
+//***********************************************************
 //* MINIWX STATION  - handle root page request
 //***********************************************************                                        
 void handleRoot() {
@@ -605,7 +642,10 @@ void handleRoot() {
   char buffer[20];
   float dpdegc;
   
+
   readSettingsFile();
+
+  AdjustFieldsets(&page);
 
   page.replace(F("{{callsign}}"), station.callsign);
   page.replace(F("{{lat}}"), station.latitude);
