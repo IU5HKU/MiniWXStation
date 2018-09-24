@@ -1,3 +1,5 @@
+#ifndef EN_LOCALE_H
+#define EN_LOCALE_H
 //***********************************************************
 //* MINIWX STATION  - MAIN INFO PAGE
 //* improved readability on portable devices by EA1CDV Antonio
@@ -52,11 +54,11 @@ function getData() {\
     <hr>\
     <h3 style='text-shadow: 2px 1px grey;'>{{callsign}} Weather Station - <a id='clock' class='tabheader' style='padding-right:10px'>{{time}}</a></h3>\
     <h4>\
-    <fieldset style='width:49%'>\
+    <fieldset style='width:{{fieldsize0}}'>\
     <legend style='text-shadow: 2px 1px grey;'> {{ChipModel}} </legend>\
     <div class='divTable'>\
       <div class='divRow'>\
-        <div class='divColumn' style='width:50%'>\
+        <div class='divColumn' style='width:{{fieldsize1}}'>\
           <div class='tabheader'>Parameter</div>\
           <div class='notabheader'>Temperature</div>\
           <div class='notabheader'>Pressure</div>\
@@ -64,7 +66,7 @@ function getData() {\
           <div class='notabheader'>Dew point</div>\
           <div class='notabheader'>Heat Index</div>\
         </div>\
-        <div class='divColumn' style='width:22%'>\
+        <div class='divColumn' style='width:{{fieldsize2}}'>\
           <div class='tabheader'>Value</div>\
           <div id='temp' class='notabheader' style='color: white;'>{{degC}}</div>\
           <div id='pres' class='notabheader' style='color: white;'>{{mbar}}</div>\
@@ -72,7 +74,7 @@ function getData() {\
           <div id='dewp' class='notabheader' style='color: white;'>{{DPdegC}}</div>\
           <div id='hind' class='notabheader' style='color: white;'>{{HIdegC}}</div>\
         </div>\
-        <div class='divColumn' style='width:18%'>\
+        <div class='divColumn' style='width:{{fieldsize3}}'>\
           <div class='tabheader'>Unit</div>\
           <div class='notabheader'>ºC</div>\
           <div class='notabheader'>mBar</div>\
@@ -87,11 +89,11 @@ function getData() {\
     </fieldset>\
     </h4>\
     <h6>\
-    <fieldset style='width:50%'>\
+    <fieldset style='width:{{fieldsize4}}'>\
     <legend style='text-shadow: 2px 1px grey;'> System Infos </legend>\
       <div class='divTable'>\
           <div class='divRow'>\
-            <div class='divColumn' style='width:28%'>\
+            <div class='divColumn' style='width:{{fieldsize5}}'>\
               <div class='tabheader'>Uptime</div>\
               <div class='tabheader'>Next TX</div>\
               <div class='tabheader'>SSID</div>\
@@ -100,7 +102,7 @@ function getData() {\
               <div class='tabheader'>IP addr</div>\
               <div class='tabheader'>Position</div>\
             </div>\
-            <div class='divColumn' style='width:68%'>\
+            <div class='divColumn' style='width:{{fieldsize6}}'>\
               <div class='notabheader' style='color: silver;'>Days {{days}} : Hrs {{hrs}} : Min {{min}}</div>\
               <div id='nexttx' class='notabheader' style='color: silver;'>{{nexttx}}</div>\
               <div class='notabheader' style='color: silver;'>{{SSID}}</div>\
@@ -114,7 +116,7 @@ function getData() {\
     </fieldset>\
     <br>\
     <form action='/submit' method='POST'>\
-      <fieldset style='width:50%'>\
+      <fieldset style='width:{{fieldsize7}}'>\
       <legend style='text-shadow: 2px 1px grey;'> Control Panel </legend>\
       <div>\
         <button name='MiniWXSettings' type='settings' value='true' formaction='/settings' method='POST'><img src='data:image/png;base64,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'/> Settings</button>\
@@ -261,3 +263,4 @@ const char PAGE_MiniWXSettings_EN[] PROGMEM = "<!DOCTYPE html>\
   </div>\
 </body>\
 </html>";
+#endif
