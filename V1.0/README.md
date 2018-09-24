@@ -25,6 +25,7 @@ Compiled with:
 - **Modifieds functions (faster) for read/write files in SPIFFS**
 - **In "Config wifi access point menu" added new entry for reset DNS over StaticIP**
 - **More verbosity at first time use**
+- **Checks for browser type and serve better formatted pages**
 
 **WARNING!**
 
@@ -56,15 +57,14 @@ i think that this page is self explanatory, you can change most of the station s
 A little bug when you change values: the refresh of the main page doesn't work, my javascript fails....need to be checked and fixed in the new version, yes, there will be a new version, with graphs and simple forecasts (like an analog barometer or can do) and with aprs bullettin if my forecasts algo will work quite well...
 Others buttons are self explanatory, you can't see the output at moment, the related info page will close and come back automagically, but in the near future i think to implement something called "SSE" (Server Sent Events) to update the page contents with some useful infos....work in progress for the moment.
 
-**KNOW BUGS:**
-
-They are not properly bugs, but a "still to implement" status. The webpages looks nicely in the pc browsers, but not so nicely in the tablets and mobiles browsers, this because i set the container of the forms to be the 50% of the entire page, and this become a properly formatted page in big screens, but when using mobiles 50% isn't enough and the layout results completely mangled (or close to completely). In future release MiniWX will recognize correctly the browser and adapt the contents accordly, for the moment, if your prevalent use is by mobile, then you must manually change the form percentage in the "XX_Locale.h" file of your interest, search for the <fieldset> tags:
-
+Now MiniWX check the client's browser for Android type, serving a more readable main webpage in case of mobiles, just in case the new sizes doesn't match your needs you can change the percentage directly in code, at row 603, inside the AdjustFieldsets() function you find this two strings:
 ```javascript
-  <fieldset style='width:49%'>
+        const char* mobile_fieldsizes[] = {"97%","44%","32%","18%","98%","18%","78%","98%","*"}; @
+        const char* pc_fieldsizes[] = {"49%","50%","22%","18%","50%","28%","68%","50%","*"}; @
 ```
+the sizes are expressed in sequential way, from top to bottom, feel free to change values as you want.
 
-and change the percentage to 98%, (there are more than one in the file) this will made the webpages work correctly in mobiles but in pc browser the frame will occupy the whole page. To justify me, i wanna say that i'm not an html/javascript expert at all and that i'm learning while i'm writing this code, so be sympathetic with me....waiting for a new better working version :-)
+**KNOW BUGS:**
 
 There is a little problem at startup, the first time you flash this firmware may be the settings you typed in the various strings in the source code doesn't work well, the most common error is the USE_WUNDER flag that doesn't work properly and the static ip is not saved well, but the second time you run the sketch, after a power cycle, everything is fixed.
 This thing makes me crazy for a while, i've decided to release the version despite this problems, it's not so severe and the station can be used without problems, anyway will be fixed in the future (i hope).
