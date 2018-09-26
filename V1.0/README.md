@@ -80,20 +80,19 @@ The page are created and filled dynamically using placeholders enclosed in doubl
 ```javascript
     <legend style='text-shadow: 2px 1px grey;'> {{ChipModel}} </legend>\
 ```
-in this case {{ChipModel}} is the placeholder and just before serving the page is changed with the proper value thank to the strings manipulation functions:
+in this case {{ChipModel}} is the placeholder and just before serving the page is changed with the proper value thanks to the strings manipulation functions:
 
 ```javascript
     page.replace(F("{{ChipModel}}"), String("BMP280"));
 ```
-this is apowerful way for deliver dynamics contents in your webpages, with a very low footprint in cpu and ram resources.
+this is a powerful way for deliver dynamics contents in your webpages, with a very low footprint in cpu and ram resources.
 To be honest i've read around the web that the 'String' type is an evil beast in Arduino and Arduino-like environment as ESP8266 is, seems that using concatenation operands, like this ones:
 
 ```javascript
     message += FPSTR(HTTP_REBOOT_SCRIPT);
     message += FPSTR(HTTP_BODY);
 ```
-concurr to the fragmentation of the ram, who lead to a crash in the long time use. I need to better understand and read about this potential issue, maybe that in the future MiniWX will use others methods to concatenate string (transparently to the final user obviously), but for the moment the entire system seems to be quite stable, i mark this has "todo when the whole program will be finished".
-
+concurr to the fragmentation of the ram, who lead to a crash in the long time use. I need to better understand and read about this potential issue, maybe that in the future MiniWX will use others methods to concatenate string (transparently to the final user obviously), but for the moment the entire system seems to be quite stable, i mark this thing as "todo when the whole program will be finished".
 
 **KNOW BUGS:**
 
