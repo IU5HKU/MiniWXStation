@@ -133,7 +133,7 @@ WARNING: some users are experiencing issues in filling the required fields in th
 
 ![SerialMonitor_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/Newline.jpg)
 
-This is the correct setting if you are using ArduinoIDE's SerialMonitor.
+This is the correct setting if you are using ArduinoIDE's SerialMonitor till v0.9 included, since v1.0 you need to set Serial Monitor baudrate at 74880bps, see [V1.0 README](/V1.0/README.md) for more infos.
 In a future revision the user input will be checked against errors or different serial settings, but for the moment...
 
 **V1.0 NOTE:**
