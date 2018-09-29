@@ -26,6 +26,8 @@ Compiled with:
 - **In "Config wifi access point menu" added new entry for reset DNS over StaticIP**
 - **More verbosity at first time use**
 - **Checks for browser type and serve better formatted pages in mobile devices**
+- **fixed "exit" button issues for non-firefox users**
+- **new css "MiniWX" style for buttons**
 
 **WARNING!**
 
@@ -98,3 +100,4 @@ concurr to the fragmentation of the ram, who lead to a crash in the long time us
 
 There is a little problem at startup, the first time you flash this firmware may be the settings you typed in the various strings in the source code doesn't work well, the most common error is the USE_WUNDER flag that doesn't work properly and the static ip is not saved well, but the second time you run the sketch, after a power cycle, everything is fixed.
 This thing makes me crazy for a while, i've decided to release the version despite this problems, it's not so severe and the station can be used without problems, anyway will be fixed in the future (i hope).
+Another issue is the REBOOT button, for an esp8266, not my fault, after you have flashed the chip the issued software commands doesn't reboot properly the whole system who hangs in an infinite loop. The remedy is an hardware reset just after flashed the MiniWX, after that all the successive reboots working as expected.
