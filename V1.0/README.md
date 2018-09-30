@@ -28,12 +28,26 @@ Compiled with:
 - **Checks for browser type and serve better formatted pages in mobile devices**
 - **fixed "exit" button issues for non-firefox users**
 - **new css "MiniWX" style for buttons**
+- **setting for Serial Console baudrate speed**
 
 **WARNING!**
 
 ![SerialMonitorSpeed_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/SerialMonitorSpeed.png)
 
-The new ArduinoIDE Serial Monitor speed now is **74880bps**, not why i love weird numbers, but because this is the serial speed who permits to correctly see the core and systems messages of the sdk, the "weird" chars that you can read at startup or after a reset or a crash becomes in clear now, and this help me in understanding what happens under the hood when someone told me that his station doesn't works :-)
+The new ArduinoIDE Serial Monitor speed now is **74880bps**, not why i love weird numbers, but because this is the serial speed who permits to correctly see the core and systems messages of the sdk, the "weird" chars that you can read at startup or after a reset or a crash becomes in clear now, and this help me in understanding what happens under the hood when someone told me that his station doesn't works :-) Please set "Newline" as carriage return too, because it's really important when you insert datas through serial console, websetting page are not affected by this parameter.
+Anyway, as requested by some users, i've left the possibility to choose the serial console communication baudrate, as usual at the beginning of the source code you can found this:
+
+```javascript
+//**** CHOOSE SERIAL MONITOR BAUD RATE
+//#define SER_MON_BAUDRATE 115200
+#define SER_MON_BAUDRATE 74880
+```
+and is up to you let's make that this baudrate match the one you use in your terminal emulator program (ArduinoIDE's Serial Monitor is more than enough). If you are under Linux, using ArduinoIDE as development environment, remember to 'chmod'-ding your serial device, otherwise you can encounter problems in changing serial speed, it's only matter to type in a shell:
+
+```javascript
+    sudo chmod a+x /dev/ttyUSB0
+```
+....or whatever 'USB' is your esp8266 connected to...
 
 There is localization now, choose as usual with #defines, from this three languages:
 
