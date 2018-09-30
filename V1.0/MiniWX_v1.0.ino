@@ -51,7 +51,7 @@ BME280 mySensor;
 ESP8266WebServer server(80);
 
 //**** INTERNAL USE & DEBUG ****
-const char SOFT_VER[] = "v1.0a";
+const char SOFT_VER[] = "v1.0";
 //#define DEBUG_READSETTINGSFILE
 //#define DEBUG_FORM_REPLIES
 #define DISPLAY_RW_OUTPUT
@@ -65,6 +65,10 @@ const char SOFT_VER[] = "v1.0a";
 #define LANG_ENGLISH
 //#define LANG_SPANISH
 //#define LANG_ITALIAN
+
+//**** CHOOSE SERIAL MONITOR BAUD RATE
+//#define SER_MON_BAUDRATE 115200
+#define SER_MON_BAUDRATE 74880
 
 //**** How the station is named in your NET
 const char* WiFi_hostname = "MiniWX";
@@ -405,7 +409,7 @@ void setup(void)
   station.logger = 0;
   FSInfo fs_info;
 
-  Serial.begin(74880);  // to read the esp8266 core and startup messages
+  Serial.begin(SER_MON_BAUDRATE);  // to read the esp8266 core and startup messages
   Serial.println();
   delay(10);
 
@@ -760,7 +764,15 @@ void handleSubmit(){
       //Display sysmsg in a new page and come back
         
       message += F("<fieldset style='width:49%'><legend style='text-shadow: 2px 1px grey; font-size: 18px;'>MiniWX&#8482; system message </legend>");
-      message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Sending packets to APRS server...</div>");
+      #ifdef LANG_ENGLISH
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Sending packets to APRS server...</div>");
+      #endif
+      #ifdef LANG_SPANISH
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Enviando trama al servidor APRS...</div>");
+      #endif
+      #ifdef LANG_ITALIAN
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Invio dati al server APRS...</div>");
+      #endif
       message += F("</div></div></div></form></fieldset>");
       message += FPSTR(HTTP_FOOT);
     
@@ -779,7 +791,15 @@ void handleSubmit(){
       //Display sysmsg in a new page and come backe
      
       message += F("<fieldset style='width:49%'><legend style='text-shadow: 2px 1px grey; font-size: 18px;'>MiniWX&#8482; system message </legend>");
-      message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Sending packets to WUNDER server...</div>");
+      #ifdef LANG_ENGLISH
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Sending packets to WUNDER server...</div>");
+      #endif
+      #ifdef LANG_SPANISH
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Enviando trama al servidor WUNDER...</div>");
+      #endif
+      #ifdef LANG_ITALIAN
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Invio dati al server WUNDER...</div>");
+      #endif
       message += F("</div></div></div></form></fieldset>");
       message += FPSTR(HTTP_FOOT);
 
@@ -798,7 +818,16 @@ void handleSubmit(){
       //Display sysmsg in a new page and come backe
      
       message += F("<fieldset style='width:49%'><legend style='text-shadow: 2px 1px grey; font-size: 18px;'>MiniWX&#8482; system message </legend>");
-      message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Sending NTP SYNC request to server...</div>");
+      
+      #ifdef LANG_ENGLISH
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Sending NTP SYNC request to server...</div>");
+      #endif
+      #ifdef LANG_SPANISH
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Enviando sync solicitud al servidor NTP...</div>");
+      #endif
+      #ifdef LANG_ITALIAN
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Invio richiesta sync al server NTP...</div>");
+      #endif
       message += F("</div></div></div></form></fieldset>");
       
       server.sendHeader(F("Content-Length"), String(message.length()));
