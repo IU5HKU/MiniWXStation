@@ -35,7 +35,7 @@ Compiled with:
 ![SerialMonitorSpeed_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/SerialMonitorSpeed.png)
 
 The new ArduinoIDE Serial Monitor speed now is **74880bps**, not why i love weird numbers, but because this is the serial speed who permits to correctly see the core and systems messages of the sdk, the "weird" chars that you can read at startup or after a reset or a crash becomes in clear now, and this help me in understanding what happens under the hood when someone told me that his station doesn't works :-) Please set "Newline" as carriage return too, because it's really important when you insert datas through serial console, websetting page are not affected by this parameter.
-Anyway, as requested by some users, i've left the possibility to choose the serial console communication baudrate, as usual at the beginning of the source code you can found this:
+Anyway, as requested by some users, i've left the possibility to choose the serial console communication baudrate, as usual at the beginning of the source code you can find this:
 
 ```javascript
 //**** CHOOSE SERIAL MONITOR BAUD RATE
