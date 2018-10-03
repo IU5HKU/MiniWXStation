@@ -7,13 +7,6 @@ Many thanks to Antonio EA1CDV for his support, beta testing and encouragement, y
 In a future version maybe i'll change the source code to use native ESP8266 ntp calls instead of using NTPTimeESP, but for the moment the source code needs this library, so you have to add it to your environment, [NTPtimeESP](https://github.com/SensorsIot/NTPtimeESP)
 Obviously you need the [BME280 Library](https://github.com/sparkfun/SparkFun_BME280_Arduino_Library) too: 
 
-<div class="button-group minor-group">
-    <a href="#" class="button primary">Dashboard</a>
-    <a href="#" class="button">Inbox</a>
-    <a href="#" class="button">Account</a>
-    <a href="#" class="button">Logout</a>
-</div>
-
 For the moment this project is running without problems over four flavors of ESP8266:
 - NodeMCU V0.9  (ESP-12)
 - NodeMCU V1.0  (ESP-12E)
