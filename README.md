@@ -137,6 +137,10 @@ WARNING: some users are experiencing issues in filling the required fields in th
 This is the correct setting if you are using ArduinoIDE's SerialMonitor till v0.9 included, since v1.0 you need to set Serial Monitor baudrate at 74880bps, see [V1.0 README](/V1.0/README.md) for more infos.
 In a future revision the user input will be checked against errors or different serial settings, but for the moment...
 
+**V1.0 BMP280+DHT11 NOTE:**
+
+The first official mod for this project, this version can read temperature and barometric pressure from BMP280 and relative humidity from DHT11, refer to the [README](/V1.0_BMP280_DHTxx/README.md) inside his proper folder for a more detailed description about how and where to connect DHTxx sensor to you esp8266.
+
 **V1.0 NOTE:**
 
 At least v1.0 comes to life, this version still have the basic "core" of v0.9, with some bug corrected and some slightly changes in code, aimed to the robusteness of the station, refer to the [README](/V1.0/README.md) inside the V1.0 folder for a more detailed description.
