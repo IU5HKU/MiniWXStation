@@ -139,7 +139,7 @@ In a future revision the user input will be checked against errors or different 
 
 **V1.0 BMP280+DHT11 NOTE:**
 
-The first official mod for this project, this version can read temperature and barometric pressure from BMP280 and relative humidity from DHT11, refer to the [README](/V1.0_BMP280_DHTxx/README.md) inside his proper folder for a more detailed description about how and where to connect DHTxx sensor to you esp8266.
+The first official mod for this project, this version can read temperature and barometric pressure from BMP280 and relative humidity from DHT11, refer to the [README](/v1.0_BMP280_DHTxx/README.md) inside his proper folder for a more detailed description about how and where to connect DHTxx sensor to you esp8266.
 
 **V1.0 NOTE:**
 
