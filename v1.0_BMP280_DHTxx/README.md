@@ -1,5 +1,5 @@
 # MiniWX Station BMP280 + DHT11
-ESP8266 IoT and BME280 plus DHTxx sensors for a minimalist weather station
+ESP8266 IoT and BME280 or BMP280 plus DHTxx sensors for a minimalist weather station
 
 Someone ask me for this mod to the original MiniWX, the possibility to use two sensors side by side, Bosch BMP280 for reading temperature and barometric pressure, and DHT11 to read relative humidity.
 Despite the DHTxx family of sensor is way more inaccurate then the Bosch ones, this is anyway an opportunity for someone who still have this sensors in his hands to employ them in something useful....or for whatever reason should be.
