@@ -7,10 +7,11 @@ Many thanks to Antonio EA1CDV for his support, beta testing and encouragement, y
 In a future version maybe i'll change the source code to use native ESP8266 ntp calls instead of using NTPTimeESP, but for the moment the source code needs this library, so you have to add it to your environment, [NTPtimeESP](https://github.com/SensorsIot/NTPtimeESP)
 Obviously you need the [BME280 Library](https://github.com/sparkfun/SparkFun_BME280_Arduino_Library) too: 
 
-For the moment this project is running without problems over three flavors of ESP8266:
+For the moment this project is running without problems over four flavors of ESP8266:
 - NodeMCU V0.9  (ESP-12)
 - NodeMCU V1.0  (ESP-12E)
 - Wemos D1 mini (ESP-12F)
+- Lolin new NodeMCU V3
 
 This is a simple schematics to help connect items to the board, the pinout name is still valid for NodeMCU V0.9 and Wemos D1 mini, the "phototransistor" part can be completely omitted, continue reading if you wanna connect something of analogic to the ADC (A0 pin).
 
