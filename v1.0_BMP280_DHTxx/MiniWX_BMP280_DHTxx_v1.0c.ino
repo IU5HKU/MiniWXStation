@@ -658,7 +658,7 @@ void AdjustFieldsets( String* page){
   if (server.hasHeader("User-Agent")){
       //here you can adjust the <fieldset style='width: '> to match your needs
       const char* mobile_fieldsizes[] = {"97%","44%","32%","18%","98%","18%","78%","98%","*"};
-      const char* pc_fieldsizes[] = {"49%","50%","22%","18%","50%","28%","68%","50%","*"};
+      const char* pc_fieldsizes[] = {"49%","50%","22%","22%","50%","28%","68%","50%","*"};
       String repl("{{fieldsize");
       int i=0;
       
