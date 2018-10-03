@@ -13,7 +13,7 @@ and remember that there is no direct corrispondence between labels printed ontop
 
 ![NodeMCU_GPIOs_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/NodeMCU_GPIOs.png)
 
-These instead are the #defines that you can find in the beginning of the sourcecode, with corrispondence labels/gpios, i choose D5 as the pin where connect the DHT11 but you can choose another one, following this schema:
+These instead are the #defines that you can find, as usual, in the beginning of the sourcecode, with corrispondence labels/gpios. I choose D5 as the pin where DHT11 must be connected, but you can choose another one from D3 to D8:
 
 
 ```javascript
