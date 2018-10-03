@@ -87,7 +87,7 @@ const char SOFT_VER[] = "v1.0c";
 //#define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
 // DHT Sensor - Connect DHT11 PIN 2 TO ESP8266 PIN5 (GPIO14)
 
-const int DHTPin = D5;  // D5 = GPIO14
+const int DHTPin = D5; 
 // Initialize DHT sensor.
 DHT dht(DHTPin, DHTTYPE);
 
@@ -98,8 +98,8 @@ DHT dht(DHTPin, DHTTYPE);
 //**************************************
 
 //**** CHOOSE WEBPAGES LANGUAGE
-#define LANG_ENGLISH
-//#define LANG_SPANISH
+//#define LANG_ENGLISH
+#define LANG_SPANISH
 //#define LANG_ITALIAN
 
 //**** CHOOSE SERIAL MONITOR BAUD RATE
@@ -186,6 +186,9 @@ bool bSecsFlag;
 Ticker TkBlueLed;
 bool bNtpSyncFlag;
 Ticker TkNtpSync;
+bool bDHTxxSamplerFlag;
+Ticker TkDHTxxSampler;
+
 
 //for the CheckSensor()
 #define MOD_BMP280  0x58
@@ -428,6 +431,10 @@ void SetNtpSyncFlag(void){
   }
 }
 
+void SetDHTxxSamplerFlag(void){
+   bDHTxxSamplerFlag=true;
+}
+
 #ifdef BLINK_BLUE_LED
 void BlinkBlueLed(){
   digitalWrite(D4, digitalRead(D4)^1); // turn the ESP-12 LED off and on (HIGH is the voltage level and meaning OFF)
@@ -577,6 +584,10 @@ void setup(void)
   //set bNtpSyncFlag for NTPsync() every 3600 seconds
   bNtpSyncFlag=false;
   TkNtpSync.attach( 3600, SetNtpSyncFlag);
+
+  //set bDHTxxSamplerFlag to true every 2000ms
+   bDHTxxSamplerFlag=false;
+   TkDHTxxSampler.attach_ms( 2000, SetDHTxxSamplerFlag);
 }
 
 int sysUpTimeMn;
@@ -1159,6 +1170,16 @@ void loop()
   
   server.handleClient();
 
+  if(bDHTxxSamplerFlag){
+    float rhum=0.0f;
+#ifdef DHTTYPE    
+    rhum = dht.readHumidity();
+    if (!isnan(rhum))
+      wx.humidity =  rhum;      
+#endif
+    bDHTxxSamplerFlag=false;
+  }
+  
   updateTime();
 
   if (bSendFlag) {
@@ -1651,7 +1672,7 @@ void initBme()
 //*** Retrieve values from BME280 and fill in the structure
 void getBmeValues(){
     
-    float pres;
+    float pres, rhum;
 
     wx.temperatureC = mySensor.readTempC();
 
@@ -1662,10 +1683,8 @@ void getBmeValues(){
       wx.pressure = 0.0f;
         
     wx.temperatureF = mySensor.readTempF();
+#ifndef DHTTYPE
     wx.humidity =  mySensor.readFloatHumidity();
-#ifdef DHTTYPE    
-    wx.humidity =  dht.readHumidity();
-    delay(800);
 #endif
     wx.heatindex = CalcHeatIndex(wx.temperatureC, wx.humidity);
   
