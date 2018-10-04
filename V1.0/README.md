@@ -26,9 +26,10 @@ Compiled with:
 - **In "Config wifi access point menu" added new entry for reset DNS over StaticIP**
 - **More verbosity at first time use**
 - **Checks for browser type and serve better formatted pages in mobile devices**
-- **fixed "exit" button issues for non-firefox users**
-- **new css "MiniWX" style for buttons**
-- **setting for Serial Console baudrate speed**
+- **Fixed "exit" button issues for non-firefox users**
+- **New css "MiniWX" style for buttons**
+- **Setting for Serial Console baudrate speed**
+- **TIME ZONE setting**
 
 **WARNING!**
 
@@ -72,6 +73,13 @@ In the bottom section of the page you can find a control panel, to mimic some of
 i think that this page is self explanatory, you can change most of the station settings, and save them through the "save" button, or simply check your current configuration and then "exit" to main page without saving.
 A little bug when you change values: the refresh of the main page doesn't work, my javascript fails....need to be checked and fixed in the new version, yes, there will be a new version, with graphs and simple forecasts (like an analog barometer or can do) and with aprs bullettin if my forecasts algo will work quite well...
 Others buttons are self explanatory, you can't see the output at moment, the related info page will close and come back automagically, but in the near future i think to implement something called "SSE" (Server Sent Events) to update the page contents with some useful infos....work in progress for the moment.
+
+Added the timezone for the NTPSync request, you can change it in source code as usual, look for this row:
+```javascript
+//**** Your time zone UTC related (floating point number)
+#define TIME_ZONE 1.0f
+```
+and change it as you need the reflect your time zone.
 
 Now MiniWX check the client's browser for Android type, serving a more readable main webpage in case of mobiles, just in case the new sizes doesn't match your needs you can change the percentage directly in code, at row 603, inside the AdjustFieldsets() function you find this two strings:
 ```javascript
