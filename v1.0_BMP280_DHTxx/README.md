@@ -58,4 +58,4 @@ Working with Hernan a new (little) issues arises, the timezone, so we added the 
 //**** Your time zone UTC related (floating point number)
 #define TIME_ZONE 1.0f
 ```
-and change it as you need the reflect your time zone.
+and change it as you need to reflect your time zone.
