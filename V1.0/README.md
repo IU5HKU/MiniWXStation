@@ -79,7 +79,7 @@ Added the timezone for the NTPSync request, you can change it in source code as 
 //**** Your time zone UTC related (floating point number)
 #define TIME_ZONE 1.0f
 ```
-and change it as you need the reflect your time zone.
+and change it as you need to reflect your time zone.
 
 Now MiniWX check the client's browser for Android type, serving a more readable main webpage in case of mobiles, just in case the new sizes doesn't match your needs you can change the percentage directly in code, at row 603, inside the AdjustFieldsets() function you find this two strings:
 ```javascript
