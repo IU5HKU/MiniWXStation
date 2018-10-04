@@ -22,6 +22,7 @@ SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1
 - In "Config wifi access point menu" added new entry for reset DNS over StaticIP
 - More verbosity at first time use
 - Checks for browser type and serve better formatted pages in mobile devices
+- TIME ZONE setting
   
 ***************************************************************
   Marco Campinoti - IU5HKU (mrcodemail@gmail.com)
