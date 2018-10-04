@@ -52,6 +52,7 @@ DHT dht(DHTPin, DHTTYPE);
 
 i think it's quite self explanatory, remember to uncomment the #define for the DHT sensor you are using, also if the most common is DHT11, that i left as default. If you comment all three the defines then MiniWX will not use the DHT sensor at all, using only BMP280 and the two values who can retrieve from it, temperature and barometric pressure.
 In this case, as advice, please use one of the "standard branch" releases.
+Notice too that DHT11 as a working range from 20% upto 90% rHum with +/- 5% precision.....way more inaccurate than BME280 sensors from Bosch (that i highly reccomend).
 
 Developing this mod with Hernan a new (little) issues arises, the timezone, so we added the timezone for the NTPSync request, you can change it in source code as usual, look for this row:
 ```javascript
