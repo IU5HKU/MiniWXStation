@@ -52,3 +52,10 @@ DHT dht(DHTPin, DHTTYPE);
 
 i think it's quite self explanatory, remember to uncomment the #define for the DHT sensor you are using, also if the most common is DHT11, that i left as default. If you comment all three the defines then MiniWX will not use the DHT sensor at all, using only BMP280 and the two values who can retrieve from it, temperature and barometric pressure.
 In this case, as advice, please use one of the "standard branch" releases.
+
+Working with Hernan a new (little) issues arises, the timezone, so we added the timezone for the NTPSync request, you can change it in source code as usual, look for this row:
+```javascript
+//**** Your time zone UTC related (floating point number)
+#define TIME_ZONE 1.0f
+```
+and change it as you need the reflect your time zone.
