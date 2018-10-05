@@ -27,6 +27,7 @@ SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1
 - Setting for Serial Console baudrate speed
 - TIME ZONE setting
 - Using BMP280 for Temperature and Pressure, DHT11 for Relative Humidity (Thanks to LU7EHR Hernan)
+- Fixed uptime refresh in main page
   
 ***************************************************************
   Marco Campinoti - IU5HKU (mrcodemail@gmail.com)
@@ -150,9 +151,6 @@ const char PASSWORD [] = "YourWunderPASSW";
 
 //**** NTP Server to use
 const char* NTP_Server = "ntp1.inrim.it"; //italian national institute for measures
-
-//**** Your time zone UTC related (floating point number)
-#define TIME_ZONE 1.0f
 
 //**** Set credential for OTA firmware upgrade <<--->>
 //*uncomment the #define if you wanna use this handy feature
@@ -594,12 +592,16 @@ void setup(void)
    TkDHTxxSampler.attach_ms( 2000, SetDHTxxSamplerFlag);
 }
 
+//* tracking System Uptime
+
+int sysUpTimeSec;
 int sysUpTimeMn;
 int sysUpTimeHr;
 int sysUpTimeDy;
 
 void SystemUpTime() {
-  long millisecs = millis();
+  long millisecs = millis();  //milliseconds since system poweron
+  sysUpTimeSec = int((millisecs / (1000)) % 60);
   sysUpTimeMn = int((millisecs / (1000 * 60)) % 60);
   sysUpTimeHr = int((millisecs / (1000 * 60 * 60)) % 24);
   sysUpTimeDy = int((millisecs / (1000 * 60 * 60 * 24)) % 365);
@@ -662,7 +664,7 @@ void AdjustFieldsets( String* page){
   if (server.hasHeader("User-Agent")){
       //here you can adjust the <fieldset style='width: '> to match your needs
       const char* mobile_fieldsizes[] = {"97%","44%","32%","18%","98%","18%","78%","98%","*"};
-      const char* pc_fieldsizes[] = {"49%","50%","22%","18%","50%","28%","68%","50%","*"};
+      const char* pc_fieldsizes[] = {"49%","50%","22%","22%","50%","28%","68%","50%","*"};
       String repl("{{fieldsize");
       int i=0;
       
@@ -714,9 +716,8 @@ void handleRoot() {
   page.replace(F("{{alt}}"), String(station.altitude));
   
   SystemUpTime();
-  page.replace(F("{{days}}"), String(sysUpTimeDy));
-  page.replace(F("{{hrs}}"), String(sysUpTimeHr));
-  page.replace(F("{{min}}"), String(sysUpTimeMn));
+  String sysUpTime("Days " + String(sysUpTimeDy) + ": Hrs " + String(sysUpTimeHr) + ": Min" + String(sysUpTimeMn) + ": Sec" + String(sysUpTimeSec));
+  page.replace(F("{{uptime}}"), sysUpTime);
 
   getBmeValues();
 
@@ -1025,6 +1026,7 @@ void handleSubmit(){
 void handleJQuery() {
   char espclock[20];
   char nexttx[20];
+  char uptime[40];
   float dpdegc;
   
   getBmeValues();
@@ -1049,9 +1051,11 @@ void handleJQuery() {
       dpdegc = 0.0f;     
       break;
   }
+  
   sprintf(espclock, "%02d:%02d:%02d", dateTime.hour, dateTime.minute, dateTime.second);
   sprintf(nexttx, "%02d:%02d:%02d", nextHour, nextMinTx, nextSecTx);
-
+  sprintf(uptime, "Days %02d : Hrs %02d : Min %02d : Secs %02d", sysUpTimeDy, sysUpTimeHr, sysUpTimeMn, sysUpTimeSec);
+  
   // sends multiple data in array-form
   server.send ( 200, "text/plane", String(espclock)+","+
                                    String(wx.temperatureC,2)+","+
@@ -1060,7 +1064,8 @@ void handleJQuery() {
                                    String(dpdegc,2)+","+
                                    String(wx.heatindex,2)+","+
                                    String(nexttx)+","+
-                                   String(WiFi.RSSI())
+                                   String(WiFi.RSSI())+","+
+                                   String(uptime)
                                    );
                                    
 }
@@ -1314,7 +1319,7 @@ void ntp()
     NTPch.setRecvTimeout(RECV_TIMEOUT);
     do
     {
-      dateTime = NTPch.getNTPtime(TIME_ZONE, 1);
+      dateTime = NTPch.getNTPtime(1.0, 1);
       delay(1);
     }
     while(!dateTime.valid);

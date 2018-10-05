@@ -89,6 +89,7 @@ function getData() {\
       document.getElementById('hind').innerHTML = reply[5];\
       document.getElementById('nexttx').innerHTML = reply[6];\
       document.getElementById('rssi').innerHTML = reply[7];\
+      document.getElementById('uptime').innerHTML = reply[8];\
     }\
   };\
   xhttp.open('GET', 'jquery', true);\
@@ -140,7 +141,7 @@ function getData() {\
       <div class='divTable'>\
           <div class='divRow'>\
             <div class='divColumn' style='width:{{fieldsize5}}'>\
-              <div class='tabheader'>Tiempo en activo</div>\
+              <div class='tabheader'>Uptime</div>\
               <div class='tabheader'>Próxima Tx</div>\
               <div class='tabheader'>SSID</div>\
               <div class='tabheader'>RSSI</div>\
@@ -149,7 +150,7 @@ function getData() {\
               <div class='tabheader'>Localización</div>\
             </div>\
             <div class='divColumn' style='width:{{fieldsize6}}'>\
-              <div class='notabheader' style='color: silver;'>Days {{days}} : Hrs {{hrs}} : Min {{min}}</div>\
+              <div id='uptime' class='notabheader' style='color: silver;'>{{uptime}}</div>\
               <div id='nexttx' class='notabheader' style='color: silver;'>{{nexttx}}</div>\
               <div class='notabheader' style='color: silver;'>{{SSID}}</div>\
               <div id='rssi' class='notabheader' style='color: silver;'>{{RSSI}}</div>\
