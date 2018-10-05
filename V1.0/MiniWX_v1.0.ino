@@ -26,6 +26,7 @@ SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1
 - New css "MiniWX" style for buttons
 - Setting for Serial Console baudrate speed
 - TIME ZONE setting
+- Fixed uptime refresh in main page
   
 ***************************************************************
   Marco Campinoti - IU5HKU (mrcodemail@gmail.com)
@@ -501,6 +502,7 @@ void setup(void)
   server.on("/submit", handleSubmit);
   server.on("/settings", handleSettings);
   server.on("/jquery", handleJQuery);
+  server.on("/ssedata", handleSSE);
   server.onNotFound(handleNotFound);
 
   //here the list of headers to be recorded
@@ -545,12 +547,16 @@ void setup(void)
   TkNtpSync.attach( 3600, SetNtpSyncFlag);
 }
 
+//* tracking System Uptime
+
+int sysUpTimeSec;
 int sysUpTimeMn;
 int sysUpTimeHr;
 int sysUpTimeDy;
 
 void SystemUpTime() {
-  long millisecs = millis();
+  long millisecs = millis();  //milliseconds since system poweron
+  sysUpTimeSec = int((millisecs / (1000)) % 60);
   sysUpTimeMn = int((millisecs / (1000 * 60)) % 60);
   sysUpTimeHr = int((millisecs / (1000 * 60 * 60)) % 24);
   sysUpTimeDy = int((millisecs / (1000 * 60 * 60 * 24)) % 365);
@@ -665,9 +671,8 @@ void handleRoot() {
   page.replace(F("{{alt}}"), String(station.altitude));
   
   SystemUpTime();
-  page.replace(F("{{days}}"), String(sysUpTimeDy));
-  page.replace(F("{{hrs}}"), String(sysUpTimeHr));
-  page.replace(F("{{min}}"), String(sysUpTimeMn));
+  String sysUpTime("Days " + String(sysUpTimeDy) + ": Hrs " + String(sysUpTimeHr) + ": Min" + String(sysUpTimeMn) + ": Sec" + String(sysUpTimeSec));
+  page.replace(F("{{uptime}}"), sysUpTime);
 
   getBmeValues();
 
@@ -819,7 +824,7 @@ void handleSubmit(){
 
     //*NTPSYNC button *********************************************
     if (server.argName(0) == "NTPSync" && server.arg(0) == "true"){
-      message += FPSTR(HTTP_SCRIPT);
+      message += FPSTR(HTTP_SSE_SCRIPT);
       message += FPSTR(HTTP_BODY);
 
       //Display sysmsg in a new page and come backe
@@ -835,6 +840,10 @@ void handleSubmit(){
       #ifdef LANG_ITALIAN
         message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Invio richiesta sync al server NTP...</div>");
       #endif
+
+      //SSE CONTENT
+      message += "<div id='result'></div>";
+    
       message += F("</div></div></div></form></fieldset>");
       
       server.sendHeader(F("Content-Length"), String(message.length()));
@@ -972,6 +981,7 @@ void handleSubmit(){
 void handleJQuery() {
   char espclock[20];
   char nexttx[20];
+  char uptime[40];
   float dpdegc;
   
   getBmeValues();
@@ -996,8 +1006,10 @@ void handleJQuery() {
       dpdegc = 0.0f;     
       break;
   }
+  
   sprintf(espclock, "%02d:%02d:%02d", dateTime.hour, dateTime.minute, dateTime.second);
   sprintf(nexttx, "%02d:%02d:%02d", nextHour, nextMinTx, nextSecTx);
+  sprintf(uptime, "Days %02d : Hrs %02d : Min %02d : Secs %02d", sysUpTimeDy, sysUpTimeHr, sysUpTimeMn, sysUpTimeSec);
 
   // sends multiple data in array-form
   server.send ( 200, "text/plane", String(espclock)+","+
@@ -1007,7 +1019,8 @@ void handleJQuery() {
                                    String(dpdegc,2)+","+
                                    String(wx.heatindex,2)+","+
                                    String(nexttx)+","+
-                                   String(WiFi.RSSI())
+                                   String(WiFi.RSSI())+","+
+                                   String(uptime)
                                    );
                                    
 }
@@ -1110,27 +1123,29 @@ void handleNotFound() {
 }
 
 //*************************************************
-//* draw graphics
-//* need to be adapted & tested
+//* MINIWX STATION  - handle Server Sent Events
 //*************************************************
-/*
-void drawGraph() {
-  String out = "";
-  char temp[100];
-  out += "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"400\" height=\"150\">\n";
-  out += "<rect width=\"400\" height=\"150\" fill=\"rgb(250, 230, 210)\" stroke-width=\"1\" stroke=\"rgb(0, 0, 0)\" />\n";
-  out += "<g stroke=\"black\">\n";
-  int y = rand() % 130;
-  for (int x = 10; x < 390; x += 10) {
-    int y2 = rand() % 130;
-    sprintf(temp, "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" stroke-width=\"1\" />\n", x, 140 - y, x + 10, 140 - y2);
-    out += temp;
-    y = y2;
-  }
-  out += "</g>\n</svg>\n";
-  server.send ( 200, "image/svg+xml", out);
+void handleSSE() {
+  String message;
+
+  //Serial.println("--> void handleSSE() <--");
+
+  server.send( 200, "", "OK" );
+  server.sendHeader("Content-Type","text/event-stream;charset=UTF-8");
+  server.sendHeader("Connection","close");
+  server.sendHeader("Access-Control-Allow-Origi","*");
+  server.sendHeader("Cache-Control","no-cache");
+
+  WiFiClient client = server.client();
+  client.println("data:{prova}");
+  client.flush();
+  //client.println("Content-Type: text/event-stream;charset=UTF-8");
+  //client.println("Connection: close");  // the connection will be closed after completion of the response
+  //client.println("Access-Control-Allow-Origin: *");  // allow any connection. We don't want Arduino to host all of the website ;-)
+  //client.println("Cache-Control: no-cache"); // refresh the page automatically every 5 sec
+
 }
-*/
+
 //*************************************************
 //* MAIN PROGRAM LOOP
 //*************************************************
