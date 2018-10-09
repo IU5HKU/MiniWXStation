@@ -152,6 +152,9 @@ const char PASSWORD [] = "YourWunderPASSW";
 //**** NTP Server to use
 const char* NTP_Server = "ntp1.inrim.it"; //italian national institute for measures
 
+//**** Your time zone UTC related (floating point number)
+#define TIME_ZONE 1.0f
+
 //**** Set credential for OTA firmware upgrade <<--->>
 //*uncomment the #define if you wanna use this handy feature
 #define USE_OTA_UPGRADE
@@ -1319,7 +1322,7 @@ void ntp()
     NTPch.setRecvTimeout(RECV_TIMEOUT);
     do
     {
-      dateTime = NTPch.getNTPtime(1.0, 1);
+      dateTime = NTPch.getNTPtime(TIME_ZONE, 1);
       delay(1);
     }
     while(!dateTime.valid);
