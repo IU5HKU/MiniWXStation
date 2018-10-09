@@ -30,7 +30,6 @@ Compiled with:
 - **New css "MiniWX" style for buttons**
 - **Setting for Serial Console baudrate speed**
 - **TIME ZONE setting**
-- **TIME ZONE setting**
 - **Fixed uptime refresh in main page**
 
 **WARNING!**
