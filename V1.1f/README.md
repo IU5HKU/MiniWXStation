@@ -52,7 +52,7 @@ and is up to you let's make that this baudrate match the one you use in your ter
 ```
 ....or whatever 'USB' is your esp8266 connected to...
 
-**New Features in this release **
+**New Features in this release**
 
 Now you can check the last 4hours of sampled data in a separate webpage, with a series of fancy graphs.
 The data are sampled every 2.5 minutes and contained in a circular buffer, so don't worry, you doesn't need to reset the board or do some magics for prevent the memory to become full. After 4 hours the buffer is full and the new datum is overwritten over the first taken 4 hours before. I know, you can see graphs of your data everywhere, in aprs.fi or in your weatherunderground page, these ones are "duplicated" of something that already exists, but i've got a lot of fun in programming this feature, and i've learnt a lot so why don't release it? 
