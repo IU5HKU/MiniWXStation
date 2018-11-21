@@ -824,7 +824,7 @@ void handleSubmit(){
 
     //*NTPSYNC button *********************************************
     if (server.argName(0) == "NTPSync" && server.arg(0) == "true"){
-      message += FPSTR(HTTP_SSE_SCRIPT);
+      message += FPSTR(HTTP_SCRIPT);
       message += FPSTR(HTTP_BODY);
 
       //Display sysmsg in a new page and come backe
