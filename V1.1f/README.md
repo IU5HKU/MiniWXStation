@@ -1,4 +1,4 @@
-# MiniWX Station V1.0
+# MiniWX Station V1.1f
 ESP8266 IoT and BME280 sensor for a minimalist weather station
 
 Compiled with:
@@ -18,18 +18,18 @@ Compiled with:
 - Dynamics webpages for infos and config parameters
 - Added OTA firmware flashing
 - Added more verbose WiFi Scan routine
-- **Added webconfig page**
-- **Works with BMP280 too (only pressure and temperature obviously)**
-- **Localization (Spanish by EA1CDV - Italian by IZ5MMH)**
-- **Modifieds functions (faster) for read/write files in SPIFFS**
-- **In "Config wifi access point menu" added new entry for reset DNS over StaticIP**
-- **More verbosity at first time use**
-- **Checks for browser type and serve better formatted pages in mobile devices**
-- **Fixed "exit" button issues for non-firefox users**
-- **New css "MiniWX" style for buttons**
-- **Setting for Serial Console baudrate speed**
-- **TIME ZONE setting**
-- **Fixed uptime refresh in main page**
+- Added webconfig page
+- Works with BMP280 too (only pressure and temperature obviously)
+- Localization (Spanish by EA1CDV - Italian by IZ5MMH)
+- Modifieds functions (faster) for read/write files in SPIFFS
+- In "Config wifi access point menu" added new entry for reset DNS over StaticIP
+- More verbosity at first time use
+- Checks for browser type and serve better formatted pages in mobile devices
+- Fixed "exit" button issues for non-firefox users
+- New css "MiniWX" style for buttons
+- Setting for Serial Console baudrate speed
+- TIME ZONE setting
+- Fixed uptime refresh in main page
 - **Interactive Graphs of the last sampled data (4 hours)**
 - **Link to APRS-Direct to see your station in map (courtesy of SM4WJF Per Qvarforth)**
 
