@@ -145,7 +145,7 @@ const char* OTA_passw = "esp8266";
 //* change to reflect your net configuration
 String static_ip =      "192.168.0.200";    // STATIC IP
 String static_gateway = "192.168.0.1";      // GATEWAY
-String static_mask =    "255.255.225.0";    // SUBNET MASK
+String static_mask =    "255.255.255.0";    // SUBNET MASK
 String static_dns1 =    "8.8.8.8";          // DNS1
 String static_dns2 =    "4.4.2.2";          // DNS2
 IPAddress ip,gateway,mask,dns1,dns2;
