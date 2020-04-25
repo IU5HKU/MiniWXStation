@@ -6,7 +6,7 @@
 //* WebPages in FLASH and smart dynamics pages from:
 //* http://blog.tldnr.org/2017/10/25/how-to-deliver-larger-web-pages-with-an-esp8266/
 //***********************************************************
-const char PAGE_Main_EN[] PROGMEM = "<!DOCTYPE html>\
+const char PAGE_Main_CAT[] PROGMEM = "<!DOCTYPE html>\
 <html>\
 <head>\
 <meta lang='en' http-equiv='Content-Type' content='text/html' charset='UTF-8'>\
