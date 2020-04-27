@@ -2,7 +2,7 @@
 #define CAT_LOCALE_H
 //***********************************************************
 //* MINIWX STATION  - MAIN INFO PAGE
-//* improved readability on portable devices by EA1CDV Antonio
+//* improved readability on portable devices by EA1CDV Antonio-26/04/2020
 //* WebPages in FLASH and smart dynamics pages from:
 //* http://blog.tldnr.org/2017/10/25/how-to-deliver-larger-web-pages-with-an-esp8266/
 //***********************************************************
@@ -10,7 +10,7 @@ const char PAGE_Main_CAT[] PROGMEM = "<!DOCTYPE html>\
 <html>\
 <head>\
 <meta lang='en' http-equiv='Content-Type' content='text/html' charset='UTF-8'>\
-<title>MiniWX Weather Station</title>\
+<title>Estació Meteorològica MiniWX</title>\
 <style>\
   body { background-color: #000000; font-family: Arial, Helvetica, Sans-Serif; Color: #13F70C; font-size: 32px;}\
   table { display: table; border: 1px solid green; border-collapse: separate; border-spacing: 1px; border-color: green;}\
@@ -101,7 +101,7 @@ function getData() {\
 </head>\
   <body>\
     <hr>\
-    <h3 style='text-shadow: 2px 1px grey;'>{{callsign}} Estació Meteorològica - <a id='clock' class='tabheader' style='padding-right:10px'>{{time}}</a></h3>\
+    <h3 style='text-shadow: 2px 1px grey;'>Estació Meteorològica {{callsign}} - <a id='clock' class='tabheader' style='padding-right:10px'>{{time}}</a></h3>\
     <h4>\
     <fieldset style='width:{{fieldsize0}}'>\
     <legend style='text-shadow: 2px 1px grey;'> {{ChipModel}} </legend>\
@@ -145,12 +145,12 @@ function getData() {\
       <div class='divTable'>\
           <div class='divRow'>\
             <div class='divColumn' style='width:{{fieldsize5}}'>\
-              <div class='tabheader'>Temps en marxa</div>\
-              <div class='tabheader'>Propeta transmissió</div>\
-              <div class='tabheader'>Nom de la xarxa - SSID</div>\
+              <div class='tabheader'>Temps marxa</div>\
+              <div class='tabheader'>Propera trans.</div>\
+              <div class='tabheader'>Xarxa</div>\
               <div class='tabheader'>Senyal</div>\
               <div class='tabheader'>BSSID</div>\
-              <div class='tabheader'>Direcció IP</div>\
+              <div class='tabheader'>Adreça IP</div>\
               <div class='tabheader'>Posició</div>\
             </div>\
             <div class='divColumn' style='width:{{fieldsize6}}'>\
@@ -197,7 +197,7 @@ const char PAGE_MiniWXSettings_CAT[] PROGMEM = "<!DOCTYPE html>\
 <html>\
 <head>\
 <meta  lang='en' http-equiv='Content-Type' content='text/html; charset=UTF-8'>\
-<title>MiniWXSettings</title>\
+<title>Ajustos</title>\
 </head>\
 <style>\
   body { background-color: #000000; font-family: Arial, Helvetica, Sans-Serif; Color: #13F70C; font-size: 16px; }\
@@ -248,7 +248,7 @@ const char PAGE_MiniWXSettings_CAT[] PROGMEM = "<!DOCTYPE html>\
 <body>\
   <div id='form_container'>\
   <hr>\
-    <h1><a style='text-shadow: 2px 1px grey;'>MiniWX Station&#8482; Settings</a></h1>\
+    <h1><a style='text-shadow: 2px 1px grey;'>Ajustos Estació MiniWX</a></h1>\
     <form style='width:58%' action='/submit' method='POST'>\
         <div class='divTable'>\
           <div class='divRow'>\
@@ -257,11 +257,11 @@ const char PAGE_MiniWXSettings_CAT[] PROGMEM = "<!DOCTYPE html>\
               <legend><h2> Indicatiu i posició </h2></legend>\
                 <label>Indicatiu</label>\
                 <div><input id='callsign' name='callsign' type='text' maxlength='9' size='9' value='{{callsign}}'/></div>\
-                <label>Longitut (exemple 01023.16E)</label>\
+                <label>Longitud (ex. 01023.16E)</label>\
                 <input id='longitude' name='longitude' type='text' maxlength='9' size='9' value='{{lon}}'/>\
-                <label> Latitut (exemple 4303.01N)</label>\
+                <label> Latitud (ex. 4303.01N)</label>\
                 <input id='latitude' name='latitude' type='text' maxlength='8' size='8' value='{{lat}}'/>\
-                <label> Altitut (metres)</label>\
+                <label> Altitud (metres)</label>\
                 <input id='altitude' name='altitude' type='text' maxlength='4' size='4' value='{{alt}}'/>\
               </fieldset>\
             </div>\
@@ -271,34 +271,34 @@ const char PAGE_MiniWXSettings_CAT[] PROGMEM = "<!DOCTYPE html>\
           <div class='divRow'>\
             <div class='divColumn'>\
               <fieldset>\
-              <legend><h2>APRS Settings</h2></legend>\
-                <label>Server Address</label>\
+              <legend><h2>Ajustos APRS</h2></legend>\
+                <label>Adreça servidor</label>\
                 <div><input id='aprsserveraddr' name='aprsserveraddr' type='text' maxlength='255' size='30' value='{{aprsserveraddr}}'/></div>\
-                <label>Password</label>\
+                <label>Contrasenya</label>\
                 <div><input id='aprspassw' name='aprspassw' type='text' maxlength='5' size='5' value='{{aprspassw}}'/></div>\
-                <label>Server Port</label>\
+                <label>Port</label>\
                 <div><input id='aprsserverport' name='aprsserverport' type='text' maxlength='5' size='5' value='{{aprsserverport}}'/></div>\
-                <label>Transmission Delay (min)</label>\
+                <label>Interval transmissió (min)</label>\
                 <div><input id='txdelay' name='txdelay' type='text' maxlength='2' size='2' value='{{txdelay}}'/></div>\
-                <label>Station Packets Comment</label>\
+                <label>Comentaris estació</label>\
                 <div><input id='aprscmnt1' name='aprscmnt1' type='text' maxlength='43' size='43' value='{{aprscmnt1}}'/></div>\
-                <label>Telemetry Packets Comment</label>\
+                <label>Comentaris telemetría</label>\
                 <div><input id='aprscmnt2' name='aprscmnt2' type='text' maxlength='23' size='23' value='{{aprscmnt2}}'/></div>\
               </fieldset>\
             </div>\
             <div class='divColumn'>\
               <fieldset>\
-              <legend><h2>STATIC IP Definitions</h2></legend>\
+              <legend><h2>Ajustos IP estàtica</h2></legend>\
                 <span>\
                   <input id='usestatic' name='usestatic' type='hidden' value='false'/>\
                   <input id='usestatic' name='usestatic' type='checkbox' value='true' {{usestaticip}} />\
-                  <label>USE STATIC IP (reboot needed)</label>\
+                  <label>Utilitzar IP estàtica (cal reiniciar)</label>\
                 </span><p></p>\
-                <label>IP</label>\
+                <label>Adreça IP</label>\
                 <div><input id='staticip' name='staticip' type='text' maxlength='15' size='15' value='{{staticip}}'/></div>\
-                <label>Gateway</label>\
+                <label>Porta enllaç</label>\
                 <div><input id='staticgateway' name='staticgateway' type='text' maxlength='15' size='15' value='{{staticgateway}}'/></div>\
-                <label>Subnet Mask</label>\
+                <label>Màscara de xarxa</label>\
                 <div><input id='staticmask' name='staticmask' type='text' maxlength='15' size='15' value='{{staticmask}}'/></div>\
                 <label>DNS1</label>\
                 <div><input id='staticdns1' name='staticdns1' type='text' maxlength='15' size='15' value='{{staticdns1}}'/></div>\
@@ -311,27 +311,27 @@ const char PAGE_MiniWXSettings_CAT[] PROGMEM = "<!DOCTYPE html>\
           <div class='divRow'>\
             <div class='divColumn'>\
               <fieldset>\
-              <legend><h2>WUNDER Settings</h2></legend>\
+              <legend><h2>Ajustos WUNDER</h2></legend>\
                 <div>\
                   <span>\
                     <input id='usewunder' name='usewunder' type='hidden' value='false'/>\
                     <input id='usewunder' name='usewunder' type='checkbox' value='true' {{usewunder}} />\
-                    <label>USE WUNDER</label>\
+                    <label>Utilitzar WUNDER</label>\
                   </span>\
                 </div>\
                 <p></p>\
-                <label>Wunder ID</label>\
+                <label>ID Wunder</label>\
                 <div><input id='wunderid' name='wunderid' type='text' maxlength='255' value='{{wunderid}}'/></div>\
-                <label>Wunder Password</label>\
+                <label>Contrasenya Wunder</label>\
                 <div><input id='wunderpassw' name='wunderpassw' type='text' maxlength='255' value='{{wunderpassw}}'/></div>\
               </fieldset>\
             </div>\
             <div class='divColumn'>\
               <fieldset>\
-              <legend><h2>NTP Settings</h2></legend>\
-                <label>Server</label>\
+              <legend><h2>Ajustos NTP</h2></legend>\
+                <label>Servidor</label>\
                 <div><input id='ntpserver' name='ntpserver'  type='text' maxlength='255' value='{{ntpserver}}'/></div>\
-                <label>NTPSync Delay (hours)</label>\
+                <label>Retard NTPSync (hores)</label>\
                 <div><input id='ntpsyncdelay' name='ntpsyncdelay'  type='text' maxlength='2' size='2' value='{{ntpsyncdelay}}'/></div>\
               </fieldset>\
             </div>\
@@ -346,7 +346,6 @@ const char PAGE_MiniWXSettings_CAT[] PROGMEM = "<!DOCTYPE html>\
             </div>\
           </div>\
         </div>\
-        <div id='footer' style='padding-left:18px'><p>MiniWX Station&#8482; ({{SOFT_VER}}) - click <a href='https://github.com/IU5HKU/MiniWXStation'>here</a> and check for latest version</p></div>\
     </form>\
   </div>\
 </body>\

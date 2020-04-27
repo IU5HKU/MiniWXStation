@@ -1,7 +1,7 @@
 #ifndef SYSWEBPAGES_H
 #define SYSWEBPAGES_H
 //*************************************************
-//* MINIWX STATION  - SYSTEM WEBPAGES HTML        *
+//* MINIWX STATION  - SYSTEM WEBPAGES HTML  - demo      *
 //*************************************************
 
 //*************************************************
@@ -40,7 +40,7 @@ const char HTTP_404_BODY[] PROGMEM = "<fieldset style='width:49%;'><legend style
 //*************************************************
 //* HTML ELEMENTS                                 *
 //*************************************************
-const char HTTP_HEAD[] PROGMEM = "<!DOCTYPE html><html><head>\
+const char HTTP_HEAD_HTML[] PROGMEM = "<!DOCTYPE html><html><head>\
                                     <meta lang='{{language}}' http-equiv='Content-Type' content='text/html' charset='UTF-8'>";
 const char HTTP_META_REFRESH[] PROGMEM = "<meta http-equiv='refresh' content='5'>";
 const char HTTP_SCRIPT[] PROGMEM = "<script>\
