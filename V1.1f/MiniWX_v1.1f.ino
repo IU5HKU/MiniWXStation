@@ -87,10 +87,10 @@ const char SOFT_VER[] = "v1.1f";
 #define SER_MON_BAUDRATE 74880
 
 //**** How the station is named in your NET
-const char* WiFi_hostname = "EA3BIN-13";
+const char* WiFi_hostname = "Callsign";
 
 //**** APRS PASSWORD (use -1 if you are using a CWOP callsign)
-const char* AprsPassw = "19631";
+const char* AprsPassw = "XXXXX";
 
 //**** APRS COMMENT, you can set this string as you want (max 43 chars)
 const char* APRS_CMNT = "Estació Meteorològica MiniWX .:.Vacarisses.:.";
@@ -106,8 +106,8 @@ const char* APRS_PRJ = "Projecte MiniWX";
 //**** uncomment this for weatherunderground upload,remember to set ID and PASSWORD of your account
 #define USE_WUNDER
 //* change ID and PASSWORD with yours
-const char ID [] = "IVACAR2";                      
-const char PASSWORD [] = "adNGEPHF";
+const char ID [] = "XXXX";                      
+const char PASSWORD [] = "XXXXX";
 
 //**** show BME280 registers in Serial Output;
 //#define DISPLAY_BME_REGS
@@ -139,7 +139,7 @@ const char* NTP_Server = "ntp1.inrim.it"; //italian national institute for measu
 #ifdef USE_OTA_UPGRADE
 const char* OTA_hostname = "MINIWX";
 //PLEASE CHANGE THIS PASSWORD WITH YOUR OWN FOR SECURITY REASON
-const char* OTA_passw = "Bluemy71";  
+const char* OTA_passw = "XXXXX";  
 #endif
 
 //**** use static ip instead of dns one
