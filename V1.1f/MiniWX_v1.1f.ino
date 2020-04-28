@@ -93,10 +93,10 @@ const char* WiFi_hostname = "Callsign";
 const char* AprsPassw = "XXXXX";
 
 //**** APRS COMMENT, you can set this string as you want (max 43 chars)
-const char* APRS_CMNT = "Estació Meteorològica MiniWX .:.Vacarisses.:.";
+const char* APRS_CMNT = "XXXXXXXXXXXXXXXXX XXX XXXX ";
 
 //**** APRS_PRJ, Telemetry Project Title (max 23 chars)
-const char* APRS_PRJ = "Projecte MiniWX";
+const char* APRS_PRJ = "XXXX XXXXX XXX";
 
 //**** Comment this for ESP.getVcc() value in telemetry
 //**** getVcc function (system_get_vdd33) is only available when A0 pin17 is suspended (floating), 
