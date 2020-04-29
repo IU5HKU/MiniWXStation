@@ -1,7 +1,7 @@
 #ifndef SYSWEBPAGES_H
 #define SYSWEBPAGES_H
 //*************************************************
-//* MINIWX STATION  - SYSTEM WEBPAGES HTML  - demo      *
+//* MINIWX STATION  - SYSTEM WEBPAGES HTML  -     *
 //*************************************************
 
 //*************************************************
