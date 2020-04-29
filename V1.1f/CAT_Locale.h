@@ -2,8 +2,8 @@
 #define CAT_LOCALE_H
 //***********************************************************
 //* MINIWX STATION  - MAIN INFO PAGE
-//* improved readability on portable devices by EA1CDV Antonio-29/04/2020
-//* Translation into Catalan language by EA3BIN David
+//* improved readability on portable devices by EA1CDV Antonio
+//* Translation into Català language by EA3BIN David
 //* WebPages in FLASH and smart dynamics pages from:
 //* http://blog.tldnr.org/2017/10/25/how-to-deliver-larger-web-pages-with-an-esp8266/
 //***********************************************************
