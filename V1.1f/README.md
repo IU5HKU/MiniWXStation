@@ -32,6 +32,7 @@ Compiled with:
 - Fixed uptime refresh in main page
 - **Interactive Graphs of the last sampled data (4 hours)**
 - **Link to APRS-Direct to see your station in map (courtesy of SM4WJF Per Qvarforth)**
+- Translation into Catalan by EA3BIN
 
 **WARNING!**
 
