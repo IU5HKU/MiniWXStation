@@ -29,8 +29,8 @@ SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1
 - Fixed uptime refresh in main page
 - Interactive Graphs of the last sampled data (4 hours)
 - Link to APRS-Direct to see your station in map (courtesy of SM4WJF Per Qvarforth)
-- Translated into Catalan EA3BIN
-- mBa to hPa in Catalan language 29/04/2020
+- Translated into Català EA3BIN
+- mBa to hPa in Català language 29/04/2020
   
 ***************************************************************
   Marco Campinoti - IU5HKU (mrcodemail@gmail.com)
