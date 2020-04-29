@@ -29,6 +29,8 @@ SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1
 - Fixed uptime refresh in main page
 - Interactive Graphs of the last sampled data (4 hours)
 - Link to APRS-Direct to see your station in map (courtesy of SM4WJF Per Qvarforth)
+- Translated into Catalan EA3BIN
+- mBa to hPa in Catalan language 29/04/2020
   
 ***************************************************************
   Marco Campinoti - IU5HKU (mrcodemail@gmail.com)
@@ -47,10 +49,10 @@ SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1
 #include <stdlib.h>
 #include "FS.h"
 
-//#include "EN_Locale.h"
+#include "EN_Locale.h"
 //#include "ES_Locale.h"
 //#include "IT_Locale.h"
-#include "CAT_Locale.h"
+//#include "CAT_Locale.h"
 #include "SystemWebpages.h"
 
 #include <SparkFunBME280.h>
@@ -77,26 +79,26 @@ const char SOFT_VER[] = "v1.1f";
 //**************************************
 
 //**** CHOOSE WEBPAGES LANGUAGE
-//#define LANG_ENGLISH
+#define LANG_ENGLISH
 //#define LANG_SPANISH
 //#define LANG_ITALIAN
-#define LANG_CATALAN
+//#define LANG_CATALAN
 
 //**** CHOOSE SERIAL MONITOR BAUD RATE
 //#define SER_MON_BAUDRATE 115200
 #define SER_MON_BAUDRATE 74880
 
 //**** How the station is named in your NET
-const char* WiFi_hostname = "Callsign";
+const char* WiFi_hostname = "MiniWX";
 
 //**** APRS PASSWORD (use -1 if you are using a CWOP callsign)
-const char* AprsPassw = "XXXXX";
+const char* AprsPassw = "YouAPRSnumericalPASS";
 
 //**** APRS COMMENT, you can set this string as you want (max 43 chars)
-const char* APRS_CMNT = "XXXXXXXXXXXXXXXXX XXX XXXX ";
+const char* APRS_CMNT = "MiniWX Station YourHomeTown";
 
 //**** APRS_PRJ, Telemetry Project Title (max 23 chars)
-const char* APRS_PRJ = "XXXX XXXXX XXX";
+const char* APRS_PRJ = "MinWx Project";
 
 //**** Comment this for ESP.getVcc() value in telemetry
 //**** getVcc function (system_get_vdd33) is only available when A0 pin17 is suspended (floating), 
@@ -106,8 +108,8 @@ const char* APRS_PRJ = "XXXX XXXXX XXX";
 //**** uncomment this for weatherunderground upload,remember to set ID and PASSWORD of your account
 #define USE_WUNDER
 //* change ID and PASSWORD with yours
-const char ID [] = "XXXX";                      
-const char PASSWORD [] = "XXXXX";
+const char ID [] = "YourWunderID";                      
+const char PASSWORD [] = "YourWunderpasswd";
 
 //**** show BME280 registers in Serial Output;
 //#define DISPLAY_BME_REGS
@@ -139,7 +141,7 @@ const char* NTP_Server = "ntp1.inrim.it"; //italian national institute for measu
 #ifdef USE_OTA_UPGRADE
 const char* OTA_hostname = "MINIWX";
 //PLEASE CHANGE THIS PASSWORD WITH YOUR OWN FOR SECURITY REASON
-const char* OTA_passw = "XXXXX";  
+const char* OTA_passw = "esp8266";  
 #endif
 
 //**** use static ip instead of dns one
@@ -1247,7 +1249,7 @@ void handleGraphs() {
 #endif
 #ifdef LANG_CATALAN
   message.replace(F("{{svg_temp}}"), "Temperatura °C");
-  message.replace(F("{{svg_pres}}"), "Presió (hPa)");
+  message.replace(F("{{svg_pres}}"), "Pressió (hPa)");
   message.replace(F("{{svg_rhum}}"), "Humitat relativa (%)");
   message.replace(F("{{svg_rssi}}"), "rssi (dbm)");
 #endif
@@ -1264,7 +1266,7 @@ void handleGraphs() {
   message.replace(F("{{exit_btn}}"), "Esci");
 #endif
 #ifdef LANG_CATALAN
-  message.replace(F("{{exit_btn}}"), "Sortida");
+  message.replace(F("{{exit_btn}}"), "Sortir");
 #endif
 
   // makes the data arrays for the svg graphs script
