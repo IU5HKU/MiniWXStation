@@ -2,9 +2,10 @@
 #define CAT_LOCALE_H
 //***********************************************************
 //* MINIWX STATION  - MAIN INFO PAGE
-//* improved readability on portable devices by EA1CDV Antonio-26/04/2020
+//* improved readability on portable devices by EA1CDV Antonio
 //* WebPages in FLASH and smart dynamics pages from:
 //* http://blog.tldnr.org/2017/10/25/how-to-deliver-larger-web-pages-with-an-esp8266/
+//* Translated into Catalan by EA3BIN
 //***********************************************************
 const char PAGE_Main_CAT[] PROGMEM = "<!DOCTYPE html>\
 <html>\
