@@ -1,7 +1,7 @@
 /***************************************************************
 Thanks to F4GOH Antoine (f4goh@orange.fr) for his first release
 compiler options:
-ArduinoIDE 1.8.7 
+ArduinoIDE 1.8.12 
 SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1-13-g163bb82)/BearSSL:6d1cefc
 - upload to weather underground
 - added aprs telemetry packets
@@ -29,6 +29,8 @@ SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1
 - Fixed uptime refresh in main page
 - Interactive Graphs of the last sampled data (4 hours)
 - Link to APRS-Direct to see your station in map (courtesy of SM4WJF Per Qvarforth)
+- Translated into Català EA3BIN
+- mBa to hPa in Català language 29/04/2020
   
 ***************************************************************
   Marco Campinoti - IU5HKU (mrcodemail@gmail.com)
@@ -48,8 +50,9 @@ SDK:2.2.1(cfd48f3)/Core:2.4.2/lwIP:2.0.3(STABLE-2_0_3_RELEASE/glue:arduino-2.4.1
 #include "FS.h"
 
 #include "EN_Locale.h"
-#include "ES_Locale.h"
-#include "IT_Locale.h"
+//#include "ES_Locale.h"
+//#include "IT_Locale.h"
+//#include "CAT_Locale.h"
 #include "SystemWebpages.h"
 
 #include <SparkFunBME280.h>
@@ -79,6 +82,7 @@ const char SOFT_VER[] = "v1.1f";
 #define LANG_ENGLISH
 //#define LANG_SPANISH
 //#define LANG_ITALIAN
+//#define LANG_CATALAN
 
 //**** CHOOSE SERIAL MONITOR BAUD RATE
 //#define SER_MON_BAUDRATE 115200
@@ -88,13 +92,13 @@ const char SOFT_VER[] = "v1.1f";
 const char* WiFi_hostname = "MiniWX";
 
 //**** APRS PASSWORD (use -1 if you are using a CWOP callsign)
-const char* AprsPassw = "YourAprsNumericalPASS";
+const char* AprsPassw = "YouAPRSnumericalPASS";
 
 //**** APRS COMMENT, you can set this string as you want (max 43 chars)
-const char* APRS_CMNT = "MiniWX Station .:.YourHomeTown.:.";
+const char* APRS_CMNT = "MiniWX Station YourHomeTown";
 
 //**** APRS_PRJ, Telemetry Project Title (max 23 chars)
-const char* APRS_PRJ = "MiniWX Project";
+const char* APRS_PRJ = "MinWx Project";
 
 //**** Comment this for ESP.getVcc() value in telemetry
 //**** getVcc function (system_get_vdd33) is only available when A0 pin17 is suspended (floating), 
@@ -102,10 +106,10 @@ const char* APRS_PRJ = "MiniWX Project";
 //#define HAVE_BATTERY
 
 //**** uncomment this for weatherunderground upload,remember to set ID and PASSWORD of your account
-//#define USE_WUNDER
+#define USE_WUNDER
 //* change ID and PASSWORD with yours
 const char ID [] = "YourWunderID";                      
-const char PASSWORD [] = "YourWunderPASSW";
+const char PASSWORD [] = "YourWunderpasswd";
 
 //**** show BME280 registers in Serial Output;
 //#define DISPLAY_BME_REGS
@@ -141,10 +145,10 @@ const char* OTA_passw = "esp8266";
 #endif
 
 //**** use static ip instead of dns one
-//#define USE_STATIC_IP
+#define USE_STATIC_IP
 //* change to reflect your net configuration
-String static_ip =      "192.168.0.200";    // STATIC IP
-String static_gateway = "192.168.0.1";      // GATEWAY
+String static_ip =      "192.168.100.200";    // STATIC IP
+String static_gateway = "192.168.100.1";      // GATEWAY
 String static_mask =    "255.255.255.0";    // SUBNET MASK
 String static_dns1 =    "8.8.8.8";          // DNS1
 String static_dns2 =    "4.4.2.2";          // DNS2
@@ -694,6 +698,9 @@ void handleRoot() {
 #ifdef LANG_ITALIAN
   String page = FPSTR(PAGE_Main_IT);
 #endif
+#ifdef LANG_CATALAN
+  String page = FPSTR(PAGE_Main_CAT);
+#endif
   
   char buffer[20];
   float dpdegc;
@@ -810,6 +817,9 @@ void handleSubmit(){
       #ifdef LANG_ITALIAN
         message.replace(F("{{language}}"), "it");
       #endif
+      #ifdef LANG_CATALAN
+        message.replace(F("{{language}}"), "cat");
+      #endif
       
       //Display sysmsg in a new page and come back
       message += F("<fieldset style='width:49%'><legend style='text-shadow: 2px 1px grey; font-size: 18px;'>MiniWX&#8482; system message </legend>");
@@ -822,6 +832,9 @@ void handleSubmit(){
       #endif
       #ifdef LANG_ITALIAN
         message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Invio dati al server APRS...</div>");
+      #endif
+       #ifdef LANG_CATALAN
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Enviant dades al servidor APRS...</div>");
       #endif
       
       message += F("</div></div></div></form></fieldset>");
@@ -852,6 +865,9 @@ void handleSubmit(){
       #ifdef LANG_ITALIAN
         message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Invio dati al server WUNDER...</div>");
       #endif
+      #ifdef LANG_CATALAN
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Enviant dades al servidor WUNDER...</div>");
+      #endif
       
       message += F("</div></div></div></form></fieldset>");
       message += FPSTR(HTTP_FOOT);
@@ -880,6 +896,9 @@ void handleSubmit(){
       #endif
       #ifdef LANG_ITALIAN
         message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Invio richiesta sync al server NTP...</div>");
+      #endif
+      #ifdef LANG_CATALAN
+        message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Enviant solicitut de sincronisme al servidor NTP...</div>");
       #endif
       
       message += F("</div></div></div></form></fieldset>");
@@ -1087,6 +1106,9 @@ void handleSettings() {
 #ifdef LANG_ITALIAN
   String page = FPSTR(PAGE_MiniWXSettings_IT);
 #endif
+#ifdef LANG_CATALAN
+  String page = FPSTR(PAGE_MiniWXSettings_CAT);
+#endif
 
   //Load fields with previous values
   readSettingsFile();
@@ -1153,6 +1175,9 @@ void handleNotFound() {
 #ifdef LANG_ITALIAN
   message.replace(F("{{language}}"), "it");
 #endif
+#ifdef LANG_CATALAN
+  message.replace(F("{{language}}"), "cat");
+#endif
   message += FPSTR(HTTP_404_STYLE);
   message += F("</head>");
   message += FPSTR(HTTP_BODY);
@@ -1197,6 +1222,9 @@ void handleGraphs() {
 #ifdef LANG_ITALIAN
   message.replace(F("{{language}}"), "it");
 #endif
+#ifdef LANG_CATALAN
+  message.replace(F("{{language}}"), "cat");
+#endif
   message += FPSTR(HTTP_STYLE);
   message += FPSTR(HTTP_DIV_STYLE);
   message += FPSTR(HTTP_BUTN_STYLE);
@@ -1219,6 +1247,12 @@ void handleGraphs() {
   message.replace(F("{{svg_rhum}}"), "Umidità relativa (%)");
   message.replace(F("{{svg_rssi}}"), "rssi (dbm)");
 #endif
+#ifdef LANG_CATALAN
+  message.replace(F("{{svg_temp}}"), "Temperatura °C");
+  message.replace(F("{{svg_pres}}"), "Pressió (hPa)");
+  message.replace(F("{{svg_rhum}}"), "Humitat relativa (%)");
+  message.replace(F("{{svg_rssi}}"), "rssi (dbm)");
+#endif
   message.replace(F("{{svg_grid}}"), FPSTR(HTTP_SVG_GRID));
 
   message += FPSTR(HTTP_EXIT_BUTN);
@@ -1230,6 +1264,9 @@ void handleGraphs() {
 #endif
 #ifdef LANG_ITALIAN
   message.replace(F("{{exit_btn}}"), "Esci");
+#endif
+#ifdef LANG_CATALAN
+  message.replace(F("{{exit_btn}}"), "Sortir");
 #endif
 
   // makes the data arrays for the svg graphs script
