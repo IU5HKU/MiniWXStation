@@ -30,9 +30,10 @@ Compiled with:
 - Setting for Serial Console baudrate speed
 - TIME ZONE setting
 - Fixed uptime refresh in main page
-- **Interactive Graphs of the last sampled data (4 hours)**
+- Interactive Graphs of the last sampled data (4 hours)
 - **Link to APRS-Direct to see your station in map (courtesy of SM4WJF Per Qvarforth)**
 - **New Locale in Catalan Language (thanks to EA3BIN David Torres)**
+- **New Locale in Turkish Language (thanks to TA5ITK Kaya Taniel)**
 
 **WARNING!**
 
