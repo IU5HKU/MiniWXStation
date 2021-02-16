@@ -31,8 +31,7 @@
   - Link to APRS-Direct to see your station in map (courtesy of SM4WJF Per Qvarforth)
   - Translated into Català by EA3BIN
   - mBa to hPa in Català language 29/04/2020
-  - Translated into Turkish by TA5IKT
-  - Fixed InitBME() with proper call to beginI2C() method by TA5IKT
+  - Translated into Turkish by TA5IKT 15/02/2021
 
 ***************************************************************
   Marco Campinoti - IU5HKU (mrcodemail@gmail.com)
@@ -1755,11 +1754,6 @@ void initBme()
   //  0, skipped
   //  1 through 5, oversampling *1, *2, *4, *8, *16 respectively
   mySensor.settings.humidOverSample = 1;
-
-  // added by Kaya (TA5IKT)
-  Wire.begin();
-  mySensor.beginI2C();
-  // en of added by Kaya (TA5IKT)
 
   Serial.println(F("Program Started"));
   Serial.print(F("Starting BMP/BME280... result of .begin(): 0x"));
