@@ -29,8 +29,10 @@
   - Fixed uptime refresh in main page
   - Interactive Graphs of the last sampled data (4 hours)
   - Link to APRS-Direct to see your station in map (courtesy of SM4WJF Per Qvarforth)
-  - Translated into Català EA3BIN
+  - Translated into Català by EA3BIN
   - mBa to hPa in Català language 29/04/2020
+  - Translated into Turkish by TA5IKT
+  - Fixed InitBME() with proper call to beginI2C() method by TA5IKT
 
 ***************************************************************
   Marco Campinoti - IU5HKU (mrcodemail@gmail.com)
@@ -50,11 +52,11 @@
 #include "FS.h"
 
 
-//#include "EN_Locale.h"
+#include "EN_Locale.h"
 //#include "ES_Locale.h"
 //#include "IT_Locale.h"
 //#include "CAT_Locale.h"
-#include "TR_Locale.h"
+//#include "TR_Locale.h"
 #include "SystemWebpages.h"
 
 #include <SparkFunBME280.h>
@@ -81,11 +83,11 @@ const char SOFT_VER[] = "v1.1f";
 //**************************************
 
 //**** CHOOSE WEBPAGES LANGUAGE
-//#define LANG_ENGLISH
+#define LANG_ENGLISH
 //#define LANG_SPANISH
 //#define LANG_ITALIAN
 //#define LANG_CATALAN
-#define LANG_TURKISH
+//#define LANG_TURKISH
 
 //**** CHOOSE SERIAL MONITOR BAUD RATE
 //#define SER_MON_BAUDRATE 115200
