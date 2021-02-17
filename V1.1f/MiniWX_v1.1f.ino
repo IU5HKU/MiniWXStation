@@ -93,13 +93,13 @@ const char SOFT_VER[] = "v1.1f";
 #define SER_MON_BAUDRATE 74880
 
 //**** How the station is named in your NET
-const char* WiFi_hostname = "Tesla";
+const char* WiFi_hostname = "MiniWX";
 
 //**** APRS PASSWORD (use -1 if you are using a CWOP callsign)
-const char* AprsPassw = "22974";
+const char* AprsPassw = "YouAPRSnumericalPASS";
 
 //**** APRS COMMENT, you can set this string as you want (max 43 chars)
-const char* APRS_CMNT = "MiniWX Station Manisa";
+const char* APRS_CMNT = "MiniWX Station YourHomeTown";
 
 //**** APRS_PRJ, Telemetry Project Title (max 23 chars)
 const char* APRS_PRJ = "MinWx Project";
@@ -112,8 +112,8 @@ const char* APRS_PRJ = "MinWx Project";
 //**** uncomment this for weatherunderground upload,remember to set ID and PASSWORD of your account
 #define USE_WUNDER
 //* change ID and PASSWORD with yours
-const char ID [] = "IMANIS8";
-const char PASSWORD [] = "jKDNkKKg";
+const char ID [] = "YourWunderID";                      
+const char PASSWORD [] = "YourWunderpasswd";
 
 //**** show BME280 registers in Serial Output;
 //#define DISPLAY_BME_REGS
