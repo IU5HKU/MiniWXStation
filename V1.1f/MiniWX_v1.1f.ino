@@ -788,7 +788,7 @@ void handleSubmit() {
 
   if (server.args() > 0 ) {
     //** common elements of the various pages
-    message += FPSTR(HTTP_HEAD);
+    message += FPSTR(HTTP_HEAD_HTML);
     message += FPSTR(HTTP_STYLE);
     message.replace(F("{{callsign}}"), station.callsign);
 
@@ -1184,7 +1184,7 @@ void handleSettings() {
 void handleNotFound() {
   String message;
 
-  message += FPSTR(HTTP_HEAD);
+  message += FPSTR(HTTP_HEAD_HTML);
 #ifdef LANG_ENGLISH
   message.replace(F("{{language}}"), "en");
 #endif
