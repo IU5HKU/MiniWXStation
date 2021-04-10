@@ -31,10 +31,10 @@ Compiled with:
 - TIME ZONE setting
 - Fixed uptime refresh in main page
 - Interactive Graphs of the last sampled data (4 hours)
-- **Link to APRS-Direct to see your station in map (courtesy of SM4WJF Per Qvarforth)**
+- Link to APRS-Direct to see your station in map (courtesy of SM4WJF Per Qvarforth)
 - **New Locale in Catalan Language (thanks to EA3BIN David Torres)**
 - **New Locale in Turkish Language (thanks to TA5ITK Kaya Taniel)**
-
+- **Send2APRS() routine now uses a smarter and less invasive method to send packets (thanks to IW1CGW Giovanni)**
 **WARNING!**
 
 ![SerialMonitorSpeed_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/SerialMonitorSpeed.png)
