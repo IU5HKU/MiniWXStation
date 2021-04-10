@@ -179,6 +179,8 @@ Ticker TkNtpSync;
 bool bDataAcquisitionFlag;
 Ticker TkDataAcquisition;
 
+unsigned char cnt=-1; // the progressive counter for telemetry packet ID
+
 //for the CheckSensor()
 #define MOD_BMP280  0x58
 #define MOD_BME280  0x60
@@ -1549,7 +1551,6 @@ void Send2APRS()
 {
   char login[60];
   char sentence[150];
-  unsigned char cnt=-1; // the progressive counter for telemetry packet ID
   unsigned int len;          // for padding callsign
 
   //MANDATORY: CWOP doesn't need password, but need to register to the CWOP program, and obtain a valid callsign
