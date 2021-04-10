@@ -32,6 +32,7 @@
   - Translated into Català by EA3BIN
   - mBa to hPa in Català language 29/04/2020
   - Translated into Turkish by TA5IKT 15/02/2021
+  - Send2APRS() packets now are sent using a smarter way, who lead to a correct trafic to the servers, courtesy of IW1CGW Giovanni
 
 ***************************************************************
   Marco Campinoti - IU5HKU (mrcodemail@gmail.com)
@@ -1548,8 +1549,8 @@ void Send2APRS()
 {
   char login[60];
   char sentence[150];
-  unsigned int rndnum = random(1000); // random number here (telemetry packet ID)
-  unsigned int len;     // for padding callsign
+  unsigned char cnt=-1; // the progressive counter for telemetry packet ID
+  unsigned int len;          // for padding callsign
 
   //MANDATORY: CWOP doesn't need password, but need to register to the CWOP program, and obtain a valid callsign
   //sprintf(login, "user %s pass -1 vers VERSION ESP8266", station.callsign);
@@ -1597,14 +1598,21 @@ void Send2APRS()
   // WORKAROUND: i'm using an hack, WX Station can not have the 43 chars wide comment field
   // and the ALTITUDE field, so i first send a "red dot icon" position report and after that
   // i change the report icon in WX again....dirty, but fully functional :-)
-  Serial.println(F("** POSITION PACKET **"));
-  sprintf(sentence, "%s>APRS,TCPIP*:=%s/%s&%s (%s)", station.callsign,
-          station.latitude,
-          station.longitude,
-          sets.APRS_CMNT, SOFT_VER);
-  client.println(sentence);
-  Serial.println(sentence);
 
+  if (cnt++==256) cnt=0; // packets are sent using a progressive counter instead of the previous random one
+                         // the non-written standard de facto says to reset the counter after 256 packets
+  
+  if ( cnt == 0 || cnt == 64 || cnt == 128 || cnt == 192 ) // Sending one position packet only after 64 telemetry packets sent
+  {
+    Serial.println(F("** POSITION PACKET **"));
+    sprintf(sentence, "%s>APRS,TCPIP*:=%s/%s&%s (%s)", station.callsign,
+            station.latitude,
+            station.longitude,
+            sets.APRS_CMNT, SOFT_VER);
+    client.println(sentence);
+    Serial.println(sentence);
+  }
+  
   Serial.println(F("** WX PACKET **"));
 
   switch (sets.ChipModel) {
@@ -1655,41 +1663,44 @@ void Send2APRS()
   // Send telemetry sentences, refer to APRS101.pdf
   Serial.println(F("** TELEMETRY PACKETS **"));
   sprintf(sentence, "%s>APRS,TCPIP*:T#%03d,%03d,%03d,000,000,000,00000000", station.callsign,
-          rndnum,
+          cnt,
           tl.rssi,
           tl.vbat);
   client.println(sentence);
   Serial.println(sentence);
-
-  //Define telemetry parameters (labels)
-  sprintf(sentence, "%s>APRS,TCPIP*::%s:PARM.RSSI,VBAT",  station.callsign,
-          station.tlm_callsign);
-  client.println(sentence);
-  Serial.println(sentence);
-
-  //Define telemetry units
-  sprintf(sentence, "%s>APRS,TCPIP*::%s:UNIT.dbm,V",  station.callsign,
-          station.tlm_callsign);
-  client.println(sentence);
-  Serial.println(sentence);
-
-  //Add telemetry coefficient so the APRS protocol can convert your raw values into real value.
-  sprintf(sentence, "%s>APRS,TCPIP*::%s:EQNS.0,-1,0,0,0.01,0,0,0,0,0,0,0,0,0,0", station.callsign,
-          station.tlm_callsign);
-  client.println(sentence);
-  Serial.println(sentence);
-
-  //Send bits and project comment
-  sprintf(sentence, "%s>APRS,TCPIP*::%s:BITS.00000000,%s",  station.callsign,
-          station.tlm_callsign,
-          sets.APRS_PRJ);
-  client.println(sentence);
-  Serial.println(sentence);
-
-  Serial.println();
-  Serial.print(F("closing connection..."));
-  client.stop();
-  Serial.println(F("closed!"));
+  
+  if ( cnt == 0)   // Send telemetry parameters only every 256 packets (it's enough)
+    {
+      //Define telemetry parameters (labels)
+      sprintf(sentence, "%s>APRS,TCPIP*::%s:PARM.RSSI,VBAT",  station.callsign,
+              station.tlm_callsign);
+      client.println(sentence);
+      Serial.println(sentence);
+    
+      //Define telemetry units
+      sprintf(sentence, "%s>APRS,TCPIP*::%s:UNIT.dbm,V",  station.callsign,
+              station.tlm_callsign);
+      client.println(sentence);
+      Serial.println(sentence);
+    
+      //Add telemetry coefficient so the APRS protocol can convert your raw values into real value.
+      sprintf(sentence, "%s>APRS,TCPIP*::%s:EQNS.0,-1,0,0,0.01,0,0,0,0,0,0,0,0,0,0", station.callsign,
+              station.tlm_callsign);
+      client.println(sentence);
+      Serial.println(sentence);
+    
+      //Send bits and project comment
+      sprintf(sentence, "%s>APRS,TCPIP*::%s:BITS.00000000,%s",  station.callsign,
+              station.tlm_callsign,
+              sets.APRS_PRJ);
+      client.println(sentence);
+      Serial.println(sentence);
+    
+      Serial.println();
+      Serial.print(F("closing connection..."));
+      client.stop();
+      Serial.println(F("closed!"));
+    }
 
 }
 
