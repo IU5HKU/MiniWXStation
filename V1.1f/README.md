@@ -35,6 +35,7 @@ Compiled with:
 - **New Locale in Catalan Language (thanks to EA3BIN David Torres)**
 - **New Locale in Turkish Language (thanks to TA5ITK Kaya Taniel)**
 - **Send2APRS() routine now uses a smarter and less invasive method to send packets (thanks to IW1CGW Giovanni)**
+
 **WARNING!**
 
 ![SerialMonitorSpeed_Image](https://github.com/IU5HKU/MiniWXStation/blob/master/Images/SerialMonitorSpeed.png)
