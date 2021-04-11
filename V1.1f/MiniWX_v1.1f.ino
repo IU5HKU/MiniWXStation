@@ -32,7 +32,7 @@
   - Translated into Català by EA3BIN
   - mBa to hPa in Català language 29/04/2020
   - Translated into Turkish by TA5IKT 15/02/2021
-  - Send2APRS() packets now are sent using a smarter way, who lead to a correct trafic to the servers, courtesy of IW1CGW Giovanni
+  - Send2APRS() routine now send packets in a smarter way, who lead to less invasive trafic to the servers (courtesy of IW1CGW Giovanni)
 
 ***************************************************************
   Marco Campinoti - IU5HKU (mrcodemail@gmail.com)
