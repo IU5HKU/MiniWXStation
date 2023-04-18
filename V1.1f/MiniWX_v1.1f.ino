@@ -533,6 +533,7 @@ void setup(void)
   if  (detectMenu() == 1) configMenu();
 
   ssidConnect();
+  Wire.begin();
   initBme();
   // this for save ChipID in defaults values, just in case you change from BMP to BME
   writeSettingsFile();
