@@ -465,7 +465,9 @@ void setup(void)
   Serial.begin(SER_MON_BAUDRATE);  // to read the esp8266 core and startup messages
   Serial.println();
   delay(10);
-
+  
+  Wire.begin(); // added by TK5EP to make the BME280 work 24/05/2023
+  
   SPIFFS.begin(); // mount SPIFFS
 
   if (SPIFFS.info(fs_info)) {
