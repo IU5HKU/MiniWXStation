@@ -330,6 +330,7 @@ void calcDewPoint() {
 }
 
 void Send2Wunder() {
+  // https://support.weather.com/s/article/PWS-Upload-Protocol?language=en_US
   // Calculate dew Point
   calcDewPoint();
   // connect to wunderground
