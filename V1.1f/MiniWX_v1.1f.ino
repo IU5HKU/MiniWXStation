@@ -314,7 +314,7 @@ char car;
 //* WUNDERGROUND
 //**************************************
 const char WGserver[] PROGMEM = "weatherstation.wunderground.com";
-const char WEBPAGE[] PROGMEM = "GET /weatherstation/updateweatherstation.php?";
+//const char WEBPAGE[] PROGMEM = "GET /weatherstation/updateweatherstation.php?";
 
 void calcDewPoint() {
   // Calculate dew Point
@@ -337,30 +337,32 @@ void Send2Wunder() {
     Serial.println(F("Send2Wunder Fail"));
     return;
   }
-  Serial.print(F("WeatherUnderground page updating...."));
+  else  {
+    Serial.println(F("Connected. WeatherUnderground page updating...."));
+   }
+String url = "/weatherstation/updateweatherstation.php?ID=";
+url += sets.wunderid;
+url += "&PASSWORD=";
+url += sets.wunderpassw;
+url += "&dateutc=now&tempf=";
+url += wx.temperatureF;
+url += "&dewptf=";
+url += wx.fdewptf;
+url += "&humidity=";
+url += wx.humidity;
+url += "&baromin=";
+url += ((wx.pressure / 100) * 0.02953f); // 1 mbar = 0.02953 inHg
+url += "&softwaretype=MiniWX%20Station%20";
+url += SOFT_VER;
+url += "&action=updateraw";
 
-  client.print(FPSTR(WEBPAGE));
-  client.print(F("ID="));
-  client.print(sets.wunderid);
-  client.print(F("&PASSWORD="));
-  client.print(sets.wunderpassw);
-  client.print(F("&dateutc="));
-  client.print("now");
-  client.print(F("&tempf="));
-  client.print(wx.temperatureF);
-  client.print(F("&dewptf="));
-  client.print(wx.fdewptf);
-  client.print(F("&humidity="));
-  client.print(wx.humidity);
-  client.print(F("&baromin="));
-  client.print((wx.pressure / 100) * 0.02953f); // 1 mbar = 0.02953 inHg
-  //more compliant WU output by EA1CDV Antonio
-  client.print(F("&softwaretype=MiniWX%20Station%20"));
-  client.print(SOFT_VER);
-  client.print(F("&action=updateraw"));
-  client.println();
-  delay(2500);
-  //Serial.println("done!");
+Serial.println("Requesting :"+url);
+
+  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+               "Host: weatherstation.wunderground.com\r\n" +
+               "User-Agent: G6EJDFailureDetectionFunction\r\n" +
+               "Connection: close\r\n\r\n");
+delay(2000); // let the time to server to answer
 
   //print server reply
   Serial.print(F("server reply:"));
