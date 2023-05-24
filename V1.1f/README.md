@@ -1,6 +1,9 @@
 # MiniWX Station V1.1f
 ESP8266 IoT and BME280 sensor for a minimalist weather station
 
+24/05/2023
+Modified by TK5EP to make the BME280 reading and the Wunderground upload work.
+
 Compiled with:
 
 **ArduinoIDE 1.8.6**
