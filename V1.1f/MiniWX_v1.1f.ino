@@ -2191,6 +2191,7 @@ char readCarMenu()
   {
     if (Serial.available() > 0) {
       car = Serial.read();
+      Serial.print(car);
       if ((car >= '0') && (car <= '9')) {
         ret = car;
       }
