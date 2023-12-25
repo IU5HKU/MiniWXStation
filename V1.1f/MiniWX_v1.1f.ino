@@ -90,8 +90,7 @@ const char SOFT_VER[] = "v1.1f";
 //#define LANG_TURKISH
 
 //**** CHOOSE SERIAL MONITOR BAUD RATE
-//#define SER_MON_BAUDRATE 115200
-#define SER_MON_BAUDRATE 74880
+#define SER_MON_BAUDRATE 115200
 
 //**** How the station is named in your NET
 const char* WiFi_hostname = "MiniWX";
