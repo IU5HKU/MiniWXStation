@@ -1566,12 +1566,17 @@ void Send2APRS()
   unsigned int len;          // for padding callsign
 
   // sanity checks before sending packets
-  if (strlen(station.callsign) < 3 || strlen(sets.AprsPassw) < 4 ) {
+  if (strlen(station.callsign) < 3 || strlen(sets.AprsPassw) < 2 ) {
     Serial.print("APRS callsign \"");
     Serial.print(station.callsign);
     Serial.print("\" or password \"");
     Serial.print(sets.AprsPassw);
-    Serial.println("\" too short");
+    Serial.println("\" too short!");
+    return;
+  }
+
+  if (strlen(station.latitude) != 8 || strlen(station.longitude) != 9 ) {
+    Serial.println("Incorrect lat/lon length!");
     return;
   }
 
