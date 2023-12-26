@@ -2170,12 +2170,13 @@ int readCharArray(char *buffer)
   {
     if (Serial.available() > 0) {
       car = Serial.read();
-      if (car != '\n') {
+      if (car >= 32) {
+        Serial.print(car);
         buffer[ptr++] = car;
       }
     }
   }
-  while (car != '\n');
+  while (car != '\n' && car != '\r');
 
   buffer[ptr] = 0;
   // return the number of char read
