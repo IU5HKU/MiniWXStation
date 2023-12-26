@@ -2430,6 +2430,11 @@ void ssidConnect()
   Serial.println(internet.ssid);
   Serial.println(internet.password);
 
+  if (strlen(internet.ssid) < 1 || strlen(internet.password) < 1) {
+    Serial.println("empty ssid or password");
+    return;
+  }
+  
   if (WiFi.status() != WL_CONNECTED)
   {
     Serial.print(F("Connecting to "));
