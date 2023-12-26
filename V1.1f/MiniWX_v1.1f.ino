@@ -947,7 +947,7 @@ void handleSubmit() {
       {
         // Print SSID and RSSI for each network found
         stations += "<tr>";
-        stations += "<td <td style='text-align:left'>";
+        stations += "<td style='text-align:left'>";
         stations += WiFi.SSID(i);
         stations += "</td><td>";
         stations += WiFi.RSSI(i);
