@@ -1565,6 +1565,16 @@ void Send2APRS()
   char sentence[150];
   unsigned int len;          // for padding callsign
 
+  // sanity checks before sending packets
+  if (strlen(station.callsign) < 3 || strlen(sets.AprsPassw) < 4 ) {
+    Serial.print("APRS callsign \"");
+    Serial.print(station.callsign);
+    Serial.print("\" or password \"");
+    Serial.print(sets.AprsPassw);
+    Serial.println("\" too short");
+    return;
+  }
+
   //MANDATORY: CWOP doesn't need password, but need to register to the CWOP program, and obtain a valid callsign
   //sprintf(login, "user %s pass -1 vers VERSION ESP8266", station.callsign);
 
