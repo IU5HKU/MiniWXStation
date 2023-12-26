@@ -921,7 +921,7 @@ void handleSubmit() {
 #ifdef LANG_CATALAN
       message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>Enviant solicitut de sincronisme al servidor NTP...</div>");
 #endif
-#ifdef LANG_ENGLISH
+#ifdef LANG_TURKISH
       message += F("<form><div class='divTable'><div class='divRow'><div class='divColumn' style='width:98%'><div class='notabheader'>NTP sunucusuna istek gönderiyor...</div>");
 #endif
 
