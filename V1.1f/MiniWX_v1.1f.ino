@@ -102,7 +102,7 @@ const char* AprsPassw = "YouAPRSnumericalPASS";
 const char* APRS_CMNT = "MiniWX Station YourHomeTown";
 
 //**** APRS_PRJ, Telemetry Project Title (max 23 chars)
-const char* APRS_PRJ = "MinWx Project";
+const char* APRS_PRJ = "MiniWx Project";
 
 //**** Comment this for ESP.getVcc() value in telemetry
 //**** getVcc function (system_get_vdd33) is only available when A0 pin17 is suspended (floating),
@@ -110,7 +110,7 @@ const char* APRS_PRJ = "MinWx Project";
 //#define HAVE_BATTERY
 
 //**** uncomment this for weatherunderground upload,remember to set ID and PASSWORD of your account
-#define USE_WUNDER
+//#define USE_WUNDER
 //* change ID and PASSWORD with yours
 const char ID [] = "YourWunderID";                      
 const char PASSWORD [] = "YourWunderpasswd";
