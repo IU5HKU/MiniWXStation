@@ -2188,7 +2188,7 @@ char readCarMenu()
 {
   char car = 0;
   char ret = 0;
-  while (car != '\n')
+  while (car != '\n' && car != '\r')
   {
     if (Serial.available() > 0) {
       car = Serial.read();
