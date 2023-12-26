@@ -149,7 +149,7 @@ const char* OTA_passw = "esp8266";
 #endif
 
 //**** use static ip instead of dns one
-#define USE_STATIC_IP
+//#define USE_STATIC_IP
 //* change to reflect your net configuration
 String static_ip =      "192.168.100.200";    // STATIC IP
 String static_gateway = "192.168.100.1";      // GATEWAY
