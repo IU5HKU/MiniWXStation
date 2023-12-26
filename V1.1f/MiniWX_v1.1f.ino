@@ -1507,15 +1507,22 @@ void ntp()
   {
     // first parameter: Time zone in floating point (for India); second parameter: 1 for European summer time; 2 for US daylight saving time (not implemented yet)
 
-    //**** BIG ISSUE: in case of poor connection, we risk to remain in this loop forever
-    NTPch.setSendInterval(SEND_INTV);
-    NTPch.setRecvTimeout(RECV_TIMEOUT);
-    do
-    {
+    //NTPch.setSendInterval(SEND_INTV);
+    //NTPch.setRecvTimeout(RECV_TIMEOUT);
+    Serial.print("Getting NTP sync...");
+
+    for (uint8_t i = 0; i < 10; i++) {
       dateTime = NTPch.getNTPtime(TIME_ZONE, 1);
-      delay(1); //don't block the entire system pls...
+      delay(10); //don't block the entire system pls...
+      if (dateTime.valid) break;
     }
-    while (!dateTime.valid);
+
+    if (!dateTime.valid) {
+      Serial.println(" fail");
+      return;
+    } else {
+      Serial.println(" OK");
+    }
 
     NTPch.printDateTime(dateTime);
     //dateTime.second = (dateTime.second + RECV_TIMEOUT) % 60;  //adjust the setRecvTimeout delay;
