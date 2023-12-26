@@ -186,7 +186,7 @@ svg {\
   stroke: red;\
   stroke-width: 3px;\
 }\
-\ 
+\
 .hover-line {\
   stroke: white;\
   stroke-width: 2px;\
@@ -212,9 +212,9 @@ var line = d3.line()\
   .x(function(d) { return x(d.time); })\
     .y(function(d) {\
     if (data == GraphData_rssi) return y(d.rssi);\
-    if (data == GraphData_temp) return y(d.temp);\ 
+    if (data == GraphData_temp) return y(d.temp);\
     if (data == GraphData_pres) return y(d.pres);\
-    if (data == GraphData_rhum) return y(d.rhum);\ 
+    if (data == GraphData_rhum) return y(d.rhum);\
   })\
   .curve(d3.curveMonotoneX);\
 \
@@ -274,7 +274,7 @@ var bisectDate = d3.bisector(function(d) { return d.time; }).left;\
 \
     focus.append('circle')\
         .attr('r', 5.5);\
-\    
+\
     focus.append('text')\
         .attr('x', 15)\
         .attr('dy', '.31em')\
@@ -332,14 +332,14 @@ var GraphData_rssi = new Array();\
   console.log(GraphData_pres);\
   console.log(GraphData_rhum);\
   console.log(GraphData_rssi);\
-\  
+\
 var svg = d3.select('#svgChart_rssi'),\
     margin = {top: 10, right: 70, bottom: 20, left: 50},\
     width = +svg.attr('width') - margin.left - margin.right,\
     height = +svg.attr('height') - margin.top - margin.bottom;\
 \
   drawAxis(svg, GraphData_rssi, 'blue', 'dbm');\
-\  
+\
 var svg = d3.select('#svgChart_temp'),\
     margin = {top: 10, right: 70, bottom: 20, left: 50},\
     width = +svg.attr('width') - margin.left - margin.right,\
