@@ -2185,7 +2185,7 @@ void configWeather()
 //********************************
 int readCharArray(char *buffer)
 {
-  char car;
+  char car = 0;
   int ptr = 0;
 
   do
