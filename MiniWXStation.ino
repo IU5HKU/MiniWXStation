@@ -137,7 +137,7 @@ const char PASSWORD [] = "YourWunderpasswd";
 const char* NTP_Server = "ntp1.inrim.it"; //italian national institute for measures
 
 //**** Your time zone UTC related (floating point number)
-#define TIME_ZONE 3.0f
+#define TIME_ZONE 1.0f
 
 //**** Set credential for OTA firmware upgrade <<--->>
 //*uncomment the #define if you wanna use this handy feature
