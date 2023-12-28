@@ -1100,7 +1100,7 @@ void handleJQuery() {
   }
   sprintf(espclock, "%02d:%02d:%02d", dateTime.hour, dateTime.minute, dateTime.second);
   sprintf(nexttx, "%02d:%02d:%02d", nextHour, nextMinTx, nextSecTx);
-  sprintf(uptime, "Days %02d : Hrs %02d : Min %02d : Sec %02d", sysUpTimeDy, sysUpTimeHr, sysUpTimeMn, sysUpTimeSec);
+  sprintf(uptime, "%d days, %02d : %02d : %02d", sysUpTimeDy, sysUpTimeHr, sysUpTimeMn, sysUpTimeSec);
 
   // sends multiple data in array-form
   server.send ( 200, "text/plain", String(espclock) + "," +
