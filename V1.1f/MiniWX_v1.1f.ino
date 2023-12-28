@@ -1583,7 +1583,7 @@ void Send2APRS()
   //MANDATORY: CWOP doesn't need password, but need to register to the CWOP program, and obtain a valid callsign
   //sprintf(login, "user %s pass -1 vers VERSION ESP8266", station.callsign);
 
-  sprintf(login, "user %s pass %s vers VERSION ESP8266", station.callsign, sets.AprsPassw); // user must be "yourcallsign-13" if you are an hamradio operator, otherwise request and use a CWOP callsign....
+  sprintf(login, "user %s pass %s vers MiniWXStation v1.1g", station.callsign, sets.AprsPassw); // user must be "yourcallsign-13" if you are an hamradio operator, otherwise request and use a CWOP callsign....
 
   //retrieve telemetry infos
   tl.rssi = abs(WiFi.RSSI());   // strenght of WiFi AP signal
