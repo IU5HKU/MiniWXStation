@@ -257,10 +257,10 @@ const char PAGE_MiniWXSettings_EN[] PROGMEM = "<!DOCTYPE html>\
               <legend><h2> Station Callsign and Position </h2></legend>\
                 <label>Callsign</label>\
                 <div><input id='callsign' name='callsign' type='text' maxlength='9' size='9' value='{{callsign}}'/></div>\
-                <label>Longitude (example 01023.16E)</label>\
-                <input id='longitude' name='longitude' type='text' maxlength='9' size='9' value='{{lon}}'/>\
                 <label> Latitude (example 4303.01N)</label>\
                 <input id='latitude' name='latitude' type='text' maxlength='8' size='8' value='{{lat}}'/>\
+                <label>Longitude (example 01023.16E)</label>\
+                <input id='longitude' name='longitude' type='text' maxlength='9' size='9' value='{{lon}}'/>\
                 <label> Altitude (meters)</label>\
                 <input id='altitude' name='altitude' type='text' maxlength='4' size='4' value='{{alt}}'/>\
               </fieldset>\
