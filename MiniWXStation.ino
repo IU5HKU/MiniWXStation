@@ -98,6 +98,9 @@ const char* WiFi_hostname = "MiniWX";
 //**** APRS PASSWORD (use -1 if you are using a CWOP callsign)
 const char* AprsPassw = "YouAPRSnumericalPASS";
 
+//**** APRS Destination Call (device identifier)
+const char* AprsDevice = "APZMWX";
+
 //**** APRS COMMENT, you can set this string as you want (max 43 chars)
 const char* APRS_CMNT = "MiniWX Station YourHomeTown";
 
