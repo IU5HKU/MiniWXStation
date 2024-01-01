@@ -69,7 +69,7 @@ ESP8266WebServer server(80);
 //**************************************
 //* INTERNAL USE & DEBUG               *
 //**************************************
-const char SOFT_VER[] = "v1.1f";
+const char SOFT_VER[] = "v1.1g";
 //#define DEBUG_READSETTINGSFILE
 //#define DEBUG_FORM_REPLIES
 #define DISPLAY_RW_OUTPUT
@@ -1583,7 +1583,7 @@ void Send2APRS()
   //MANDATORY: CWOP doesn't need password, but need to register to the CWOP program, and obtain a valid callsign
   //sprintf(login, "user %s pass -1 vers VERSION ESP8266", station.callsign);
 
-  sprintf(login, "user %s pass %s vers MiniWXStation v1.1g", station.callsign, sets.AprsPassw); // user must be "yourcallsign-13" if you are an hamradio operator, otherwise request and use a CWOP callsign....
+  sprintf(login, "user %s pass %s vers MiniWXStation %s", station.callsign, sets.AprsPassw, SOFT_VER); // user must be "yourcallsign-13" if you are an hamradio operator, otherwise request and use a CWOP callsign....
 
   //retrieve telemetry infos
   tl.rssi = abs(WiFi.RSSI());   // strenght of WiFi AP signal
