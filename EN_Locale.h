@@ -12,10 +12,10 @@ const char PAGE_Main_EN[] PROGMEM = "<!DOCTYPE html>\
 <meta lang='en' http-equiv='Content-Type' content='text/html' charset='UTF-8'>\
 <title>MiniWX Weather Station</title>\
 <style>\
-  body { background-color: #000000; font-family: Arial, Helvetica, Sans-Serif; Color: #13F70C; font-size: 32px;}\
+  body { background-color: #000000; font-family: Arial, Helvetica, Sans-Serif; color: #13F70C; font-size: 24px;}\
   table { display: table; border: 1px solid green; border-collapse: separate; border-spacing: 1px; border-color: green;}\
-  th, td {border: 1px solid green; border-collapse: separate; text-align: center; font-size: 28px;}\
-  th {border-left: 30px solid green; border-right: 30px solid green; background: green; Color: black; font-size: 32px;}\
+  th, td {border: 1px solid green; border-collapse: separate; text-align: center;}\
+  th {border-left: 30px solid green; border-right: 30px solid green; background: green; color: black;}\
   fieldset { border:1px solid #999; border-radius:8px; box-shadow:0 0 10px #999;}\
   legend  { background:#000;}\
   .divTable { width: 100%; display:block; padding-top:10px; padding-bottom:10px; padding-right:10px; padding-left:10px;}\
