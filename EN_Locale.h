@@ -181,7 +181,7 @@ function getData() {\
       </div>\
       </fieldset>\
     </form>\
-    <p>MiniWX Station&#8482; ({{SOFT_VER}}) - click <a href='https://github.com/IU5HKU/MiniWXStation'>here</a> and check for latest version</p>\
+    <p>MiniWX Station&#8482; ({{SOFT_VER}}) - click <a href='https://github.com/sq2mo/MiniWXStation'>here</a> and check for latest version</p>\
   </body>\
 </html>";
 
@@ -342,7 +342,7 @@ const char PAGE_MiniWXSettings_EN[] PROGMEM = "<!DOCTYPE html>\
             </div>\
           </div>\
         </div>\
-        <div id='footer' style='padding-left:18px'><p>MiniWX Station&#8482; ({{SOFT_VER}}) - click <a href='https://github.com/IU5HKU/MiniWXStation'>here</a> and check for latest version</p></div>\
+        <div id='footer' style='padding-left:18px'><p>MiniWX Station&#8482; ({{SOFT_VER}}) - click <a href='https://github.com/sq2mo/MiniWXStation'>here</a> and check for latest version</p></div>\
     </form>\
   </div>\
 </body>\
