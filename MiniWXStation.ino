@@ -730,7 +730,7 @@ void handleRoot() {
   page.replace(F("{{alt}}"), String(station.altitude));
 
   SystemUpTime();
-  String sysUpTime("Days " + String(sysUpTimeDy) + ": Hrs " + String(sysUpTimeHr) + ": Min" + String(sysUpTimeMn) + ": Sec" + String(sysUpTimeSec));
+  String sysUpTime(String(sysUpTimeDy) + " days " + String(sysUpTimeHr) + ":" + String(sysUpTimeMn) + ":" + String(sysUpTimeSec));
   page.replace(F("{{uptime}}"), sysUpTime);
 
   getBmeValues();
@@ -1100,7 +1100,7 @@ void handleJQuery() {
   }
   sprintf(espclock, "%02d:%02d:%02d", dateTime.hour, dateTime.minute, dateTime.second);
   sprintf(nexttx, "%02d:%02d:%02d", nextHour, nextMinTx, nextSecTx);
-  sprintf(uptime, "%d days %02d : %02d : %02d", sysUpTimeDy, sysUpTimeHr, sysUpTimeMn, sysUpTimeSec);
+  sprintf(uptime, "%d days %02d:%02d:%02d", sysUpTimeDy, sysUpTimeHr, sysUpTimeMn, sysUpTimeSec);
 
   // sends multiple data in array-form
   server.send ( 200, "text/plain", String(espclock) + "," +
