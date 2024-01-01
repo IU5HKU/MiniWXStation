@@ -134,7 +134,7 @@ const char PASSWORD [] = "YourWunderpasswd";
 #define NTPSYNC_DELAY  12
 
 //**** NTP Server to use
-const char* NTP_Server = "ntp1.inrim.it"; //italian national institute for measures
+const char* NTP_Server = "pool.ntp.org"; //italian national institute for measures
 
 //**** Your time zone UTC related (floating point number)
 #define TIME_ZONE 1.0f
