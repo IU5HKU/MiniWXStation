@@ -102,7 +102,6 @@ function getData() {\
   <body>\
     <hr>\
     <h3 style='text-shadow: 2px 1px grey;'>{{callsign}} Weather Station - <a id='clock' class='tabheader' style='padding-right:10px'>{{time}}</a></h3>\
-    <h4>\
     <fieldset style='width:{{fieldsize0}}'>\
     <legend style='text-shadow: 2px 1px grey;'> {{ChipModel}} </legend>\
     <div class='divTable'>\
@@ -138,8 +137,6 @@ function getData() {\
       <button class='butn' name='Trend' type='graphs' value='true'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAWCAYAAAA1vze2AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAIGNIUk0AAIcbAACL/wAA/bEAAINJAAB9LgAA7W0AADg+AAAkPqJQ9KgAAATYSURBVHjapJRbTFN3HMd/yV63bA+LwS173esefZoxM0RgWEScF5QCpVwKp1DL6ek55/9v6Y0iK5cKoqAbGGzP6QWdIk4XXZxu04wtm0C5WUAW58NWjZm6LcuWffdQM2XOmOHD5+mffz753b60bt0rVF36dkGnbP2xRWy8631umu56pea7HVK9HhDKKCSWEYll+eSqyPPz9g+gxuahRidXBYtOgkWnoEYmIbs7EKwzIGDZ0dPlrHyR5N355DUVulxdx8ASi+D6zKpg+gxYYhFSexSxQC5uXd2Bk+EihBVLC3XLFmJ7cl2urmGwxAK4Pr0qmJYCSyxB9oTxlVYA3DHh2qkieGt3xenXBw+ow7a7RX1/8CmS1EOeIdGnocbmwUUV/XYDxvq3oNdReP+bS+cL6Jd7P1PYXu55UpIC02fAEwvgiTR4bAZcSz2liimwxAIcYR3DzXZ85GyHrWTD/S/Ojeb98ReIDkh15DXmuVe2KwUemwWLTEJsG4bcroNHp7LS/6xiBvKxb+G31uBq4AhCdSZ4ardlziT1V2e+zxB5jZup1WxYIWH6NFR9Fl6mYDS8Ccf35UJ1tYIll8C0J2fBE4twtOzDmOzDcckNh68bAcWekcw7135y5jRRwLSVWqs2P5JoKfDkIsT9Z9Gv5AHLRvw2txs9Uj7EkAaWXFopiV+H3H8OfU31+NJ7EK6mBsiRCfglIeO1GnN4vZHIV7GFAqbCh5J09tPgFbgs1egRijHzsQHjiQL0W0vRJ1ggBfvA4uns6mrTUGJzYA47Lnt6cLhJgLNvFKo2C78kZJilNMdtqybqEWuoU9jp4R1HoY4sQz06DndjDS57D+BDQYBqrYBTFNFuqcJ46xAie/dCVjnU6BTYiVtwdkVxzO7AeR6C0xUAH7kBNTIBr2jJBOzmNQvz00ShBiPtqytp4d1R8Ngc3E0WnOchnHJ6wFUXVH0eauIGnAdOoc1ajUueXpxWfFBte2H39SNYb8Z46yDarTWQh66Axa9DjUyACZWZq5+eeRPAy+SrKiG/uUh2hQbhURjOqkGMyT64FSV7xbHZbO+Ti2CDn8PXbINuV3BYMuDCkVwMKlvRW1sBFhoCTy5kN234O7QpTfd++uGGCcB6GvCJL7UJ5R85jEUYVfy44OpES7MNXEuBxeYeDVlLgcXTUCITsDdY8HXSANw2YeKkAVKDGYo+m51TbBZqZAJuW/XtsdjgGwBeoF7FPHqiuxhaMB+H6irhE0WwyLWVgsdFyUUonUnEg7m4+VkREsGNUNqGsrmnpf6R+KWGjNO8bc3pZIRoQN70J5aN+D1dhk57Hhz9l8AS6WdGCQsOgNsboPgPQtWyt8X16cckQqbFaszhQgVRr2N7ZvHiDqROFiAg1kKNPCMMtRSYPg2WSEONpcHj6ZXv/5JUvldIdMhjL3TvWr/MrCYoAxfB43OrTuLHJe3Mdrt+T/FrREQUspYTK9ko87AONrL81BD83xLVlqko3rSWiIhaTUUUNBs8vFuDevwmWGLh+UguQdHn4Jesd3yNla8X571DJJVuIJ/5XWdroA2sZwSsO/Zc8P1xqKEhBO1Vd3yNFWvaxDqi6sK3SKnanGPZnu8N1BQFu4QSpXOVdAkliqdqu8dfV9ITVmqLPUI5uev30N8DAPKfisupFjUwAAAAAElFTkSuQmCC' /> Graphics Trends</button>\
     </form>\
     </fieldset>\
-    </h4>\
-    <h6>\
     <fieldset style='width:{{fieldsize4}}'>\
     <legend style='text-shadow: 2px 1px grey;'> System Infos </legend>\
       <div class='divTable'>\
@@ -185,7 +182,6 @@ function getData() {\
       </fieldset>\
     </form>\
     <p>MiniWX Station&#8482; ({{SOFT_VER}}) - click <a href='https://github.com/IU5HKU/MiniWXStation'>here</a> and check for latest version</p>\
-    </h6>\
   </body>\
 </html>";
 
