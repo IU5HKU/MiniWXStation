@@ -1633,7 +1633,8 @@ void Send2APRS()
   if ( cnt == 0 || cnt == 64 || cnt == 128 || cnt == 192 ) // Sending one position packet only after 64 telemetry packets sent
   {
     Serial.println(F("** POSITION PACKET **"));
-    sprintf(sentence, "%s>APRS,TCPIP*:=%s/%s&%s (%s)", station.callsign,
+    sprintf(sentence, "%s>%s,TCPIP*:=%s/%s&%s (%s)", station.callsign,
+            AprsDevice,
             station.latitude,
             station.longitude,
             sets.APRS_CMNT, SOFT_VER);
@@ -1645,7 +1646,8 @@ void Send2APRS()
 
   switch (sets.ChipModel) {
     case MOD_BMP280:  //temp,press and no rHum
-      sprintf(sentence, "%s>APRS,TCPIP*:=%s/%s_.../...g...t%03dr...p...P...h..b%05d", station.callsign,
+      sprintf(sentence, "%s>%s,TCPIP*:=%s/%s_.../...g...t%03dr...p...P...h..b%05d", station.callsign,
+              AprsDevice,
               station.latitude,
               station.longitude,
               (int)(wx.temperatureF),
@@ -1653,7 +1655,8 @@ void Send2APRS()
 
       break;
     case MOD_BME280:  //temp,press,rHum
-      sprintf(sentence, "%s>APRS,TCPIP*:=%s/%s_.../...g...t%03dr...p...P...h%02db%05d", station.callsign,
+      sprintf(sentence, "%s>%s,TCPIP*:=%s/%s_.../...g...t%03dr...p...P...h%02db%05d", station.callsign,
+              AprsDevice,
               station.latitude,
               station.longitude,
               (int)(wx.temperatureF),
@@ -1661,7 +1664,8 @@ void Send2APRS()
               (int)(wx.pressure / 10));
       break;
     case 0x00:  //no values at all
-      sprintf(sentence, "%s>APRS,TCPIP*:=%s/%s_.../...g...t...r...p...P...h..b.....", station.callsign,
+      sprintf(sentence, "%s>%s,TCPIP*:=%s/%s_.../...g...t...r...p...P...h..b.....", station.callsign,
+              AprsDevice,
               station.latitude,
               station.longitude);
       break;
@@ -1690,7 +1694,8 @@ void Send2APRS()
 
   // Send telemetry sentences, refer to APRS101.pdf
   Serial.println(F("** TELEMETRY PACKETS **"));
-  sprintf(sentence, "%s>APRS,TCPIP*:T#%03d,%03d,%03d,000,000,000,00000000", station.callsign,
+  sprintf(sentence, "%s>%s,TCPIP*:T#%03d,%03d,%03d,000,000,000,00000000", station.callsign,
+          AprsDevice,
           cnt,
           tl.rssi,
           tl.vbat);
@@ -1700,25 +1705,29 @@ void Send2APRS()
   if ( cnt == 0)   // Send telemetry parameters only every 256 packets (it's enough)
     {
       //Define telemetry parameters (labels)
-      sprintf(sentence, "%s>APRS,TCPIP*::%s:PARM.RSSI,VBAT",  station.callsign,
+      sprintf(sentence, "%s>%s,TCPIP*::%s:PARM.RSSI,VBAT",  station.callsign,
+              AprsDevice,
               station.tlm_callsign);
       client.println(sentence);
       Serial.println(sentence);
     
       //Define telemetry units
-      sprintf(sentence, "%s>APRS,TCPIP*::%s:UNIT.dbm,V",  station.callsign,
+      sprintf(sentence, "%s>%s,TCPIP*::%s:UNIT.dbm,V",  station.callsign,
+              AprsDevice,
               station.tlm_callsign);
       client.println(sentence);
       Serial.println(sentence);
     
       //Add telemetry coefficient so the APRS protocol can convert your raw values into real value.
-      sprintf(sentence, "%s>APRS,TCPIP*::%s:EQNS.0,-1,0,0,0.01,0,0,0,0,0,0,0,0,0,0", station.callsign,
+      sprintf(sentence, "%s>%s,TCPIP*::%s:EQNS.0,-1,0,0,0.01,0,0,0,0,0,0,0,0,0,0", station.callsign,
+              AprsDevice,
               station.tlm_callsign);
       client.println(sentence);
       Serial.println(sentence);
     
       //Send bits and project comment
-      sprintf(sentence, "%s>APRS,TCPIP*::%s:BITS.00000000,%s",  station.callsign,
+      sprintf(sentence, "%s>%s,TCPIP*::%s:BITS.00000000,%s",  station.callsign,
+              AprsDevice,
               station.tlm_callsign,
               sets.APRS_PRJ);
       client.println(sentence);
@@ -1729,7 +1738,6 @@ void Send2APRS()
       client.stop();
       Serial.println(F("closed!"));
     }
-
 }
 
 //******************************************************
