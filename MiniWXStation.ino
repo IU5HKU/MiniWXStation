@@ -123,6 +123,9 @@ const char PASSWORD [] = "YourWunderpasswd";
 //**** show BME280 values in Serial Output;
 #define DISPLAY_BME_VAL
 
+//**** read D5 and D6 input states and put them to telemetry
+//#define READ_INPUTS
+
 //**** blinking led to show that into the 10 minutes the system is still alive WILL BE ELIMINATED IN BATTERY POWERED VERSION (1" blink)
 //**** NOTE: WEMOS D1 Mini doens't have this led, NodeMCU V0.9 & V1.0 have it.
 //#define BLINK_RED_LED
@@ -1695,13 +1698,24 @@ void Send2APRS()
     while (len < 9);
   }
 
+#ifdef READ_INPUTS // gpio status read
+  pinMode(D5, INPUT);
+  pinMode(D6, INPUT);
+  bool d5 = digitalRead(D5);
+  bool d6 = digitalRead(D6);
+#else
+  bool d5, d6 = 0;
+#endif
+  
   // Send telemetry sentences, refer to APRS101.pdf
   Serial.println(F("** TELEMETRY PACKETS **"));
-  sprintf(sentence, "%s>%s,TCPIP*:T#%03d,%03d,%03d,000,000,000,00000000", station.callsign,
+  sprintf(sentence, "%s>%s,TCPIP*:T#%03d,%03d,%03d,000,000,000,%d%d000000", station.callsign,
           AprsDevice,
           cnt,
           tl.rssi,
-          tl.vbat);
+          tl.vbat,
+          d5,
+          d6);
   client.println(sentence);
   Serial.println(sentence);
   
