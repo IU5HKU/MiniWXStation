@@ -1581,11 +1581,32 @@ void Send2APRS()
     return;
   }
 
+  // check lat/lon string length
   if (strlen(station.latitude) != 8 || strlen(station.longitude) != 9 ) {
     Serial.println("Incorrect lat/lon length!");
     return;
   }
 
+  // check if temp/humidity/pressure are in valid ranges
+  if (wx.temperatureF) {
+    if (wx.temperatureF > 150 || wx.temperatureF < -100) {
+      Serial.printf("Incorrect temperature %f\n", wx.temperatureF);
+      return;
+    }
+  }
+  if (wx.humidity) {
+    if (wx.humidity < 0 || wx.humidity > 100) {
+      Serial.printf("Incorrect humidity %f\n", wx.humidity);
+      return;
+    }
+  }
+  if (wx.pressure) {
+    if ((wx.pressure / 100) < 900 || (wx.pressure / 100) > 1100) {
+      Serial.printf("Incorrect pressure %f\n", wx.pressure);
+      return;
+    }
+  }
+  
   //MANDATORY: CWOP doesn't need password, but need to register to the CWOP program, and obtain a valid callsign
   //sprintf(login, "user %s pass -1 vers VERSION ESP8266", station.callsign);
 
