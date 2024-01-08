@@ -1719,42 +1719,40 @@ void Send2APRS()
   client.println(sentence);
   Serial.println(sentence);
   
-  if ( cnt == 0)   // Send telemetry parameters only every 256 packets (it's enough)
-    {
-      //Define telemetry parameters (labels)
-      sprintf(sentence, "%s>%s,TCPIP*::%s:PARM.RSSI,VBAT",  station.callsign,
-              AprsDevice,
-              station.tlm_callsign);
-      client.println(sentence);
-      Serial.println(sentence);
-    
-      //Define telemetry units
-      sprintf(sentence, "%s>%s,TCPIP*::%s:UNIT.dbm,V",  station.callsign,
-              AprsDevice,
-              station.tlm_callsign);
-      client.println(sentence);
-      Serial.println(sentence);
-    
-      //Add telemetry coefficient so the APRS protocol can convert your raw values into real value.
-      sprintf(sentence, "%s>%s,TCPIP*::%s:EQNS.0,-1,0,0,0.01,0,0,0,0,0,0,0,0,0,0", station.callsign,
-              AprsDevice,
-              station.tlm_callsign);
-      client.println(sentence);
-      Serial.println(sentence);
-    
-      //Send bits and project comment
-      sprintf(sentence, "%s>%s,TCPIP*::%s:BITS.00000000,%s",  station.callsign,
-              AprsDevice,
-              station.tlm_callsign,
-              sets.APRS_PRJ);
-      client.println(sentence);
-      Serial.println(sentence);
-    
-      Serial.println();
-      Serial.print(F("closing connection..."));
-      client.stop();
-      Serial.println(F("closed!"));
-    }
+  if (cnt == 0) {  // Send telemetry parameters only every 256 packets (it's enough)
+    //Define telemetry parameters (labels)
+    sprintf(sentence, "%s>%s,TCPIP*::%s:PARM.RSSI,VBAT", station.callsign,
+            AprsDevice,
+            station.tlm_callsign);
+    client.println(sentence);
+    Serial.println(sentence);
+  
+    //Define telemetry units
+    sprintf(sentence, "%s>%s,TCPIP*::%s:UNIT.dbm,V", station.callsign,
+            AprsDevice,
+            station.tlm_callsign);
+    client.println(sentence);
+    Serial.println(sentence);
+  
+    //Add telemetry coefficient so the APRS protocol can convert your raw values into real value.
+    sprintf(sentence, "%s>%s,TCPIP*::%s:EQNS.0,-1,0,0,0.01,0,0,0,0,0,0,0,0,0,0", station.callsign,
+            AprsDevice,
+            station.tlm_callsign);
+    client.println(sentence);
+    Serial.println(sentence);
+  
+    //Send bits and project comment
+    sprintf(sentence, "%s>%s,TCPIP*::%s:BITS.00000000,%s", station.callsign,
+            AprsDevice,
+            station.tlm_callsign,
+            sets.APRS_PRJ);
+    client.println(sentence);
+    Serial.println(sentence);
+  }
+  Serial.println();
+  Serial.print(F("closing connection..."));
+  client.stop();
+  Serial.println(F("closed!"));
 }
 
 //******************************************************
