@@ -1271,32 +1271,32 @@ void handleGraphs() {
 #ifdef LANG_ENGLISH
   message.replace(F("{{svg_temp}}"), "Temperature (°C)");
   message.replace(F("{{svg_pres}}"), "Pressure (hPa)");
-  message.replace(F("{{svg_rhum}}"), "relative Humidity (%)");
-  message.replace(F("{{svg_rssi}}"), "rssi (dbm)");
+  message.replace(F("{{svg_rhum}}"), "Relative Humidity (%)");
+  message.replace(F("{{svg_rssi}}"), "RSSI (dBm)");
 #endif
 #ifdef LANG_SPANISH
   message.replace(F("{{svg_temp}}"), "Temperatura °C");
   message.replace(F("{{svg_pres}}"), "Presión (hPa)");
   message.replace(F("{{svg_rhum}}"), "Humedad relativa (%)");
-  message.replace(F("{{svg_rssi}}"), "rssi (dbm)");
+  message.replace(F("{{svg_rssi}}"), "RSSI (dBm)");
 #endif
 #ifdef LANG_ITALIAN
   message.replace(F("{{svg_temp}}"), "Temperatura °C");
   message.replace(F("{{svg_pres}}"), "Pressione (hPa)");
   message.replace(F("{{svg_rhum}}"), "Umidità relativa (%)");
-  message.replace(F("{{svg_rssi}}"), "rssi (dbm)");
+  message.replace(F("{{svg_rssi}}"), "RSSI (dBm)");
 #endif
 #ifdef LANG_CATALAN
   message.replace(F("{{svg_temp}}"), "Temperatura °C");
   message.replace(F("{{svg_pres}}"), "Pressió (hPa)");
   message.replace(F("{{svg_rhum}}"), "Humitat relativa (%)");
-  message.replace(F("{{svg_rssi}}"), "rssi (dbm)");
+  message.replace(F("{{svg_rssi}}"), "RSSI (dBm)");
 #endif
 #ifdef LANG_TURKISH
   message.replace(F("{{svg_temp}}"), "Sıcaklık °C");
   message.replace(F("{{svg_pres}}"), "Basınç (hPa)");
   message.replace(F("{{svg_rhum}}"), "Bağıl Nem (%)");
-  message.replace(F("{{svg_rssi}}"), "rssi (dbm)");
+  message.replace(F("{{svg_rssi}}"), "RSSI (dBm)");
 #endif
   message.replace(F("{{svg_grid}}"), FPSTR(HTTP_SVG_GRID));
 
