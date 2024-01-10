@@ -226,13 +226,13 @@ var bisectDate = d3.bisector(function(d) { return d.time; }).left;\
     x.domain(d3.extent(data, function(d) { return d.time; }));\
 \
   if (data == GraphData_temp)\
-    y.domain([d3.min(data, function(d) { return d.temp; }) / 1.02, d3.max(data, function(d) { return d.temp; }) * 1.02]);\
+    y.domain([d3.min(data, function(d) { return d.temp; }) - 2, d3.max(data, function(d) { return d.temp; }) + 2]);\
   if (data == GraphData_pres)\
-    y.domain([d3.min(data, function(d) { return d.pres; }) / 1.002, d3.max(data, function(d) { return d.pres; }) * 1.002]);\
+    y.domain([d3.min(data, function(d) { return d.pres; }) - 200, d3.max(data, function(d) { return d.pres; }) + 200]);\
   if (data == GraphData_rhum)\
-    y.domain([d3.min(data, function(d) { return d.rhum; }) / 1.02, d3.max(data, function(d) { return d.rhum; }) * 1.02]);\
+    y.domain([d3.min(data, function(d) { return d.rhum; }) - 2, d3.max(data, function(d) { return d.rhum; }) + 2]);\
   if (data == GraphData_rssi)\
-    y.domain([d3.max(data, function(d) { return d.rssi; }) * 1.02, d3.min(data, function(d) { return d.rssi; }) / 1.02]);\
+    y.domain([d3.max(data, function(d) { return d.rssi; }) + 2, d3.min(data, function(d) { return d.rssi; }) - 2]);\
 \
     g.append('g')\
         .attr('class', 'axis axis--x')\
