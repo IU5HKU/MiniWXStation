@@ -231,6 +231,8 @@ void setup(void)
   Serial.println();
   delay(10);
 
+  Wire.begin();
+
   SPIFFS.begin();
   if (SPIFFS.exists("/ssid.txt") == 0) {
     configMenu();
