@@ -271,6 +271,8 @@ void setup(void)
   Serial.println();
   delay(10);
 
+  Wire.begin();
+
   SPIFFS.begin();
   if (SPIFFS.exists("/ssid.txt") == 0) {
     configMenu();
@@ -402,7 +404,7 @@ const char PAGE_infos[] PROGMEM = "<html>\
   </body>\
 </html>";
 
-const char HTTP_HEAD[] PROGMEM = "<!DOCTYPE html><html><head lang='en'><title>{{callsign}} Weather Station</title>";
+const char HTTP_HEADER[] PROGMEM = "<!DOCTYPE html><html><head lang='en'><title>{{callsign}} Weather Station</title>";
 const char HTTP_SCRIPT[] PROGMEM = "<script></script>";
 const char HTTP_STYLE[] PROGMEM = "<style> body { background-color: #000000; font-family: Arial, Helvetica, Sans-Serif; Color: #13F70C; font-size: 32px;} </style>";
 const char HTTP_BODY[] PROGMEM = "<body>";
@@ -454,7 +456,7 @@ void handleSubmit(){
   
   if (server.args() > 0 ) {
     //** common elements of the various pages
-    message += FPSTR(HTTP_HEAD);
+    message += FPSTR(HTTP_HEADER);
     message.replace("{{callsign}}", station.callsign);
     message += FPSTR(HTTP_SCRIPT);
     message += FPSTR(HTTP_STYLE);
