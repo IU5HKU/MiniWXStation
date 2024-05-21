@@ -461,6 +461,8 @@ void setup(void)
   Serial.println();
   delay(10);
 
+  Wire.begin();
+  
   SPIFFS.begin(); // mount SPIFFS
 
   if(SPIFFS.info(fs_info)){
