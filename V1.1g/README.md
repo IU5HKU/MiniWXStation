@@ -1,4 +1,4 @@
-# MiniWX Station V1.1f
+# MiniWX Station V1.1g
 ESP8266 IoT and BME280 sensor for a minimalist weather station
 
 Compiled with:
@@ -34,7 +34,9 @@ Compiled with:
 - Link to APRS-Direct to see your station in map (courtesy of SM4WJF Per Qvarforth)
 - **New Locale in Catalan Language (thanks to EA3BIN David Torres)**
 - **New Locale in Turkish Language (thanks to TA5ITK Kaya Taniel)**
+- **New Locale in German Language (thanks to DL9SEC Thorsten Godau)** 
 - **Send2APRS() routine now uses a smarter and less invasive method to send packets (thanks to IW1CGW Giovanni)**
+- **some minor bugfixes (thanks to DL9SEC Thorstem Godau)**
 
 **WARNING!**
 
