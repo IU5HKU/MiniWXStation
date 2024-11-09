@@ -36,7 +36,7 @@ Compiled with:
 - **New Locale in Turkish Language (thanks to TA5ITK Kaya Taniel)**
 - **New Locale in German Language (thanks to DL9SEC Thorsten Godau)** 
 - **Send2APRS() routine now uses a smarter and less invasive method to send packets (thanks to IW1CGW Giovanni)**
-- **some minor bugfixes (thanks to DL9SEC Thorstem Godau)**
+- **Some minor bugfixes (thanks to DL9SEC Thorsten Godau)**
 
 **WARNING!**
 
